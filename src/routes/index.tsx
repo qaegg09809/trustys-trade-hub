@@ -156,7 +156,7 @@ function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 min-w-40 border border-accent bg-accent px-8 text-[15px] font-semibold text-primary shadow-[0_16px_34px_-20px_color-mix(in_oklab,var(--color-accent)_72%,transparent)] hover:bg-[color-mix(in_oklab,var(--color-accent)_86%,white_14%)]"
+                  className="h-12 min-w-40 border border-accent bg-accent px-8 text-[15px] font-semibold text-primary shadow-none hover:bg-[color-mix(in_oklab,var(--color-accent)_90%,white_10%)]"
                 >
                   <Link to="/contact" search={{ lang: language }}>
                     {t.ctaPrimary}
@@ -166,7 +166,7 @@ function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="h-12 min-w-40 border-primary-foreground/55 bg-primary-foreground/96 px-8 text-[15px] font-semibold text-primary hover:bg-primary-foreground"
+                  className="h-12 min-w-40 border-primary-foreground bg-primary-foreground px-8 text-[15px] font-semibold text-primary shadow-none hover:bg-[color-mix(in_oklab,var(--color-primary-foreground)_92%,var(--color-muted)_8%)]"
                 >
                   <Link to="/about" search={{ lang: language }}>
                     {t.home.introCta}
