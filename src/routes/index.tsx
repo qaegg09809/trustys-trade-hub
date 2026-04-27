@@ -1,8 +1,9 @@
+import { useState, type CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SiteLayout } from "@/components/site/site-layout";
-import { OperatingModelSection } from "@/components/site/operating-model-section";
 import { getContent } from "@/components/site/content";
 import { useSiteLanguage } from "@/components/site/use-site-language";
 import heroBackground from "@/assets/yansab-hero-ai-bg-v2.jpg";
@@ -17,6 +18,7 @@ import serviceCommercialSourcing from "@/assets/yansab-service-commercial-sourci
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
+import operatingModelBackground from "@/assets/operating-model-bg-v1.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -77,6 +79,48 @@ function HomePage() {
   ];
 
   const trustItems = t.home.trustItems;
+  const operatingIcons = [Gauge, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
+  const operatingDescriptions = isArabic
+    ? [
+        "قياس حجم الطلب الفعلي واتجاهه قبل الالتزام التشغيلي.",
+        "تحليل هامش العائد والربحية لضمان جدوى التنفيذ.",
+        "التحقق من استقرار الموردين وقدرتهم على الالتزام بالتسليم.",
+        "مراجعة الامتثال والتوثيق لضمان تنفيذ منضبط ومطابق.",
+        "تقييم قابلية تكرار الأعمال والتوسع على المدى الطويل.",
+      ]
+    : [
+        "Measure real demand volume and trend before operational commitment.",
+        "Assess margin structure and profitability to ensure commercial viability.",
+        "Validate supplier stability and delivery consistency before execution.",
+        "Review compliance and documentation readiness for controlled operations.",
+        "Evaluate repeatability and long-term scalability potential.",
+      ];
+  const [activeOperatingStep, setActiveOperatingStep] = useState(0);
+  const ActiveIcon = operatingIcons[activeOperatingStep] ?? ShieldCheck;
+  const activeOperatingTitle = t.home.operatingCriteria[activeOperatingStep] ?? "";
+  const activeOperatingDescription = operatingDescriptions[activeOperatingStep] ?? "";
+  const totalOperatingSteps = t.home.operatingCriteria.length;
+
+  const handleOperatingStepNavigation = (index: number, key: string) => {
+    if (key === "ArrowDown" || key === "ArrowRight") {
+      setActiveOperatingStep((index + 1) % totalOperatingSteps);
+      return;
+    }
+
+    if (key === "ArrowUp" || key === "ArrowLeft") {
+      setActiveOperatingStep((index - 1 + totalOperatingSteps) % totalOperatingSteps);
+      return;
+    }
+
+    if (key === "Home") {
+      setActiveOperatingStep(0);
+      return;
+    }
+
+    if (key === "End") {
+      setActiveOperatingStep(totalOperatingSteps - 1);
+    }
+  };
 
   return (
     <SiteLayout language={language}>
@@ -208,11 +252,68 @@ function HomePage() {
         </div>
       </section>
 
-      <OperatingModelSection
-        isArabic={isArabic}
-        title={t.home.operatingModelTitle}
-        body={t.home.operatingModelBody}
-      />
+      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-16 md:py-20">
+        <img
+          src={operatingModelBackground}
+          alt=""
+          aria-hidden="true"
+          className="operating-model-bg"
+          loading="lazy"
+          width={1920}
+          height={1088}
+        />
+        <div className="operating-model-overlay" aria-hidden="true" />
+        <div className="operating-model-grain" aria-hidden="true" />
+        <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
+          <div className="operating-stage mx-auto max-w-[1120px]">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <span className="operating-title-accent" aria-hidden="true" />
+              <p className="operating-model-support">{t.home.operatingModelBody}</p>
+            </div>
+
+            <div
+              className="operating-framework mt-12"
+              style={{ "--operating-active-step": activeOperatingStep } as CSSProperties}
+            >
+              <ol className="operating-timeline" aria-label={t.home.operatingModelTitle}>
+                {t.home.operatingCriteria.map((item, index) => (
+                  <li key={item} className="operating-timeline-item">
+                    <button
+                      type="button"
+                      className={`operating-step-button ${activeOperatingStep === index ? "is-active" : ""}`}
+                      id={`operating-step-${index}`}
+                      onMouseEnter={() => setActiveOperatingStep(index)}
+                      onFocus={() => setActiveOperatingStep(index)}
+                      onClick={() => setActiveOperatingStep(index)}
+                      onKeyDown={(event) => {
+                        if (["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+                          event.preventDefault();
+                          handleOperatingStepNavigation(index, event.key);
+                        }
+                      }}
+                      aria-current={activeOperatingStep === index ? "step" : undefined}
+                      aria-controls="operating-detail-panel"
+                    >
+                      <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="operating-step-title">{item}</span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+
+              <article className="operating-detail-panel" id="operating-detail-panel" key={activeOperatingStep}>
+                <span className="operating-detail-icon" aria-hidden="true">
+                  <ActiveIcon className="h-5 w-5" />
+                </span>
+                <span className="operating-detail-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
+                <h3 className="operating-detail-title">{activeOperatingTitle}</h3>
+                <p className="operating-detail-description">{activeOperatingDescription}</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section-bridge section-band-brand relative isolate overflow-hidden border-b border-border/70 py-14 md:py-18 text-primary-foreground">
         <img src={logisticsVisual} alt={isArabic ? "مشهد لوجستي" : "Logistics network visual"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
