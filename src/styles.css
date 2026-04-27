@@ -287,6 +287,8 @@
 
   .operating-stage {
     margin-top: 0;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-foundation-panel {
@@ -306,7 +308,39 @@
   }
 
   .operating-model-shell {
-    background: var(--brand-surface);
+    background: color-mix(in oklab, var(--brand-surface) 86%, var(--color-primary) 14%);
+  }
+
+  .operating-model-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(78%) contrast(102%) brightness(86%);
+    transform: scale(1.02);
+  }
+
+  .operating-model-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        110deg,
+        color-mix(in oklab, var(--color-background) 95%, var(--color-primary) 5%) 0%,
+        color-mix(in oklab, var(--color-background) 92%, var(--color-primary) 8%) 42%,
+        color-mix(in oklab, var(--color-background) 89%, var(--color-primary) 11%) 100%
+      );
+    opacity: 0.92;
+  }
+
+  .operating-model-grain {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(color-mix(in oklab, var(--color-primary) 14%, transparent) 0.6px, transparent 0.6px);
+    background-size: 3px 3px;
+    opacity: 0.09;
+    pointer-events: none;
   }
 
   .operating-title-accent {
@@ -321,7 +355,7 @@
   .operating-model-support {
     margin: 16px auto 0;
     max-width: 760px;
-    color: color-mix(in oklab, var(--color-primary) 86%, white 14%);
+    color: color-mix(in oklab, var(--color-primary) 80%, white 20%);
     font-size: 16px;
     line-height: 1.5;
   }
