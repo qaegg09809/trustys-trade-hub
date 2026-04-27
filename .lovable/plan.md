@@ -1,60 +1,42 @@
-سأبدأ الآن بالتنفيذ على دفعات واضحة (من الأكثر أهمية إلى الأقل)، وكل بند مبني فقط على ملفات المصدر التي زوّدتني بها.
+## Plan: إزالة الفورم من صفحة التواصل واستبداله بتواصل مباشر (Email/Phone)
 
-## المرحلة 1 (حرجة) — Distribution & Partnerships
-1) إضافة قسم **Why partner with Yansab?** بالنصوص المعتمدة من المصدر.
-2) إضافة نموذج **Become a Partner / كن شريكاً** داخل صفحة الشراكات.
-3) إضافة الحقول المطلوبة حرفيًا:
-- Name / الاسم
-- Company / الشركة
-- Country / الدولة
-- Business Type / نوع النشاط
-- Phone / الهاتف
-- Email / البريد الإلكتروني
-- Message / الرسالة
-4) ضبط العناوين والـ CTA لتطابق blueprint (EN/AR).
+### 1) تحديث صفحة `contact` لإلغاء الفورم بالكامل
+- في `src/routes/contact.tsx`:
+  - حذف استيراد `ContactForm`.
+  - إزالة عمود الفورم (`lg:col-span-8`) بالكامل.
+  - تحويل تخطيط القسم إلى واجهة نظيفة تركز على وسيلتي التواصل فقط.
 
-**ملفات مستهدفة:**
-- `src/routes/partnerships.tsx`
-- `src/components/site/page-sections.tsx`
-- `src/components/site/content.ts`
-- `src/styles.css`
+### 2) بناء CTA مباشر للنقر (بدون فورم)
+- داخل نفس الصفحة `src/routes/contact.tsx`:
+  - إضافة بطاقتين/أزرار واضحتين:
+    - **Email** → رابط `mailto:${t.contactDetails.email}`
+    - **Phone** → رابط `tel:${t.contactDetails.phone}`
+  - جعل العناصر بارزة ومهنية ومتجاوبة على الجوال.
+  - الحفاظ على نفس هوية التصميم الحالية (ألوان البراند + نمط البطاقات).
 
-## المرحلة 2 (حرجة) — Contact credibility
-1) إزالة عرض placeholders العامة في صفحة التواصل.
-2) استبدالها ببيانات التواصل الموجودة في ملفات الشركة (الهاتف/الإيميل/الموقع) وفق المتاح بالمصدر.
-3) أي عنصر غير مؤكد من المصدر سيُكتب بصيغة: **Missing / Not found in source files**.
+### 3) ضمان جودة النصوص والازدواجية اللغوية
+- استخدام النصوص الحالية من `getContent(language)` حسب اللغة الحالية (EN/AR).
+- إضافة تسميات واضحة (مثلاً: “Email us” / “Call now” ومرادفاتها العربية) ضمن الصفحة بطريقة متوافقة مع اللغة (`isArabic`).
+- عدم إدخال أي بيانات جديدة خارج المصدر الموجود في `contactDetails`.
 
-**ملفات مستهدفة:**
-- `src/components/site/content.ts`
-- `src/routes/contact.tsx`
-- `src/components/site/site-layout.tsx`
+### 4) تنظيف الكود المرتبط بالفورم (بدون التأثير على الفورمات الأخرى)
+- مراجعة `src/components/site/page-sections.tsx`:
+  - إذا `ContactForm` لم يعد مستخدمًا بأي مكان، سيتم حذفه لتفادي كود ميت.
+  - **عدم المساس** بـ `PartnerForm` لأن صفحة الشراكات ما زالت تحتاجه.
+- مراجعة `src/components/site/content.ts`:
+  - إبقاء بيانات الاتصال كما هي.
+  - عند الحاجة فقط، إضافة مفاتيح نصية صغيرة للـ CTA (EN/AR) بدل hardcode.
 
-## المرحلة 3 — Brand compliance (ألوان + طابع بصري)
-1) تقليص نظام الألوان ليعتمد على ألوان البراند المعتمدة + الألوان المسموح بها من الـ blueprint.
-2) إزالة/تخفيف المؤثرات البصرية غير المتوافقة مع الطابع المؤسسي (خصوصًا الـ gradients الثقيلة).
-3) تثبيت Montserrat واستخدام أوزان متسقة مؤسسية.
+### 5) تحقق نهائي بعد التنفيذ
+- التحقق من صفحة `/contact?lang=en` و`/contact?lang=ar`:
+  - لا يوجد فورم إطلاقًا.
+  - الضغط على البريد يفتح عميل الإيميل مباشرة (`mailto`).
+  - الضغط على الهاتف يفتح الاتصال مباشرة (`tel`).
+  - العرض متناسق على الجوال والديسكتوب، ولا توجد فراغات/اختلالات في الشبكة.
 
-**ملفات مستهدفة:**
-- `src/styles.css`
-- (عند الحاجة) route files التي فيها أقسام بخلفيات/تأثيرات غير متوافقة.
+---
 
-## المرحلة 4 — Footer & structure alignment
-1) استكمال بنية الفوتر بما يتماشى مع blueprint:
-- company intro
-- quick links
-- contact details
-- language toggle
-- copyright
-- social icons
-2) توحيد نصوص الميكروكوبي (EN/AR) مع blueprint.
-
-**ملفات مستهدفة:**
-- `src/components/site/site-layout.tsx`
-- `src/components/site/content.ts`
-
-## المرحلة 5 — Final verification
-1) مراجعة صفحة-بصفحة (Home, About, Brands, Services, Partnerships, Contact).
-2) إصدار تقرير مطابقة نهائي بنقاط:
-- تم التنفيذ
-- Missing / Not found in source files
-- أي عناصر تحتاج قرار منك
+## Technical notes
+- سنحافظ على بنية TanStack Start الحالية بدون أي تغييرات في الراوتنج.
+- التعديل محصور في واجهة التواصل فقط، ولن يغيّر سلوك صفحات أخرى.
+- أي نصوص جديدة ستُدار عبر `content.ts` لتبقى ثنائية اللغة ومنظمة.
