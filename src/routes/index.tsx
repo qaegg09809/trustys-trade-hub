@@ -102,9 +102,78 @@ function HomePage() {
   const totalOperatingSteps = t.home.operatingCriteria.length;
   const operatingVisualModes = ["demand", "profit", "supply", "compliance", "growth"] as const;
   const activeOperatingMode = operatingVisualModes[activeOperatingStep] ?? "demand";
-  const activeOperatingSignals = isArabic
-    ? ["إشارة الطلب", "كثافة السوق", "جاهزية التنفيذ"]
-    : ["Demand signal", "Market intensity", "Execution readiness"];
+  const operatingSignalsByStep = isArabic
+    ? [
+        ["إشارة الطلب", "تقلب السوق", "جاهزية التوريد"],
+        ["هامش الربح", "العائد المتوقع", "حساسية التكلفة"],
+        ["استقرار المورد", "زمن التسليم", "الاعتمادية التشغيلية"],
+        ["اكتمال الوثائق", "مطابقة اللوائح", "تتبع التدقيق"],
+        ["قابلية التوسع", "استمرارية الطلب", "فرص النمو"],
+      ]
+    : [
+        ["Demand signal", "Market volatility", "Supply readiness"],
+        ["Margin strength", "Expected return", "Cost sensitivity"],
+        ["Supplier stability", "Lead-time control", "Operational reliability"],
+        ["Document completeness", "Regulatory alignment", "Audit trace"],
+        ["Scale readiness", "Demand continuity", "Growth upside"],
+      ];
+  const operatingKpisByStep = isArabic
+    ? [
+        [
+          { label: "كثافة الطلب", value: "84%" },
+          { label: "ثبات الاتجاه", value: "+12%" },
+          { label: "جاهزية التنفيذ", value: "عالية" },
+        ],
+        [
+          { label: "متوسط الهامش", value: "31%" },
+          { label: "صافي العائد", value: "+18%" },
+          { label: "تحكم التكاليف", value: "مستقر" },
+        ],
+        [
+          { label: "اعتمادية المورد", value: "92%" },
+          { label: "التسليم في الوقت", value: "95%" },
+          { label: "خطر الانقطاع", value: "منخفض" },
+        ],
+        [
+          { label: "اكتمال التوثيق", value: "98%" },
+          { label: "فحوص الامتثال", value: "مُمرّرة" },
+          { label: "جاهزية التدقيق", value: "معتمد" },
+        ],
+        [
+          { label: "قابلية التوسع", value: "A+" },
+          { label: "استمرارية الطلب", value: "قوية" },
+          { label: "مؤشر النمو", value: "+24%" },
+        ],
+      ]
+    : [
+        [
+          { label: "Demand density", value: "84%" },
+          { label: "Trend stability", value: "+12%" },
+          { label: "Execution readiness", value: "High" },
+        ],
+        [
+          { label: "Average margin", value: "31%" },
+          { label: "Net return", value: "+18%" },
+          { label: "Cost control", value: "Stable" },
+        ],
+        [
+          { label: "Supplier reliability", value: "92%" },
+          { label: "On-time delivery", value: "95%" },
+          { label: "Disruption risk", value: "Low" },
+        ],
+        [
+          { label: "Doc completeness", value: "98%" },
+          { label: "Compliance checks", value: "Passed" },
+          { label: "Audit readiness", value: "Verified" },
+        ],
+        [
+          { label: "Scale readiness", value: "A+" },
+          { label: "Demand continuity", value: "Strong" },
+          { label: "Growth index", value: "+24%" },
+        ],
+      ];
+  const activeOperatingSignals = operatingSignalsByStep[activeOperatingStep] ?? [];
+  const activeOperatingKpis = operatingKpisByStep[activeOperatingStep] ?? [];
 
   const handleOperatingStepNavigation = (index: number, key: string) => {
     if (key === "ArrowDown" || key === "ArrowRight") {
@@ -320,6 +389,15 @@ function HomePage() {
                     <span key={signal} className="operating-signal-chip">
                       {signal}
                     </span>
+                  ))}
+                </div>
+
+                <div className="operating-kpi-grid" aria-label={isArabic ? "ملخص المؤشرات" : "KPI summary"}>
+                  {activeOperatingKpis.map((kpi) => (
+                    <div key={kpi.label} className="operating-kpi-cell">
+                      <span className="operating-kpi-label">{kpi.label}</span>
+                      <span className="operating-kpi-value">{kpi.value}</span>
+                    </div>
                   ))}
                 </div>
 
