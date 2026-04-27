@@ -47,8 +47,8 @@ export const Route = createRootRoute({
       { name: "description", content: "Yansab Trading Co. is a Dubai-based general trading company established in 2010, offering sourcing, supply, and distribution solutions." },
       { property: "og:description", content: "Yansab Trading Co. is a Dubai-based general trading company established in 2010, offering sourcing, supply, and distribution solutions." },
       { name: "twitter:description", content: "Yansab Trading Co. is a Dubai-based general trading company established in 2010, offering sourcing, supply, and distribution solutions." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d5c24712-8122-4f8c-81d0-3da269876cca/id-preview-44c63689--2950b1b5-89f0-41f1-99da-d39bbf11501a.lovable.app-1777258555022.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d5c24712-8122-4f8c-81d0-3da269876cca/id-preview-44c63689--2950b1b5-89f0-41f1-99da-d39bbf11501a.lovable.app-1777258555022.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/1fbb5be2-a7fa-464f-a4cd-c340cf0e59c0" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/1fbb5be2-a7fa-464f-a4cd-c340cf0e59c0" },
     ],
     links: [
       {
