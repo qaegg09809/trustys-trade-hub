@@ -224,7 +224,7 @@ function HomePage() {
             <div className="mx-auto max-w-4xl text-center">
               <p className="section-eyebrow justify-center text-secondary">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
               <h2 className="mt-3 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <p className="brand-subtext mx-auto mt-4 max-w-3xl text-sm leading-7 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -244,6 +244,7 @@ function HomePage() {
                       </span>
                     </div>
                     <p className="mt-4 text-sm font-semibold leading-6 text-primary">{item}</p>
+                    <span className="operating-criterion-line mt-auto" aria-hidden="true" />
                   </li>
                 );
               })}
