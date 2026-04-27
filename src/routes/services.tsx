@@ -6,6 +6,11 @@ import { ServiceCards } from "@/components/site/page-sections";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
 import boardroomVisual from "@/assets/yansab-boardroom.jpg";
+import serviceSourcing from "@/assets/yansab-service-sourcing.jpg";
+import serviceDistribution from "@/assets/yansab-service-distribution.jpg";
+import serviceSupplierRepresentation from "@/assets/yansab-service-supplier-representation-v2.jpg";
+import serviceProcurement from "@/assets/yansab-service-procurement.jpg";
+import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -31,6 +36,32 @@ function ServicesPage() {
   const language = useSiteLanguage();
   const t = getContent(language);
   const isArabic = language === "ar";
+  const serviceImages = [
+    {
+      src: serviceSourcing,
+      alt: isArabic ? "عمليات توريد تجارية" : "Commercial sourcing operations",
+    },
+    {
+      src: serviceProcurement,
+      alt: isArabic ? "تنسيق خدمات المشتريات" : "Procurement coordination services",
+    },
+    {
+      src: serviceDistribution,
+      alt: isArabic ? "شبكة توزيع وجملة" : "Wholesale and distribution network",
+    },
+    {
+      src: serviceSupplierRepresentation,
+      alt: isArabic ? "تمثيل الموردين" : "Supplier representation meeting",
+    },
+    {
+      src: serviceTradeCoordination,
+      alt: isArabic ? "تنسيق العمليات التجارية" : "Trade operations coordination",
+    },
+    {
+      src: boardroomVisual,
+      alt: isArabic ? "تخطيط تنفيذي" : "Executive commercial planning",
+    },
+  ];
 
   return (
     <SiteLayout language={language}>
@@ -50,7 +81,7 @@ function ServicesPage() {
       <SectionShell>
         <SectionTitle title={isArabic ? "قدرات تنفيذية منضبطة" : "Disciplined commercial capabilities"} />
         <div className="mt-10">
-          <ServiceCards cards={t.services.cards} isArabic={isArabic} />
+          <ServiceCards cards={t.services.cards} images={serviceImages} isArabic={isArabic} />
         </div>
       </SectionShell>
 
