@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
@@ -39,6 +40,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const operatingListRef = useRef<HTMLOListElement | null>(null);
   const language = useSiteLanguage();
   const t = getContent(language);
   const isArabic = language === "ar";
@@ -78,6 +80,30 @@ function HomePage() {
 
   const trustItems = t.home.trustItems;
   const operatingIcons = [Gauge, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
+
+  useEffect(() => {
+    const list = operatingListRef.current;
+    if (!list) return;
+
+    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-criterion-card"));
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.22, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <SiteLayout language={language}>
@@ -221,7 +247,7 @@ function HomePage() {
               <p className="operating-model-support">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="operating-criteria-grid mt-12">
+            <ol ref={operatingListRef} className="operating-criteria-grid mt-12">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
