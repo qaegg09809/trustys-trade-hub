@@ -299,8 +299,8 @@
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, var(--color-primary-foreground) 34%, transparent),
       0 18px 42px -24px color-mix(in oklab, var(--color-primary) 60%, transparent);
-    backdrop-filter: blur(20px) saturate(120%);
-    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    backdrop-filter: blur(10px) saturate(110%);
+    -webkit-backdrop-filter: blur(10px) saturate(110%);
   }
 
   .operating-model-shell {
@@ -322,8 +322,8 @@
       inset 0 1px 1px color-mix(in oklab, var(--color-primary-foreground) 30%, transparent),
       inset 0 -1px 0 color-mix(in oklab, var(--color-primary-foreground) 18%, transparent),
       0 28px 64px -34px color-mix(in oklab, var(--color-primary) 68%, transparent);
-    backdrop-filter: blur(18px) saturate(115%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(10px) saturate(110%);
+    -webkit-backdrop-filter: blur(10px) saturate(110%);
   }
 
   .operating-stage-panel::before {
@@ -346,8 +346,8 @@
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, var(--color-primary-foreground) 24%, transparent),
       0 18px 42px -24px color-mix(in oklab, var(--color-primary) 66%, transparent);
-    backdrop-filter: blur(14px) saturate(112%);
-    -webkit-backdrop-filter: blur(14px) saturate(112%);
+    backdrop-filter: blur(10px) saturate(108%);
+    -webkit-backdrop-filter: blur(10px) saturate(108%);
   }
 
   .premium-card {
