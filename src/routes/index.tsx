@@ -214,8 +214,8 @@ function HomePage() {
           <div className="operating-stage mx-auto max-w-[1080px] rounded-[6px] p-6 md:p-9 lg:p-10">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 md:gap-3">
