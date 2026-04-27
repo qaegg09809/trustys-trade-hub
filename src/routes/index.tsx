@@ -16,7 +16,6 @@ import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
-import operatingModelVisual from "@/assets/yansab-operating-model-ai-bg-v1.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -212,19 +211,16 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-14 md:py-20">
-        <img src={operatingModelVisual} alt={isArabic ? "غرفة عمليات تجارية احترافية" : "Professional trade operations command center"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1376} height={768} />
-        <div className="absolute inset-0 bg-primary/76" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(165deg,color-mix(in_oklab,var(--color-primary)_84%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_38%,transparent)_54%,color-mix(in_oklab,var(--color-primary)_86%,transparent)_100%)]" aria-hidden="true" />
+      <section className="operating-model-shell border-b border-border/70 py-14 md:py-18">
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage operating-stage-panel mx-auto max-w-[1120px] p-6 md:p-9 lg:p-10">
+          <div className="operating-stage mx-auto max-w-[1120px]">
             <div className="mx-auto max-w-4xl text-center">
-              <p className="section-eyebrow mx-auto w-fit rounded-sm border border-primary-foreground/36 bg-primary/22 px-3 py-1 text-primary-foreground">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-primary-foreground/96 md:text-base">{t.home.operatingModelBody}</p>
+              <p className="section-eyebrow justify-center text-secondary">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
+              <h2 className="mt-4 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <ol className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
@@ -233,14 +229,14 @@ function HomePage() {
                     className="operating-criterion-card relative flex min-h-[164px] flex-col rounded-[8px] p-4"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="premium-chip inline-flex h-9 w-9 items-center justify-center rounded-full text-primary-foreground">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary/18 bg-background text-primary">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-[color-mix(in_oklab,var(--color-accent)_18%,var(--color-primary)_82%)] text-[11px] font-bold text-accent">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-accent/12 text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-sm font-semibold leading-6 text-primary-foreground/98">{item}</p>
+                    <p className="mt-4 text-sm font-semibold leading-6 text-primary">{item}</p>
                   </li>
                 );
               })}
