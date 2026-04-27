@@ -17,6 +17,7 @@ import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
 import operatingModelVisual from "@/assets/yansab-operating-model-ai-bg-v1.jpg";
+import operatingModelBrandVisual from "@/assets/yansab-building-facade.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -198,12 +199,12 @@ function HomePage() {
                 >
                   <div className="relative h-40">
                     <img src={service.img} alt={service.title ?? "service image"} className="h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
-                    <div className="absolute inset-x-0 bottom-0 h-1 bg-accent" aria-hidden="true" />
+                    <div className="absolute inset-x-0 bottom-0 h-[3px] bg-accent" aria-hidden="true" />
                   </div>
-                  <CardContent className="flex flex-1 flex-col p-5">
-                    <h3 className="text-[30px] font-semibold leading-[1.22] text-primary md:text-[32px]">{service.title}</h3>
-                    <p className="mt-3 text-[18px] leading-8 text-muted-foreground">{service.body}</p>
-                    <span className="mt-4 inline-flex items-center text-[18px] font-semibold text-accent">{isArabic ? "اعرف المزيد" : "Learn more"}</span>
+                  <CardContent className="flex flex-1 flex-col px-5 pb-5 pt-4 md:px-6 md:pb-6 md:pt-5">
+                    <h3 className="text-[30px] font-semibold leading-[1.2] text-primary md:text-[32px]">{service.title}</h3>
+                    <p className="mt-2.5 text-[18px] leading-8 text-muted-foreground">{service.body}</p>
+                    <span className="mt-auto inline-flex items-center pt-5 text-[18px] font-semibold text-accent">{isArabic ? "اعرف المزيد" : "Learn more"}</span>
                   </CardContent>
                 </Card>
               );
@@ -212,17 +213,18 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-14 md:py-18">
-        <img src={operatingModelVisual} alt={isArabic ? "خلفية تشغيل تجاري احترافية" : "Professional commercial operations background"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1376} height={768} />
-        <div className="absolute inset-0 bg-background/86" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,color-mix(in_oklab,var(--color-background)_82%,transparent)_0%,color-mix(in_oklab,var(--color-background)_94%,transparent)_45%,color-mix(in_oklab,var(--color-muted)_86%,transparent)_100%)]" aria-hidden="true" />
+      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-12 md:py-16">
+        <img src={operatingModelBrandVisual} alt={isArabic ? "واجهة شركة احترافية" : "Professional brand building facade"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1067} />
+        <img src={operatingModelVisual} alt={isArabic ? "خلفية تشغيل تجاري احترافية" : "Professional commercial operations background"} className="absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-multiply" loading="lazy" width={1376} height={768} />
+        <div className="absolute inset-0 bg-background/58" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(128deg,color-mix(in_oklab,var(--color-primary)_10%,transparent)_0%,color-mix(in_oklab,var(--color-background)_66%,transparent)_52%,color-mix(in_oklab,var(--color-secondary)_14%,transparent)_100%)]" aria-hidden="true" />
 
         <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1120px]">
             <div className="mx-auto max-w-4xl text-center">
               <p className="section-eyebrow justify-center text-secondary">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
-              <h2 className="mt-4 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-3 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
