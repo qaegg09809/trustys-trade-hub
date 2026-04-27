@@ -39,11 +39,11 @@ function AboutPage() {
         <div className="absolute inset-0 bg-primary/82" aria-hidden="true" />
 
         <div className="yansab-container relative py-16 md:py-20 lg:py-24">
-          <span className="section-eyebrow border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-2 text-primary-foreground/92">
+          <span className="section-eyebrow hero-eyebrow px-4 py-2">
             {isArabic ? "عن ينساب" : "About Yansab"}
           </span>
           <h1 className="mt-6 max-w-[18ch] text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.about.pageTitle}</h1>
-          <p className="mt-5 max-w-[62ch] text-base leading-8 text-primary-foreground/92 md:text-lg">{t.about.intro}</p>
+          <p className="mt-5 max-w-[62ch] text-base leading-8 text-primary-foreground md:text-lg">{t.about.intro}</p>
         </div>
       </section>
 
