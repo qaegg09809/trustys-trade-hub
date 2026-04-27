@@ -124,7 +124,7 @@ export function ContactForm({
   inquiryOptions: Array<{ value: string; label: string }>;
 }) {
   return (
-    <Card className="border-primary/14 shadow-[var(--shadow-strong)]">
+    <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
       <CardContent className="pt-6">
         <form className="grid gap-5 md:grid-cols-2" onSubmit={(event) => event.preventDefault()}>
           <div className="space-y-2">
