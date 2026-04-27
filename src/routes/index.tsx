@@ -16,8 +16,6 @@ import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
-import operatingModelVisual from "@/assets/yansab-operating-model-ai-bg-v1.jpg";
-import operatingModelBrandVisual from "@/assets/yansab-building-facade.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
