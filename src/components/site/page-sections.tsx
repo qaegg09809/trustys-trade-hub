@@ -103,7 +103,7 @@ export function ProcessTimeline({
             highlightIndices.includes(index) && "process-timeline-step--featured",
           )}
         >
-          <p className="premium-chip process-timeline-chip inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold text-primary-foreground">
+          <p className="process-timeline-chip inline-flex w-fit">
             {isArabic ? `الخطوة ${index + 1}` : `Step ${index + 1}`}
           </p>
           <h3 className="process-timeline-title mt-3 text-base font-semibold leading-snug text-primary">{item.title}</h3>
