@@ -63,10 +63,19 @@ function ContactPage() {
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <Button asChild size="lg" className="w-full">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full border border-accent bg-accent text-primary shadow-none hover:bg-[color-mix(in_oklab,var(--color-accent)_90%,white_10%)]"
+                  >
                     <a href={emailHref}>{isArabic ? "تواصل عبر البريد الإلكتروني" : "Email us directly"}</a>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="w-full">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="w-full border-primary/20 bg-primary-foreground text-primary shadow-none hover:bg-[color-mix(in_oklab,var(--color-primary-foreground)_92%,var(--color-muted)_8%)]"
+                  >
                     <a href={phoneHref}>{isArabic ? "اتصل بنا مباشرة" : "Call us directly"}</a>
                   </Button>
                 </div>
