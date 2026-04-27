@@ -13,31 +13,38 @@ export function ServiceCards({
   isArabic?: boolean;
 }) {
   return (
-    <div className="services-bento-grid" dir={isArabic ? "rtl" : "ltr"}>
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {cards.map((card, index) => {
         const image = images?.[index];
 
         return (
-          <Card key={card.title} className={cn("services-bento-item group", `services-bento-item--${index + 1}`)}>
+          <Card
+            key={card.title}
+            className="premium-card group relative h-full overflow-hidden bg-card"
+          >
             {image ? (
-              <div className="relative h-40 overflow-hidden border-b border-[var(--brand-light-gray)]">
+              <div className="relative h-40 overflow-hidden border-b border-primary/12">
                 <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
                 <div className="absolute inset-0 bg-primary/12" aria-hidden="true" />
               </div>
             ) : null}
 
-            <CardHeader className="space-y-4 p-6 pb-4">
-              <div className="flex items-center justify-between">
-                <span className="inline-flex h-11 min-w-11 items-center justify-center border border-[var(--brand-light-gray)] px-2 text-xs font-semibold text-primary">
+            <CardHeader className="space-y-4 pb-4">
+              <div className={`flex items-center ${isArabic ? "justify-between" : "justify-between"}`}>
+                <span className="inline-flex h-11 min-w-11 items-center justify-center border border-primary/18 px-2 text-xs font-bold text-primary">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="h-px w-10 bg-accent" aria-hidden="true" />
               </div>
-              <CardTitle className="text-xl leading-[1.4] text-primary">{card.title}</CardTitle>
+              <CardTitle className="text-xl leading-snug text-primary">{card.title}</CardTitle>
             </CardHeader>
-            <CardContent className="px-6 pb-6 pt-0">
-              <p className="text-sm leading-[1.5] text-primary/76">{card.body}</p>
+            <CardContent>
+              <p className="text-sm leading-7 text-muted-foreground">{card.body}</p>
             </CardContent>
+            <span
+              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent/45"
+              aria-hidden="true"
+            />
           </Card>
         );
       })}
