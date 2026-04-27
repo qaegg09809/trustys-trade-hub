@@ -11,6 +11,7 @@ import serviceDistribution from "@/assets/yansab-service-distribution.jpg";
 import serviceSupplierRepresentation from "@/assets/yansab-service-supplier-representation-v2.jpg";
 import serviceProcurement from "@/assets/yansab-service-procurement.jpg";
 import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination.jpg";
+import serviceCommercialSourcing from "@/assets/yansab-service-commercial-sourcing-hq.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -58,7 +59,7 @@ function ServicesPage() {
       alt: isArabic ? "تنسيق العمليات التجارية" : "Trade operations coordination",
     },
     {
-      src: boardroomVisual,
+      src: serviceCommercialSourcing,
       alt: isArabic ? "تخطيط تنفيذي" : "Executive commercial planning",
     },
   ];

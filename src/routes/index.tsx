@@ -14,6 +14,7 @@ import serviceDistribution from "@/assets/yansab-service-distribution.jpg";
 import serviceSupplierRepresentation from "@/assets/yansab-service-supplier-representation-v2.jpg";
 import serviceProcurement from "@/assets/yansab-service-procurement.jpg";
 import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination.jpg";
+import serviceCommercialSourcing from "@/assets/yansab-service-commercial-sourcing-hq.jpg";
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
@@ -73,7 +74,7 @@ function HomePage() {
     {
       title: t.home.scopeCards[5]?.title,
       body: t.home.scopeCards[5]?.body,
-      img: boardroomVisual,
+      img: serviceCommercialSourcing,
     },
   ];
 
