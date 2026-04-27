@@ -95,13 +95,13 @@ export function ProcessTimeline({
       {items.map((item, index) => (
         <li
           key={item.title}
-          className="premium-card p-5"
+          className="liquid-glass-yansab premium-card flex min-h-[204px] flex-col rounded-lg p-5"
         >
-          <p className="text-xs font-semibold uppercase text-accent">
+          <p className="premium-chip inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold text-primary-foreground">
             {isArabic ? `الخطوة ${index + 1}` : `Step ${index + 1}`}
           </p>
-          <h3 className="mt-2 text-base font-semibold text-primary">{item.title}</h3>
-          <p className="mt-2 text-sm leading-7 text-muted-foreground">{item.body}</p>
+          <h3 className="mt-3 text-base font-semibold leading-snug text-primary">{item.title}</h3>
+          <p className="mt-2 text-sm leading-7 text-foreground/80">{item.body}</p>
         </li>
       ))}
     </ol>
