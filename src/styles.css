@@ -326,80 +326,78 @@
     line-height: 1.5;
   }
 
-  .operating-network {
+  .operating-framework {
+    display: grid;
+    gap: 20px;
+  }
+
+  .operating-timeline {
     position: relative;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 18px;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 
-  .operating-core {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 170px;
-    padding: 28px 22px;
-    border-radius: 10px;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 22%, white 50%);
-    background: color-mix(in oklab, white 94%, var(--color-primary) 6%);
-    box-shadow: 0 20px 44px -30px color-mix(in oklab, var(--color-primary) 54%, transparent);
+  .operating-timeline::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: color-mix(in oklab, var(--color-primary) 20%, white 64%);
   }
 
-  .operating-core-kicker {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: color-mix(in oklab, var(--color-primary) 72%, white 28%);
-  }
-
-  .operating-core-title {
-    color: var(--color-primary);
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .operating-node {
-    --step: 0;
-    --origin-x: 0;
-    --origin-y: 0;
+  .operating-timeline-item {
     position: relative;
   }
 
-  .operating-node-link {
-    display: none;
-  }
-
-  .operating-node-card {
-    display: grid;
-    place-items: center;
-    gap: 10px;
-    min-height: 164px;
-    border: 1px solid var(--brand-light-gray);
-    border-radius: 10px;
-    background: #ffffff;
-    padding: 20px 18px;
-    text-align: center;
-    box-shadow: 0 14px 30px -24px color-mix(in oklab, var(--color-primary) 46%, transparent);
-    opacity: 0;
-    transform: translate3d(calc(var(--origin-x) * 1px), calc(var(--origin-y) * 1px), 0) scale(0.92);
+  .operating-step-button {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    padding: 12px 12px 12px 16px;
+    text-align: start;
     transition:
-      transform 420ms var(--ease-emphasis),
-      opacity 420ms var(--ease-emphasis),
-      box-shadow 280ms var(--ease-emphasis);
-    transition-delay: calc(var(--step) * 90ms);
+      border-color 260ms var(--ease-emphasis),
+      background-color 260ms var(--ease-emphasis),
+      box-shadow 260ms var(--ease-emphasis),
+      transform 260ms var(--ease-emphasis);
   }
 
-  .operating-node.is-visible .operating-node-card {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+  .operating-step-button::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -15px;
+    top: 18px;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 36%, white 44%);
+    background: var(--color-background);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-background) 94%, transparent);
+    transition: background-color 260ms var(--ease-emphasis), border-color 260ms var(--ease-emphasis);
+  }
+
+  .operating-step-button:hover,
+  .operating-step-button.is-active {
+    border-color: color-mix(in oklab, var(--color-primary) 18%, white 44%);
+    background: color-mix(in oklab, white 92%, var(--color-primary) 8%);
+    box-shadow: 0 16px 32px -28px color-mix(in oklab, var(--color-primary) 56%, transparent);
+    transform: translateY(-1px);
+  }
+
+  .operating-step-button:hover::before,
+  .operating-step-button.is-active::before {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
   }
 
   .operating-card-icon {
@@ -431,108 +429,95 @@
     max-width: 20ch;
   }
 
-  .operating-node:hover .operating-node-card {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 22px 42px -28px color-mix(in oklab, var(--color-primary) 58%, transparent);
+  .operating-step-title {
+    margin-top: 1px;
+    color: color-mix(in oklab, var(--color-primary) 88%, white 12%);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .operating-detail-panel {
+    border: 1px solid color-mix(in oklab, var(--color-primary) 16%, white 48%);
+    border-radius: 10px;
+    background: color-mix(in oklab, white 94%, var(--color-primary) 6%);
+    padding: 26px 24px;
+    box-shadow: 0 24px 48px -34px color-mix(in oklab, var(--color-primary) 56%, transparent);
+    animation: operating-panel-enter 340ms var(--ease-emphasis) both;
+  }
+
+  .operating-detail-icon {
+    display: inline-flex;
+    height: 46px;
+    width: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 20%, white 56%);
+    background: color-mix(in oklab, white 88%, var(--color-primary) 12%);
+    color: var(--color-primary);
+  }
+
+  .operating-detail-title {
+    margin-top: 14px;
+    color: var(--color-primary);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.22;
+    text-wrap: pretty;
+  }
+
+  .operating-detail-description {
+    margin-top: 12px;
+    color: color-mix(in oklab, var(--color-primary) 78%, white 22%);
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 42ch;
   }
 
   @media (min-width: 1024px) {
-    .operating-network {
-      min-height: 620px;
-      display: block;
+    .operating-framework {
+      grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.15fr);
+      align-items: stretch;
+      gap: 44px;
     }
 
-    .operating-core {
-      position: absolute;
-      inset-inline-start: 50%;
-      top: 50%;
-      width: min(320px, 30vw);
-      min-height: 198px;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-      box-shadow: 0 26px 56px -34px color-mix(in oklab, var(--color-primary) 54%, transparent);
+    .operating-timeline {
+      gap: 14px;
+      padding-inline-start: 22px;
+      padding-inline-end: 10px;
     }
 
-    .operating-node {
-      position: absolute;
-      width: min(236px, 20vw);
-      z-index: 2;
+    .operating-timeline::before {
+      inset-inline-start: 9px;
     }
 
-    .operating-node-card {
-      min-height: 172px;
+    .operating-detail-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+  }
+
+  @keyframes operating-panel-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
     }
 
-    .operating-node-link {
-      position: absolute;
-      display: block;
-      left: 50%;
-      top: 50%;
-      width: var(--line-length, 160px);
-      height: 1px;
-      background: color-mix(in oklab, var(--color-primary) 24%, white 58%);
-      transform: translate(-1px, -50%) rotate(var(--line-angle, 0deg));
-      transform-origin: left center;
-      transition: background-color 260ms var(--ease-emphasis);
-      z-index: 1;
-    }
-
-    .operating-node:hover .operating-node-link {
-      background: color-mix(in oklab, var(--color-accent) 70%, white 30%);
-    }
-
-    .operating-network > li:nth-child(2) {
-      inset-inline-start: 50%;
-      top: 5%;
-      transform: translateX(-50%);
-      --line-length: 156px;
-      --line-angle: 90deg;
-      --origin-y: 34;
-    }
-
-    .operating-network > li:nth-child(3) {
-      inset-inline-end: 8%;
-      top: 27%;
-      --line-length: 196px;
-      --line-angle: 151deg;
-      --origin-x: -28;
-      --origin-y: 18;
-    }
-
-    .operating-network > li:nth-child(4) {
-      inset-inline-end: 14%;
-      bottom: 5%;
-      --line-length: 186px;
-      --line-angle: -148deg;
-      --origin-x: -24;
-      --origin-y: -16;
-    }
-
-    .operating-network > li:nth-child(5) {
-      inset-inline-start: 14%;
-      bottom: 5%;
-      --line-length: 186px;
-      --line-angle: -32deg;
-      --origin-x: 24;
-      --origin-y: -16;
-    }
-
-    .operating-network > li:nth-child(6) {
-      inset-inline-start: 8%;
-      top: 27%;
-      --line-length: 196px;
-      --line-angle: 29deg;
-      --origin-x: 28;
-      --origin-y: 18;
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .operating-node-card,
-    .operating-node.is-visible .operating-node-card {
-      opacity: 1;
-      transform: none;
+    .operating-detail-panel,
+    .operating-step-button {
       transition: none;
+      animation: none;
     }
   }
 
