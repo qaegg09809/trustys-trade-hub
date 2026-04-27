@@ -320,6 +320,15 @@
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-normal text-secondary;
   }
 
+  .hero-eyebrow {
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 34%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 64%, transparent);
+    color: var(--color-primary-foreground);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--color-primary-foreground) 26%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
   [dir="rtl"] .section-eyebrow {
     @apply normal-case;
   }
