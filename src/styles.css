@@ -288,9 +288,9 @@
   }
 
   .operating-criterion-card {
-    background: color-mix(in oklab, var(--color-primary-foreground) 12%, var(--color-primary) 88%);
-    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 16%, transparent);
-    box-shadow: var(--shadow-card-premium);
+    background: color-mix(in oklab, var(--color-primary) 90%, var(--color-secondary) 10%);
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 24%, transparent);
+    box-shadow: 0 14px 34px -20px color-mix(in oklab, var(--color-primary) 64%, transparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
