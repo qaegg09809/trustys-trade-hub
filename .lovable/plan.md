@@ -1,50 +1,41 @@
-1) Define the premium visual direction for the Operating Model section (brand-safe)
-- Keep existing YANSAB identity intact (colors, typography, logo, tone).
-- Apply a modern “layered enterprise” background treatment behind the section:
-  - Base image layer (business/operations style, desaturated + brand-tinted)
-  - Soft gradient overlay using existing semantic tokens
-  - Subtle noise/texture and depth shadows for high-end finish
-- Ensure readability first: timeline and content panel remain clear over the background at all breakpoints.
+سأعمل على تنفيذ تحسين مباشر لقسم **Distribution & Partnerships** بحيث يلتزم 100% بالهوية البصرية للعلامة:
 
-2) Add high-quality background image workflow (two safe implementation paths)
-- Path A (fast): use an existing project asset that best matches the section’s strategic tone.
-- Path B (premium custom): generate a bespoke AI background aligned to YANSAB’s brand atmosphere (professional corporate, minimal clutter), then optimize and add as project asset.
-- Build CSS so image can be swapped without touching component structure.
+1) إعادة بناء أعلى الصفحة ليكون احترافي ومباشر
+- نقل/وضع صورة Partnerships عالية الجودة في **أعلى الصفحة مباشرة** (فوق العنوان)، بحيث لا يظهر فراغ كبير غير مبرر تحت الهيدر.
+- استخدام صورة أنسب لطابع الشراكات (professional + executive)، مع طبقة Overlay خفيفة بألوان الهوية.
+- ضبط المسافات العلوية والسفلية في أول Section لإزالة الإحساس بأن الصفحة “فارغة”.
 
-3) Refine Operating Model layout to feel more executive-grade
-- Keep split structure (timeline left, detail panel right), but elevate spacing and rhythm:
-  - Stronger vertical navigation rail
-  - Cleaner step card alignment and spacing cadence
-  - Sharper active state hierarchy (number/title/indicator)
-- Enhance detail panel with improved visual hierarchy and premium surface treatment:
-  - Icon → step number → title → description clarity
-  - Better breathing room, refined border/shadow stack
-  - More deliberate left/right proportioning and alignment
+2) ربط الألوان بالـBrand بشكل صارم داخل الـSteps
+- تثبيت اللون الذهبي الخاص بالبراند (accent) لعناصر **Step label** المطلوبة.
+- تطبيق التوزيع اللوني الذي طلبته:
+  - النص الرئيسي (Main) = اللون الأساسي للهوية (primary).
+  - النص الفرعي (Secondary) = الذهبي (accent) بدرجة مقروءة وراقية.
+- تحسين التباين حتى يبقى المظهر premium بدون فقدان القراءة.
 
-4) Upgrade interactions and polish micro-motion
-- Keep hover/click update behavior, but make transitions smoother and more intentional:
-  - Panel content fade/slide with calibrated timing
-  - Active-state transitions on timeline without jitter
-  - Optional subtle directional cue from active step to panel (clean, understated)
-- Respect reduced-motion preferences and keyboard accessibility.
+3) تعديل الـFeatured steps حسب طلبك
+- تغيير التمييز من `[0, 3, 4]` إلى `[0, 3, 5]` لتصبح الخطوات المميزة:
+  - Step 1
+  - Step 4
+  - Step 6
+- إعطاء هذه الخطوات معالجة بصرية أقوى (chip + title/body balance + subtle premium glow) مع الالتزام بألوان العلامة.
 
-5) Responsive and quality hardening
-- Tune section for desktop/tablet/mobile so background and content never look crowded.
-- Verify contrast, spacing consistency, and visual balance in both LTR/RTL states.
-- Validate no overlap, clipping, or visual noise; keep enterprise-clean appearance.
+4) ضبط تسلسل الصفحة ليظهر “High Quality / Professional”
+- ترتيب العناصر بصريًا: Hero image → Title/intro → Journey card.
+- منع تكرار أو تضارب التأثيرات بين الـhero والبطاقات.
+- الحفاظ على طابع enterprise (clean/minimal, no generic look).
 
-6) Final implementation QA pass
-- Review final section against your request: “very high quality, organized, very professional, modern.”
-- Confirm strict brand consistency and no off-brand colors.
-- Run build validation and deliver a concise changelog with what was upgraded.
+5) تحسينات SEO/مشاركة مرتبطة بالصورة
+- ربط صورة الـhero المستخدمة فعليًا في الصفحة بوسوم المشاركة (`og:image`, `twitter:image`) لثبات الهوية عند مشاركة الرابط.
 
-Technical details (implementation scope)
-- Files to update:
-  - src/routes/index.tsx (Operating Model section structure/layers only)
-  - src/styles.css (token-driven background layers, spacing system, interaction polish)
-- Approach:
-  - Use semantic design tokens only (no arbitrary hardcoded UI colors in component classes)
-  - Add reusable CSS classes for background layer + overlay + panel elevation
-  - Keep existing dynamic step logic; refine only presentation and transition quality
-- Optional artifact step (if AI background chosen):
-  - Generate 1–2 background candidates, pick best fit, optimize, then integrate as asset.
+### Technical details
+- الملفات المستهدفة:
+  - `src/routes/partnerships.tsx`
+    - إعادة ترتيب بنية الصفحة (hero في الأعلى).
+    - تعديل `highlightIndices` إلى `[0, 3, 5]`.
+    - إضافة meta image إن لزم.
+  - `src/styles.css`
+    - إضافة/تعديل أصناف Partnerships الخاصة بالـhero العلوي ومسافات section الأولى.
+    - ضبط ألوان `process-timeline` للـbrand mapping (primary/main + accent/secondary).
+    - تحسين تنسيق featured steps (1/4/6) بشكل أدق.
+
+بعد اعتمادك للخطة، أنفذها مباشرة بدقة عالية على نفس الـbrand system الحالي بدون أي خروج عن الهوية.

@@ -5,7 +5,7 @@ import { BulletList, ProcessTimeline } from "@/components/site/page-sections";
 import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
-import partnershipsHeroVisual from "@/assets/yansab-partnership-visual.jpg";
+import partnershipsHeroVisual from "@/assets/yansab-partnership-handshake-v2.jpg";
 
 export const Route = createFileRoute("/partnerships")({
   head: () => ({
@@ -22,6 +22,8 @@ export const Route = createFileRoute("/partnerships")({
         content:
           "Discover Yansab’s partner journey from initial discussion to structured execution and relationship management.",
       },
+      { property: "og:image", content: partnershipsHeroVisual },
+      { name: "twitter:image", content: partnershipsHeroVisual },
     ],
   }),
   component: PartnershipsPage,
@@ -34,7 +36,19 @@ function PartnershipsPage() {
 
   return (
     <SiteLayout language={language}>
-      <SectionShell>
+      <SectionShell className="partnerships-intro-shell">
+        <div className="partnerships-hero-visual-wrap partnerships-hero-visual-wrap--top">
+          <img
+            src={partnershipsHeroVisual}
+            alt={isArabic ? "صورة شراكة احترافية" : "Professional partnership handshake visual"}
+            className="partnerships-hero-visual"
+            loading="lazy"
+            width={1920}
+            height={1080}
+          />
+          <div className="partnerships-hero-overlay" aria-hidden="true" />
+        </div>
+
         <SectionTitle title={t.partnerships.pageTitle} subtitle={t.partnerships.intro} />
         <div className="mt-8 max-w-3xl">
           <BulletList items={t.partnerships.bullets} />
@@ -42,23 +56,11 @@ function PartnershipsPage() {
       </SectionShell>
 
       <SectionShell className="section-shell-premium partnerships-journey-shell">
-        <div className="partnerships-hero-visual-wrap">
-          <img
-            src={partnershipsHeroVisual}
-            alt={isArabic ? "مشهد شراكة وتخطيط تجاري" : "Professional partnership strategy visual"}
-            className="partnerships-hero-visual"
-            loading="lazy"
-            width={1600}
-            height={1024}
-          />
-          <div className="partnerships-hero-overlay" aria-hidden="true" />
-        </div>
-
         <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
           <CardContent className="pt-6">
             <h2 className="text-2xl font-semibold text-primary">{t.partnerships.journeyTitle}</h2>
             <div className="mt-6">
-              <ProcessTimeline items={t.partnerships.journeySteps} isArabic={isArabic} highlightIndices={[0, 3, 4]} />
+              <ProcessTimeline items={t.partnerships.journeySteps} isArabic={isArabic} highlightIndices={[0, 3, 5]} />
             </div>
           </CardContent>
         </Card>
