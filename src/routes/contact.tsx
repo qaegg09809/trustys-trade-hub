@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
+import contactConversationImage from "@/assets/contact-conversation-hero.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -43,27 +44,25 @@ function ContactPage() {
         <SectionTitle title={t.contact.pageTitle} subtitle={t.contact.intro} />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-12">
-          <div className="space-y-6 lg:col-span-5">
-            <Card className="premium-card">
-              <CardContent className="space-y-3 pt-6 text-sm">
-                {contactRows.map((row, index) => (
-                  <p key={row} className={index === 0 ? "font-semibold text-primary" : "text-foreground"}>
-                    {row}
-                  </p>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="lg:col-span-7">
-            <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
-              <CardContent className="space-y-5 pt-6">
+          <div className="space-y-6 lg:col-span-6">
+            <Card className="rounded-xl border border-border bg-card shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+              <CardContent className="space-y-4 pt-6">
+                <div className="h-1.5 w-12 rounded-full bg-accent" />
                 <p className="text-sm leading-7 text-muted-foreground">
                   {isArabic
                     ? "اختر وسيلة التواصل المناسبة وسيتم تحويلك مباشرة."
                     : "Choose your preferred contact method for direct communication."}
                 </p>
-                <div className="grid gap-4 sm:grid-cols-2">
+
+                <div className="space-y-2 text-sm">
+                  {contactRows.map((row, index) => (
+                    <p key={row} className={index === 0 ? "font-semibold text-primary" : "text-foreground"}>
+                      {row}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
                   <Button asChild size="lg" className="w-full">
                     <a href={emailHref}>{isArabic ? "تواصل عبر البريد الإلكتروني" : "Email us directly"}</a>
                   </Button>
@@ -72,6 +71,22 @@ function ContactPage() {
                   </Button>
                 </div>
               </CardContent>
+            </Card>
+          </div>
+
+          <div className="lg:col-span-6">
+            <Card className="overflow-hidden rounded-xl border border-border bg-card shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+              <img
+                src={contactConversationImage}
+                alt={
+                  isArabic
+                    ? "اجتماع مهني لبدء شراكة تجارية"
+                    : "Professional business conversation for partnership planning"
+                }
+                className="h-full min-h-[280px] w-full object-cover"
+                width={1600}
+                height={1000}
+              />
             </Card>
           </div>
         </div>
