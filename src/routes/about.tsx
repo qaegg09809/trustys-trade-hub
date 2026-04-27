@@ -58,7 +58,7 @@ function AboutPage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="bg-muted/40">
+      <SectionShell className="section-shell-premium">
         <div className="grid items-center gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <SectionTitle title={t.about.founderTitle} />
@@ -71,7 +71,7 @@ function AboutPage() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <Card className="overflow-hidden border-primary/14 shadow-[var(--shadow-strong)]">
+            <Card className="premium-card overflow-hidden border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
               <img
                 src={boardroomVisual}
                 alt={language === "ar" ? "غرفة اجتماعات احترافية" : "Executive boardroom"}
@@ -87,19 +87,19 @@ function AboutPage() {
 
       <SectionShell>
         <div className="grid gap-5 md:grid-cols-3">
-          <Card className="border-primary/14 shadow-[var(--shadow-soft)]">
+          <Card className="premium-card">
             <CardContent className="pt-6">
               <h2 className="text-xl font-bold text-primary">{t.about.visionTitle}</h2>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">{t.about.visionBody}</p>
             </CardContent>
           </Card>
-          <Card className="border-primary/14 shadow-[var(--shadow-soft)]">
+          <Card className="premium-card">
             <CardContent className="pt-6">
               <h2 className="text-xl font-bold text-primary">{t.about.missionTitle}</h2>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">{t.about.missionBody}</p>
             </CardContent>
           </Card>
-          <Card className="border-primary/14 shadow-[var(--shadow-soft)]">
+          <Card className="premium-card">
             <CardContent className="pt-6">
               <h2 className="text-xl font-bold text-primary">{t.about.valuesTitle}</h2>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">{t.about.valuesBody}</p>
