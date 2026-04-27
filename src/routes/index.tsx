@@ -266,7 +266,7 @@ function HomePage() {
         <div className="operating-model-grain" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1120px]">
-            <div className="max-w-3xl">
+            <div className="mx-auto max-w-4xl text-center">
               <h2 className="text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
               <span className="operating-title-accent" aria-hidden="true" />
               <p className="operating-model-support">{t.home.operatingModelBody}</p>
@@ -278,7 +278,7 @@ function HomePage() {
             >
               <ol className="operating-timeline" aria-label={t.home.operatingModelTitle}>
                 {t.home.operatingCriteria.map((item, index) => (
-                  <li key={item} className="operating-timeline-item" style={{ "--operating-index": index } as CSSProperties}>
+                  <li key={item} className="operating-timeline-item">
                     <button
                       type="button"
                       className={`operating-step-button ${activeOperatingStep === index ? "is-active" : ""}`}
@@ -295,17 +295,8 @@ function HomePage() {
                       aria-current={activeOperatingStep === index ? "step" : undefined}
                       aria-controls="operating-detail-panel"
                     >
-                      <span className="operating-step-icon" aria-hidden="true">
-                        {(() => {
-                          const StepIcon = operatingIcons[index] ?? ShieldCheck;
-                          return <StepIcon className="h-5 w-5" />;
-                        })()}
-                      </span>
-                      <span className="operating-step-content">
-                        <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
-                        <span className="operating-step-title">{item}</span>
-                        <span className="operating-step-accent" aria-hidden="true" />
-                      </span>
+                      <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="operating-step-title">{item}</span>
                     </button>
                   </li>
                 ))}
