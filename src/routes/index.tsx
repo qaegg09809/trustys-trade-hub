@@ -143,9 +143,6 @@ function HomePage() {
         <div className="yansab-container section-hero relative">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <p className="hero-eyebrow inline-flex w-fit items-center rounded-sm px-3 py-1.5 text-[11px] font-semibold uppercase">
-                {t.home.heroKicker}
-              </p>
               <h1 className="max-w-[13ch] text-[44px] font-bold leading-[1.02] text-primary-foreground drop-shadow-[0_18px_42px_rgba(0,0,0,0.56)] md:text-[72px]">
                 {t.home.heroTitle}
               </h1>
