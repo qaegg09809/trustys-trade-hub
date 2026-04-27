@@ -53,7 +53,7 @@ function BrandsPage() {
           {t.brands.cards.map((brand) => (
             <Card
               key={brand.name}
-              className={`border-primary/14 ${brand.status === "missing" ? "border-dashed bg-card/86 shadow-none" : "shadow-[var(--shadow-soft)]"}`}
+              className={`premium-card ${brand.status === "missing" ? "border-dashed bg-card/86 shadow-none" : ""}`}
             >
               <CardContent className="pt-6">
                 {brand.status !== "missing" ? (
