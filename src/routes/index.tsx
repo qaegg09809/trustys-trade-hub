@@ -5,8 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SiteLayout } from "@/components/site/site-layout";
 import { getContent } from "@/components/site/content";
 import { useSiteLanguage } from "@/components/site/use-site-language";
-import heroFacade from "@/assets/yansab-building-facade.jpg";
-import heroVideo from "@/assets/yansab-hero-video-v3.mp4.asset.json";
+import heroBackground from "@/assets/yansab-hero-ai-bg-v2.jpg";
 import boardroomVisual from "@/assets/yansab-boardroom.jpg";
 import trustDocuments from "@/assets/yansab-trust-documents-v3.jpg";
 import serviceSourcing from "@/assets/yansab-service-sourcing.jpg";
@@ -42,7 +41,6 @@ function HomePage() {
   const language = useSiteLanguage();
   const t = getContent(language);
   const isArabic = language === "ar";
-  const heroVideoUrl = heroVideo.url;
 
   const services = [
     {
@@ -83,27 +81,27 @@ function HomePage() {
   return (
     <SiteLayout language={language}>
       <section className="relative isolate overflow-hidden border-b border-border/70 text-primary-foreground">
-        <video
+        <img
+          src={heroBackground}
+          alt={isArabic ? "مشهد لوجستي وتجاري احترافي" : "Professional logistics and trade operations"}
           className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={heroFacade}
-          preload="metadata"
-        >
-          <source src={heroVideoUrl} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-primary/74" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,color-mix(in_oklab,var(--color-primary)_78%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_45%,transparent)_50%,color-mix(in_oklab,var(--color-primary)_72%,transparent)_100%)]" aria-hidden="true" />
+          loading="eager"
+          width={1920}
+          height={1088}
+        />
+        <div className="absolute inset-0 bg-primary/58" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(112deg,color-mix(in_oklab,var(--color-primary)_82%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_60%,transparent)_44%,color-mix(in_oklab,var(--color-secondary)_52%,transparent)_100%)]"
+          aria-hidden="true"
+        />
 
         <div className="yansab-container section-hero relative">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <h1 className="max-w-[13ch] text-[44px] font-bold leading-[1.02] text-primary-foreground drop-shadow-[0_16px_38px_rgba(0,0,0,0.45)] md:text-[72px]">
+              <h1 className="max-w-[13ch] text-[44px] font-bold leading-[1.02] text-primary-foreground drop-shadow-[0_18px_42px_rgba(0,0,0,0.56)] md:text-[72px]">
                 {t.home.heroTitle}
               </h1>
-              <p className="mt-7 max-w-[60ch] border-s-2 border-accent/85 ps-4 text-base leading-8 text-primary-foreground/98 md:text-[19px]">
+              <p className="mt-7 max-w-[60ch] border-s-2 border-accent ps-4 text-base leading-8 text-primary-foreground md:text-[19px]">
                 {t.home.heroBody}
               </p>
 
@@ -127,11 +125,11 @@ function HomePage() {
             </div>
 
             <div className="lg:col-span-4">
-              <div className="rounded-sm border border-primary-foreground/28 bg-primary/34 p-5 text-primary-foreground shadow-[var(--shadow-floating)] backdrop-blur-2xl md:p-6">
+              <div className="rounded-sm border border-primary-foreground/36 bg-primary/44 p-5 text-primary-foreground shadow-[var(--shadow-floating)] backdrop-blur-2xl md:p-6">
                 <h2 className="text-sm font-bold uppercase tracking-normal text-primary-foreground">{isArabic ? "أساس العمل" : "Operating foundation"}</h2>
                 <ul className="mt-4 space-y-3">
                   {t.home.heroHighlights.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm leading-7 text-primary-foreground/98">
+                    <li key={item} className="flex items-start gap-3 text-sm leading-7 text-primary-foreground">
                       <span className="mt-2 inline-block h-2 w-2 shrink-0 bg-accent" aria-hidden="true" />
                       <span>{item}</span>
                     </li>
