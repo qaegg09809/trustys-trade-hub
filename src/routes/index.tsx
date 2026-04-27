@@ -106,7 +106,11 @@ function HomePage() {
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="h-12 min-w-40 px-8 text-[15px] font-semibold">
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 min-w-40 border border-accent bg-accent px-8 text-[15px] font-semibold text-primary shadow-[0_16px_34px_-20px_color-mix(in_oklab,var(--color-accent)_72%,transparent)] hover:bg-[color-mix(in_oklab,var(--color-accent)_86%,white_14%)]"
+                >
                   <Link to="/contact" search={{ lang: language }}>
                     {t.ctaPrimary}
                   </Link>
