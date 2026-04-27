@@ -205,13 +205,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_90%,var(--color-primary)_10%)] py-14 md:py-20">
+      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_92%,var(--color-primary)_8%)] py-14 md:py-20">
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1080px] rounded-[6px] border border-border bg-card p-6 shadow-[var(--shadow-soft)] md:p-9 lg:p-10">
+          <div className="operating-stage liquid-glass-yansab-strong mx-auto max-w-[1080px] rounded-[8px] p-6 md:p-9 lg:p-10">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
               <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground/90 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -220,17 +220,17 @@ function HomePage() {
                 return (
                   <li
                     key={item}
-                    className="relative flex min-h-[150px] flex-col rounded-[6px] border border-border bg-[color-mix(in_oklab,var(--color-card)_92%,var(--color-primary)_8%)] p-4"
+                    className="operating-criterion-card liquid-glass-yansab relative flex min-h-[150px] flex-col rounded-[8px] p-4"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-muted text-primary">
+                      <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full text-primary-foreground">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/65 bg-[color-mix(in_oklab,var(--color-accent)_12%,var(--color-card)_88%)] text-[11px] font-bold text-accent">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-[color-mix(in_oklab,var(--color-accent)_18%,var(--color-primary)_82%)] text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
                   </li>
                 );
               })}
