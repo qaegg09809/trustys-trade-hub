@@ -30,7 +30,7 @@ function GovernancePage() {
 
   return (
     <SiteLayout language={language}>
-      <SectionShell>
+      <SectionShell className="section-shell-premium">
         <SectionTitle title={t.governance.pageTitle} subtitle={t.governance.intro} />
         <div className="mt-8 max-w-3xl">
           <BulletList items={t.governance.bullets} />
