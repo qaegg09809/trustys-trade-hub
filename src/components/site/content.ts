@@ -188,7 +188,7 @@ const englishContent: LocaleContent = {
       "Commercial flexibility across categories and market needs",
       "Long-term approach to trusted partnerships",
     ],
-    trustItems: ["Dubai based", "Established 2010", "Family owned", "Multi-category execution"],
+    trustItems: ["Dubai HQ", "Since 2010", "Family-Owned", "Multi-Sector Execution"],
     introTitle: "Built to move with the market.",
     introBody:
       "Yansab operates with the strength of a family business and the discipline of an institution. The company is structured to support sourcing, supply, distribution, and execution across commercial opportunities with clarity, responsiveness, and credibility.",
@@ -387,7 +387,7 @@ const arabicContent: LocaleContent = {
       "مرونة تجارية عبر فئات واحتياجات سوقية متعددة",
       "نهج طويل الأمد في الشراكات الموثوقة",
     ],
-    trustItems: ["مقرها دبي", "تأسست 2010", "شركة عائلية", "تنفيذ متعدد الفئات"],
+    trustItems: ["المقر: دبي", "منذ 2010", "ملكية عائلية", "تنفيذ متعدد القطاعات"],
     introTitle: "بُنيت لتتحرك مع السوق.",
     introBody:
       "تعمل ينساب بقوة الالتزام العائلي وانضباط المؤسسة، وتربط الطلب السوقي بسلاسل إمداد موثوقة عبر تنسيق وتنفيذ تجاري احترافي.",
