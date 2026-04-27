@@ -85,7 +85,7 @@ function HomePage() {
     const list = operatingListRef.current;
     if (!list) return;
 
-    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-criterion-card"));
+    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-node"));
     if (!cards.length) return;
 
     const observer = new IntersectionObserver(
