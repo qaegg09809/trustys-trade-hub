@@ -421,9 +421,9 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 11%, white 70%);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 12%, white 68%);
     border-radius: 8px;
-    background: color-mix(in oklab, white 87%, transparent);
+    background: color-mix(in oklab, white 90%, var(--color-primary) 10%);
     padding: 17px 18px 17px 20px;
     text-align: start;
     cursor: pointer;
@@ -473,7 +473,7 @@
   }
 
   .operating-step-button.is-active {
-    background: color-mix(in oklab, white 84%, var(--color-primary) 16%);
+    background: color-mix(in oklab, white 82%, var(--color-primary) 18%);
     box-shadow:
       inset 0 0 0 1px color-mix(in oklab, var(--color-primary) 14%, white 64%),
       0 20px 38px -30px color-mix(in oklab, var(--color-primary) 62%, transparent);
@@ -543,13 +543,14 @@
   .operating-detail-panel {
     border: 1px solid color-mix(in oklab, var(--color-primary) 20%, white 40%);
     border-radius: 10px;
-    background: color-mix(in oklab, white 95%, var(--color-primary) 5%);
+    background: color-mix(in oklab, white 93%, var(--color-primary) 7%);
     padding: 42px 44px 44px;
     box-shadow:
       0 26px 56px -36px color-mix(in oklab, var(--color-primary) 58%, transparent),
       inset 0 1px 0 color-mix(in oklab, white 88%, transparent);
     animation: operating-panel-enter 340ms var(--ease-emphasis) both;
     position: relative;
+    backdrop-filter: blur(1.5px);
   }
 
   .operating-detail-panel::before {
@@ -598,7 +599,7 @@
 
   .operating-detail-description {
     margin-top: 14px;
-    color: color-mix(in oklab, var(--color-primary) 78%, white 22%);
+    color: color-mix(in oklab, var(--color-primary) 76%, white 24%);
     font-size: 17px;
     line-height: 1.7;
     max-width: 46ch;
@@ -636,6 +637,20 @@
 
     .operating-detail-panel::before {
       top: calc(56px + (var(--operating-active-step, 0) * 94px));
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .operating-model-bg {
+      filter: saturate(72%) contrast(100%) brightness(80%);
+    }
+
+    .operating-model-overlay {
+      opacity: 0.95;
+    }
+
+    .operating-detail-panel::before {
+      display: none;
     }
   }
 
