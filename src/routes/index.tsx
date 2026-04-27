@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SiteLayout } from "@/components/site/site-layout";
@@ -76,6 +77,8 @@ function HomePage() {
   ];
 
   const trustItems = t.home.trustItems;
+  const operatingIcons = [Gauge, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
+
   return (
     <SiteLayout language={language}>
       <section className="relative isolate overflow-hidden border-b border-border/70 text-primary-foreground">
@@ -113,7 +116,7 @@ function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="h-12 min-w-40 px-8 text-[15px] font-semibold text-primary-foreground"
+                  className="h-12 min-w-40 border-primary-foreground/45 bg-primary-foreground/92 px-8 text-[15px] font-semibold text-primary hover:bg-primary-foreground"
                 >
                   <Link to="/about" search={{ lang: language }}>
                     {t.home.introCta}
@@ -155,7 +158,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-background py-14 md:py-24">
+      <section className="section-shell-premium border-b border-border/70 py-14 md:py-24">
         <div className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <span className="mb-5 inline-block h-1 w-12 bg-accent" aria-hidden="true" />
@@ -164,7 +167,7 @@ function HomePage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="overflow-hidden border border-border shadow-[var(--shadow-strong)]">
+            <div className="overflow-hidden border border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
               <img src={trustDocuments} alt={isArabic ? "اجتماع تجاري" : "Business meeting"} className="h-[440px] w-full object-cover" loading="lazy" width={1600} height={1024} />
             </div>
           </div>
@@ -183,7 +186,7 @@ function HomePage() {
               return (
                 <Card
                   key={service.title ?? idx}
-                  className="group flex h-full flex-col overflow-hidden border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/32"
+                  className="premium-card group flex h-full flex-col overflow-hidden bg-card"
                 >
                   <div className="relative h-40 border-b border-border/80">
                     <img src={service.img} alt={service.title ?? "service image"} className="h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
@@ -208,25 +211,29 @@ function HomePage() {
 
         <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1080px] rounded-[6px] p-6 md:p-9 lg:p-10">
-            <div className="mx-auto max-w-3xl text-center">
+            <div className="relative z-10 mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
               <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground/92 md:text-base">{t.home.operatingModelBody}</p>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="mt-8 grid gap-3 md:grid-cols-5 md:gap-3">
+            <ol className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 md:gap-3">
               {t.home.operatingCriteria.map((item, index) => {
+                const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card relative flex min-h-[132px] flex-col rounded-[6px] p-4 transition-all duration-250 hover:-translate-y-0.5"
+                    className="operating-criterion-card relative flex min-h-[146px] flex-col rounded-[6px] p-4 transition-all duration-250 hover:-translate-y-0.5"
                   >
-                    <div className="flex items-center justify-end">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full">
+                        <Icon className="h-4 w-4" />
+                      </span>
                       <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-accent/70 bg-primary/72 text-[10px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-3 text-center text-sm font-semibold leading-6 text-primary">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary">{item}</p>
                   </li>
                 );
               })}
@@ -244,7 +251,7 @@ function HomePage() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {t.home.whyBullets.map((item) => (
-              <div key={item} className="border border-border bg-card px-5 py-6 text-center">
+              <div key={item} className="premium-card px-5 py-6 text-center">
                 <span className="mx-auto block h-1 w-10 bg-accent" aria-hidden="true" />
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">{item}</p>
               </div>
