@@ -99,7 +99,7 @@ export function ProcessTimeline({
         <li
           key={item.title}
           className={cn(
-            "process-timeline-step liquid-glass-yansab premium-card",
+            "process-timeline-step",
             highlightIndices.includes(index) && "process-timeline-step--featured",
           )}
         >
