@@ -89,6 +89,7 @@
   --operating-stage-bg: color-mix(in oklab, white 86%, var(--color-primary) 14%);
   --operating-card-bg: color-mix(in oklab, white 95%, var(--color-primary) 5%);
   --operating-card-border: color-mix(in oklab, var(--color-secondary) 22%, white 44%);
+  --operating-highlight: #22c55e;
 }
 
 .dark {
@@ -285,6 +286,23 @@
 
   .operating-stage {
     margin-top: 0;
+  }
+
+  .operating-model-section {
+    background: color-mix(in oklab, var(--color-background) 93%, var(--color-primary) 7%);
+  }
+
+  .operating-model-title {
+    color: var(--operating-highlight);
+    text-shadow: 0 8px 24px color-mix(in oklab, var(--operating-highlight) 28%, transparent);
+  }
+
+  .operating-model-body {
+    color: color-mix(in oklab, var(--color-primary-foreground) 92%, transparent);
+  }
+
+  .operating-model-item-text {
+    color: color-mix(in oklab, var(--operating-highlight) 84%, white 16%);
   }
 
   .operating-criterion-card {
