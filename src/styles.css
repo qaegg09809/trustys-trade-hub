@@ -328,27 +328,35 @@
 
   .operating-framework {
     display: grid;
-    gap: 26px;
+    gap: 30px;
+    position: relative;
   }
 
   .operating-timeline {
     position: relative;
     list-style: none;
     margin: 0;
-    padding: 0 0 0 24px;
+    padding: 0 0 0 28px;
     display: grid;
-    gap: 18px;
+    gap: 22px;
   }
 
   .operating-timeline::before {
     content: "";
     position: absolute;
-    inset-inline-start: 9px;
-    top: 4px;
-    bottom: 4px;
-    width: 2px;
-    background: color-mix(in oklab, var(--color-primary) 44%, white 20%);
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-background) 72%, transparent);
+    inset-inline-start: 11px;
+    top: 2px;
+    bottom: 2px;
+    width: 3px;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--color-primary) 58%, white 16%) 0%,
+        color-mix(in oklab, var(--color-primary) 42%, white 24%) 100%
+      );
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-background) 78%, transparent),
+      0 12px 30px -24px color-mix(in oklab, var(--color-primary) 58%, transparent);
   }
 
   .operating-timeline-item {
@@ -358,10 +366,10 @@
   .operating-timeline-item::after {
     content: "";
     position: absolute;
-    inset-inline-start: 9px;
+    inset-inline-start: 11px;
     top: 50%;
     width: 0;
-    height: 1px;
+    height: 2px;
     background: color-mix(in oklab, var(--color-accent) 58%, var(--color-primary) 42%);
     opacity: 0;
     transform: translateY(-50%);
@@ -370,7 +378,7 @@
   }
 
   .operating-timeline-item:has(.operating-step-button.is-active)::after {
-    opacity: 0.68;
+    opacity: 0.6;
   }
 
   .operating-step-button {
@@ -379,17 +387,18 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 9%, white 72%);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 11%, white 70%);
     border-radius: 8px;
-    background: color-mix(in oklab, white 84%, transparent);
-    padding: 15px 16px 15px 18px;
+    background: color-mix(in oklab, white 87%, transparent);
+    padding: 17px 18px 17px 20px;
     text-align: start;
     cursor: pointer;
     transition:
       border-color 260ms var(--ease-emphasis),
       background-color 260ms var(--ease-emphasis),
       box-shadow 260ms var(--ease-emphasis),
-      transform 260ms var(--ease-emphasis);
+      transform 260ms var(--ease-emphasis),
+      padding-inline-start 260ms var(--ease-emphasis);
   }
 
   .operating-step-button::before {
@@ -423,9 +432,10 @@
   .operating-step-button:hover,
   .operating-step-button.is-active {
     border-color: color-mix(in oklab, var(--color-primary) 26%, white 28%);
-    background: color-mix(in oklab, white 89%, var(--color-primary) 11%);
+    background: color-mix(in oklab, white 84%, var(--color-primary) 16%);
     box-shadow: 0 18px 34px -30px color-mix(in oklab, var(--color-primary) 62%, transparent);
     transform: translateY(-2px);
+    padding-inline-start: 24px;
   }
 
   .operating-step-button.is-active {
@@ -487,15 +497,37 @@
     text-wrap: pretty;
   }
 
+  .operating-step-number {
+    min-width: 2.6ch;
+    color: var(--color-accent);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+  }
+
   .operating-detail-panel {
     border: 1px solid color-mix(in oklab, var(--color-primary) 20%, white 40%);
     border-radius: 10px;
     background: color-mix(in oklab, white 95%, var(--color-primary) 5%);
-    padding: 34px 34px 36px;
+    padding: 42px 44px 44px;
     box-shadow:
       0 26px 56px -36px color-mix(in oklab, var(--color-primary) 58%, transparent),
       inset 0 1px 0 color-mix(in oklab, white 88%, transparent);
     animation: operating-panel-enter 340ms var(--ease-emphasis) both;
+    position: relative;
+  }
+
+  .operating-detail-panel::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -18px;
+    top: calc(44px + (var(--operating-active-step, 0) * 88px));
+    width: 18px;
+    height: 2px;
+    background: color-mix(in oklab, var(--color-accent) 56%, var(--color-primary) 44%);
+    opacity: 0.58;
+    transition: top 320ms var(--ease-emphasis), opacity 260ms var(--ease-emphasis);
   }
 
   .operating-detail-icon {
@@ -542,17 +574,13 @@
     .operating-framework {
       grid-template-columns: minmax(340px, 35fr) minmax(0, 65fr);
       align-items: stretch;
-      gap: 56px;
+      gap: 60px;
     }
 
     .operating-timeline {
-      gap: 20px;
-      padding-inline-start: 28px;
+      gap: 24px;
+      padding-inline-start: 30px;
       padding-inline-end: 10px;
-    }
-
-    .operating-timeline::before {
-      inset-inline-start: 11px;
     }
 
     .operating-timeline-item::after {
@@ -561,7 +589,7 @@
     }
 
     .operating-timeline-item:has(.operating-step-button.is-active)::after {
-      width: 56px;
+      width: 96px;
     }
 
     .operating-detail-panel {
@@ -569,7 +597,11 @@
       flex-direction: column;
       justify-content: center;
       min-height: 100%;
-      min-height: 460px;
+      min-height: 580px;
+    }
+
+    .operating-detail-panel::before {
+      top: calc(56px + (var(--operating-active-step, 0) * 94px));
     }
   }
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -97,6 +97,28 @@ function HomePage() {
   const ActiveIcon = operatingIcons[activeOperatingStep] ?? ShieldCheck;
   const activeOperatingTitle = t.home.operatingCriteria[activeOperatingStep] ?? "";
   const activeOperatingDescription = operatingDescriptions[activeOperatingStep] ?? "";
+  const totalOperatingSteps = t.home.operatingCriteria.length;
+
+  const handleOperatingStepNavigation = (index: number, key: string) => {
+    if (key === "ArrowDown" || key === "ArrowRight") {
+      setActiveOperatingStep((index + 1) % totalOperatingSteps);
+      return;
+    }
+
+    if (key === "ArrowUp" || key === "ArrowLeft") {
+      setActiveOperatingStep((index - 1 + totalOperatingSteps) % totalOperatingSteps);
+      return;
+    }
+
+    if (key === "Home") {
+      setActiveOperatingStep(0);
+      return;
+    }
+
+    if (key === "End") {
+      setActiveOperatingStep(totalOperatingSteps - 1);
+    }
+  };
 
   return (
     <SiteLayout language={language}>
@@ -240,17 +262,28 @@ function HomePage() {
               <p className="operating-model-support">{t.home.operatingModelBody}</p>
             </div>
 
-            <div className="operating-framework mt-12">
+            <div
+              className="operating-framework mt-12"
+              style={{ "--operating-active-step": activeOperatingStep } as CSSProperties}
+            >
               <ol className="operating-timeline" aria-label={t.home.operatingModelTitle}>
                 {t.home.operatingCriteria.map((item, index) => (
                   <li key={item} className="operating-timeline-item">
                     <button
                       type="button"
                       className={`operating-step-button ${activeOperatingStep === index ? "is-active" : ""}`}
+                      id={`operating-step-${index}`}
                       onMouseEnter={() => setActiveOperatingStep(index)}
                       onFocus={() => setActiveOperatingStep(index)}
                       onClick={() => setActiveOperatingStep(index)}
+                      onKeyDown={(event) => {
+                        if (["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+                          event.preventDefault();
+                          handleOperatingStepNavigation(index, event.key);
+                        }
+                      }}
                       aria-current={activeOperatingStep === index ? "step" : undefined}
+                      aria-controls="operating-detail-panel"
                     >
                       <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
                       <span className="operating-step-title">{item}</span>
@@ -259,7 +292,7 @@ function HomePage() {
                 ))}
               </ol>
 
-              <article className="operating-detail-panel" key={activeOperatingStep}>
+              <article className="operating-detail-panel" id="operating-detail-panel" key={activeOperatingStep}>
                 <span className="operating-detail-icon" aria-hidden="true">
                   <ActiveIcon className="h-5 w-5" />
                 </span>
