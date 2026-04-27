@@ -1,9 +1,9 @@
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SiteLayout } from "@/components/site/site-layout";
+import { OperatingModelSection } from "@/components/site/operating-model-section";
 import { getContent } from "@/components/site/content";
 import { useSiteLanguage } from "@/components/site/use-site-language";
 import heroBackground from "@/assets/yansab-hero-ai-bg-v2.jpg";
@@ -18,7 +18,6 @@ import serviceCommercialSourcing from "@/assets/yansab-service-commercial-sourci
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
-import operatingModelBackground from "@/assets/operating-model-bg-v1.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -79,122 +78,6 @@ function HomePage() {
   ];
 
   const trustItems = t.home.trustItems;
-  const operatingIcons = [Gauge, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
-  const operatingDescriptions = isArabic
-    ? [
-        "قياس حجم الطلب الفعلي واتجاهه قبل الالتزام التشغيلي.",
-        "تحليل هامش العائد والربحية لضمان جدوى التنفيذ.",
-        "التحقق من استقرار الموردين وقدرتهم على الالتزام بالتسليم.",
-        "مراجعة الامتثال والتوثيق لضمان تنفيذ منضبط ومطابق.",
-        "تقييم قابلية تكرار الأعمال والتوسع على المدى الطويل.",
-      ]
-    : [
-        "Measure real demand volume and trend before operational commitment.",
-        "Assess margin structure and profitability to ensure commercial viability.",
-        "Validate supplier stability and delivery consistency before execution.",
-        "Review compliance and documentation readiness for controlled operations.",
-        "Evaluate repeatability and long-term scalability potential.",
-      ];
-  const [activeOperatingStep, setActiveOperatingStep] = useState(0);
-  const ActiveIcon = operatingIcons[activeOperatingStep] ?? ShieldCheck;
-  const activeOperatingTitle = t.home.operatingCriteria[activeOperatingStep] ?? "";
-  const activeOperatingDescription = operatingDescriptions[activeOperatingStep] ?? "";
-  const totalOperatingSteps = t.home.operatingCriteria.length;
-  const operatingVisualModes = ["demand", "profit", "supply", "compliance", "growth"] as const;
-  const activeOperatingMode = operatingVisualModes[activeOperatingStep] ?? "demand";
-  const operatingSignalsByStep = isArabic
-    ? [
-        ["إشارة الطلب", "تقلب السوق", "جاهزية التوريد"],
-        ["هامش الربح", "العائد المتوقع", "حساسية التكلفة"],
-        ["استقرار المورد", "زمن التسليم", "الاعتمادية التشغيلية"],
-        ["اكتمال الوثائق", "مطابقة اللوائح", "تتبع التدقيق"],
-        ["قابلية التوسع", "استمرارية الطلب", "فرص النمو"],
-      ]
-    : [
-        ["Demand signal", "Market volatility", "Supply readiness"],
-        ["Margin strength", "Expected return", "Cost sensitivity"],
-        ["Supplier stability", "Lead-time control", "Operational reliability"],
-        ["Document completeness", "Regulatory alignment", "Audit trace"],
-        ["Scale readiness", "Demand continuity", "Growth upside"],
-      ];
-  const operatingKpisByStep = isArabic
-    ? [
-        [
-          { label: "كثافة الطلب", value: "84%" },
-          { label: "ثبات الاتجاه", value: "+12%" },
-          { label: "جاهزية التنفيذ", value: "عالية" },
-        ],
-        [
-          { label: "متوسط الهامش", value: "31%" },
-          { label: "صافي العائد", value: "+18%" },
-          { label: "تحكم التكاليف", value: "مستقر" },
-        ],
-        [
-          { label: "اعتمادية المورد", value: "92%" },
-          { label: "التسليم في الوقت", value: "95%" },
-          { label: "خطر الانقطاع", value: "منخفض" },
-        ],
-        [
-          { label: "اكتمال التوثيق", value: "98%" },
-          { label: "فحوص الامتثال", value: "مُمرّرة" },
-          { label: "جاهزية التدقيق", value: "معتمد" },
-        ],
-        [
-          { label: "قابلية التوسع", value: "A+" },
-          { label: "استمرارية الطلب", value: "قوية" },
-          { label: "مؤشر النمو", value: "+24%" },
-        ],
-      ]
-    : [
-        [
-          { label: "Demand density", value: "84%" },
-          { label: "Trend stability", value: "+12%" },
-          { label: "Execution readiness", value: "High" },
-        ],
-        [
-          { label: "Average margin", value: "31%" },
-          { label: "Net return", value: "+18%" },
-          { label: "Cost control", value: "Stable" },
-        ],
-        [
-          { label: "Supplier reliability", value: "92%" },
-          { label: "On-time delivery", value: "95%" },
-          { label: "Disruption risk", value: "Low" },
-        ],
-        [
-          { label: "Doc completeness", value: "98%" },
-          { label: "Compliance checks", value: "Passed" },
-          { label: "Audit readiness", value: "Verified" },
-        ],
-        [
-          { label: "Scale readiness", value: "A+" },
-          { label: "Demand continuity", value: "Strong" },
-          { label: "Growth index", value: "+24%" },
-        ],
-      ];
-  const activeOperatingSignals = operatingSignalsByStep[activeOperatingStep] ?? [];
-  const activeOperatingKpis = operatingKpisByStep[activeOperatingStep] ?? [];
-
-  const handleOperatingStepNavigation = (index: number, key: string) => {
-    if (key === "ArrowDown" || key === "ArrowRight") {
-      setActiveOperatingStep((index + 1) % totalOperatingSteps);
-      return;
-    }
-
-    if (key === "ArrowUp" || key === "ArrowLeft") {
-      setActiveOperatingStep((index - 1 + totalOperatingSteps) % totalOperatingSteps);
-      return;
-    }
-
-    if (key === "Home") {
-      setActiveOperatingStep(0);
-      return;
-    }
-
-    if (key === "End") {
-      setActiveOperatingStep(totalOperatingSteps - 1);
-    }
-  };
 
   return (
     <SiteLayout language={language}>
@@ -326,134 +209,11 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-16 md:py-20">
-        <img
-          src={operatingModelBackground}
-          alt=""
-          aria-hidden="true"
-          className="operating-model-bg"
-          loading="lazy"
-          width={1920}
-          height={1088}
-        />
-        <div className="operating-model-overlay" aria-hidden="true" />
-        <div className="operating-model-grain" aria-hidden="true" />
-        <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage mx-auto max-w-[1120px]">
-            <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <span className="operating-title-accent" aria-hidden="true" />
-              <p className="operating-model-support">{t.home.operatingModelBody}</p>
-            </div>
-
-            <div
-              className="operating-framework mt-12"
-              style={{ "--operating-active-step": activeOperatingStep } as CSSProperties}
-            >
-              <ol className="operating-timeline" aria-label={t.home.operatingModelTitle}>
-                {t.home.operatingCriteria.map((item, index) => (
-                  <li key={item} className="operating-timeline-item">
-                    <button
-                      type="button"
-                      className={`operating-step-button ${activeOperatingStep === index ? "is-active" : ""}`}
-                      id={`operating-step-${index}`}
-                      onMouseEnter={() => setActiveOperatingStep(index)}
-                      onFocus={() => setActiveOperatingStep(index)}
-                      onClick={() => setActiveOperatingStep(index)}
-                      onKeyDown={(event) => {
-                        if (["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
-                          event.preventDefault();
-                          handleOperatingStepNavigation(index, event.key);
-                        }
-                      }}
-                      aria-current={activeOperatingStep === index ? "step" : undefined}
-                      aria-controls="operating-detail-panel"
-                    >
-                      <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="operating-step-title">{item}</span>
-                    </button>
-                  </li>
-                ))}
-              </ol>
-
-              <article className={`operating-detail-panel mode-${activeOperatingMode}`} id="operating-detail-panel" key={activeOperatingStep}>
-                <span className="operating-detail-icon" aria-hidden="true">
-                  <ActiveIcon className="h-5 w-5" />
-                </span>
-                <span className="operating-detail-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
-                <h3 className="operating-detail-title">{activeOperatingTitle}</h3>
-                <p className="operating-detail-description">{activeOperatingDescription}</p>
-
-                <div className="operating-detail-signals" aria-label={isArabic ? "مؤشرات تشغيلية" : "Operational signals"}>
-                  {activeOperatingSignals.map((signal) => (
-                    <span key={signal} className="operating-signal-chip">
-                      {signal}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="operating-kpi-grid" aria-label={isArabic ? "ملخص المؤشرات" : "KPI summary"}>
-                  {activeOperatingKpis.map((kpi) => (
-                    <div key={kpi.label} className="operating-kpi-cell">
-                      <span className="operating-kpi-label">{kpi.label}</span>
-                      <span className="operating-kpi-value">{kpi.value}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="operating-visual-board" aria-hidden="true">
-                  <div className="operating-visual-grid" />
-                  <div className="operating-visual-reflection" />
-
-                  <div className={`operating-visual-scene scene-demand ${activeOperatingMode === "demand" ? "is-active" : ""}`}>
-                    <span className="wave wave-1" />
-                    <span className="wave wave-2" />
-                    <span className="wave wave-3" />
-                    <span className="pulse-dot dot-1" />
-                    <span className="pulse-dot dot-2" />
-                    <span className="pulse-dot dot-3" />
-                  </div>
-
-                  <div className={`operating-visual-scene scene-profit ${activeOperatingMode === "profit" ? "is-active" : ""}`}>
-                    <span className="bar bar-1" />
-                    <span className="bar bar-2" />
-                    <span className="bar bar-3" />
-                    <span className="bar bar-4" />
-                    <span className="delta-line" />
-                  </div>
-
-                  <div className={`operating-visual-scene scene-supply ${activeOperatingMode === "supply" ? "is-active" : ""}`}>
-                    <span className="node node-a" />
-                    <span className="node node-b" />
-                    <span className="node node-c" />
-                    <span className="node node-d" />
-                    <span className="node-link link-ab" />
-                    <span className="node-link link-bc" />
-                    <span className="node-link link-cd" />
-                  </div>
-
-                  <div className={`operating-visual-scene scene-compliance ${activeOperatingMode === "compliance" ? "is-active" : ""}`}>
-                    <span className="doc doc-1" />
-                    <span className="doc doc-2" />
-                    <span className="doc doc-3" />
-                    <span className="check-point cp-1" />
-                    <span className="check-point cp-2" />
-                    <span className="check-point cp-3" />
-                  </div>
-
-                  <div className={`operating-visual-scene scene-growth ${activeOperatingMode === "growth" ? "is-active" : ""}`}>
-                    <span className="growth-grid" />
-                    <span className="growth-path" />
-                    <span className="growth-dot gd-1" />
-                    <span className="growth-dot gd-2" />
-                    <span className="growth-dot gd-3" />
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
+      <OperatingModelSection
+        isArabic={isArabic}
+        title={t.home.operatingModelTitle}
+        body={t.home.operatingModelBody}
+      />
 
       <section className="section-bridge section-band-brand relative isolate overflow-hidden border-b border-border/70 py-14 md:py-18 text-primary-foreground">
         <img src={logisticsVisual} alt={isArabic ? "مشهد لوجستي" : "Logistics network visual"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
