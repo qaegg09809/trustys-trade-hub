@@ -551,7 +551,7 @@
         color-mix(in oklab, white 90%, var(--color-primary) 10%) 52%,
         color-mix(in oklab, white 82%, var(--color-secondary) 18%) 100%
       );
-    padding: 42px 44px 44px;
+    padding: 34px 34px 32px;
     box-shadow:
       0 26px 56px -36px color-mix(in oklab, var(--color-primary) 58%, transparent),
       inset 0 1px 0 color-mix(in oklab, white 90%, transparent);
@@ -614,22 +614,54 @@
   }
 
   .operating-detail-signals {
-    margin-top: 22px;
+    margin-top: 16px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .operating-signal-chip {
     border: 1px solid color-mix(in oklab, var(--color-primary) 22%, white 48%);
     background: color-mix(in oklab, white 88%, var(--color-primary) 12%);
     color: color-mix(in oklab, var(--color-primary) 88%, white 12%);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.03em;
     line-height: 1;
-    padding: 9px 12px;
+    padding: 7px 10px;
     border-radius: 999px;
+  }
+
+  .operating-kpi-grid {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .operating-kpi-cell {
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, white 52%);
+    background: color-mix(in oklab, white 90%, var(--color-primary) 10%);
+    border-radius: 8px;
+    padding: 9px 10px;
+    min-height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .operating-kpi-label {
+    color: color-mix(in oklab, var(--color-primary) 72%, white 28%);
+    font-size: 11px;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  .operating-kpi-value {
+    color: var(--color-primary);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
   }
 
   .operating-visual-board {
@@ -637,7 +669,7 @@
     position: relative;
     border: 1px solid color-mix(in oklab, var(--color-primary) 16%, #c7c7c8 84%);
     border-radius: 10px;
-    min-height: 220px;
+    min-height: 172px;
     background:
       linear-gradient(
         165deg,
@@ -670,7 +702,7 @@
 
   .operating-visual-scene {
     position: absolute;
-    inset: 16px;
+    inset: 14px;
     opacity: 0;
     transform: translateY(8px) scale(0.985);
     transition: opacity 220ms var(--ease-emphasis), transform 220ms var(--ease-emphasis);
@@ -713,16 +745,16 @@
   .scene-profit .bar {
     position: absolute;
     bottom: 12%;
-    width: 12%;
+    width: 10%;
     border-radius: 6px 6px 0 0;
     background: color-mix(in oklab, var(--color-primary) 72%, white 28%);
     animation: operating-bar 1.8s var(--ease-emphasis) infinite alternate;
   }
 
-  .scene-profit .bar-1 { left: 14%; height: 28%; }
-  .scene-profit .bar-2 { left: 31%; height: 44%; animation-delay: 120ms; }
-  .scene-profit .bar-3 { left: 48%; height: 58%; animation-delay: 220ms; }
-  .scene-profit .bar-4 { left: 65%; height: 72%; background: color-mix(in oklab, var(--color-accent) 58%, var(--color-primary) 42%); animation-delay: 340ms; }
+  .scene-profit .bar-1 { left: 18%; height: 24%; }
+  .scene-profit .bar-2 { left: 33%; height: 36%; animation-delay: 120ms; }
+  .scene-profit .bar-3 { left: 48%; height: 48%; animation-delay: 220ms; }
+  .scene-profit .bar-4 { left: 63%; height: 60%; background: color-mix(in oklab, var(--color-accent) 58%, var(--color-primary) 42%); animation-delay: 340ms; }
 
   .scene-profit .delta-line {
     position: absolute;
