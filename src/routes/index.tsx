@@ -85,7 +85,7 @@ function HomePage() {
     const list = operatingListRef.current;
     if (!list) return;
 
-    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-criterion-card"));
+    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-node"));
     if (!cards.length) return;
 
     const observer = new IntersectionObserver(
@@ -247,23 +247,27 @@ function HomePage() {
               <p className="operating-model-support">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol ref={operatingListRef} className="operating-criteria-grid mt-12">
+            <ol ref={operatingListRef} className="operating-network mt-12" aria-label={t.home.operatingModelTitle}>
+              <li className="operating-core" aria-hidden="true">
+                <span className="operating-core-kicker">{isArabic ? "نظام القرار" : "Decision Engine"}</span>
+                <strong className="operating-core-title">{t.home.operatingModelTitle}</strong>
+              </li>
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card"
+                    className="operating-node"
                     style={{ "--step": index } as CSSProperties}
                   >
-                    <div className="operating-card-top">
+                    <span className="operating-node-link" aria-hidden="true" />
+                    <article className="operating-node-card">
                       <span className="operating-card-icon">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="operating-card-order">{String(index + 1).padStart(2, "0")}. </span>
-                    </div>
-                    <p className="operating-card-title">{item}</p>
-                    <span className="operating-criterion-line" aria-hidden="true" />
+                      <span className="operating-card-order">{String(index + 1).padStart(2, "0")}</span>
+                      <p className="operating-card-title">{item}</p>
+                    </article>
                   </li>
                 );
               })}
