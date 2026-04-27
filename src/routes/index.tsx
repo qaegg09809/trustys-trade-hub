@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import type { CSSProperties } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -40,7 +39,6 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  const operatingListRef = useRef<HTMLOListElement | null>(null);
   const language = useSiteLanguage();
   const t = getContent(language);
   const isArabic = language === "ar";
@@ -80,30 +78,25 @@ function HomePage() {
 
   const trustItems = t.home.trustItems;
   const operatingIcons = [Gauge, BadgeCheck, ShieldCheck, ClipboardCheck, Handshake];
-
-  useEffect(() => {
-    const list = operatingListRef.current;
-    if (!list) return;
-
-    const cards = Array.from(list.querySelectorAll<HTMLElement>(".operating-node"));
-    if (!cards.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.22, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    cards.forEach((card) => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, []);
+  const operatingDescriptions = isArabic
+    ? [
+        "قياس حجم الطلب الفعلي واتجاهه قبل الالتزام التشغيلي.",
+        "تحليل هامش العائد والربحية لضمان جدوى التنفيذ.",
+        "التحقق من استقرار الموردين وقدرتهم على الالتزام بالتسليم.",
+        "مراجعة الامتثال والتوثيق لضمان تنفيذ منضبط ومطابق.",
+        "تقييم قابلية تكرار الأعمال والتوسع على المدى الطويل.",
+      ]
+    : [
+        "Measure real demand volume and trend before operational commitment.",
+        "Assess margin structure and profitability to ensure commercial viability.",
+        "Validate supplier stability and delivery consistency before execution.",
+        "Review compliance and documentation readiness for controlled operations.",
+        "Evaluate repeatability and long-term scalability potential.",
+      ];
+  const [activeOperatingStep, setActiveOperatingStep] = useState(0);
+  const ActiveIcon = operatingIcons[activeOperatingStep] ?? ShieldCheck;
+  const activeOperatingTitle = t.home.operatingCriteria[activeOperatingStep] ?? "";
+  const activeOperatingDescription = operatingDescriptions[activeOperatingStep] ?? "";
 
   return (
     <SiteLayout language={language}>
@@ -247,31 +240,34 @@ function HomePage() {
               <p className="operating-model-support">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol ref={operatingListRef} className="operating-network mt-12" aria-label={t.home.operatingModelTitle}>
-              <li className="operating-core" aria-hidden="true">
-                <span className="operating-core-kicker">{isArabic ? "نظام القرار" : "Decision Engine"}</span>
-                <strong className="operating-core-title">{t.home.operatingModelTitle}</strong>
-              </li>
-              {t.home.operatingCriteria.map((item, index) => {
-                const Icon = operatingIcons[index] ?? ShieldCheck;
-                return (
-                  <li
-                    key={item}
-                    className="operating-node"
-                    style={{ "--step": index } as CSSProperties}
-                  >
-                    <span className="operating-node-link" aria-hidden="true" />
-                    <article className="operating-node-card">
-                      <span className="operating-card-icon">
-                        <Icon className="h-4 w-4" />
-                      </span>
-                      <span className="operating-card-order">{String(index + 1).padStart(2, "0")}</span>
-                      <p className="operating-card-title">{item}</p>
-                    </article>
+            <div className="operating-framework mt-12">
+              <ol className="operating-timeline" aria-label={t.home.operatingModelTitle}>
+                {t.home.operatingCriteria.map((item, index) => (
+                  <li key={item} className="operating-timeline-item">
+                    <button
+                      type="button"
+                      className={`operating-step-button ${activeOperatingStep === index ? "is-active" : ""}`}
+                      onMouseEnter={() => setActiveOperatingStep(index)}
+                      onFocus={() => setActiveOperatingStep(index)}
+                      onClick={() => setActiveOperatingStep(index)}
+                      aria-current={activeOperatingStep === index ? "step" : undefined}
+                    >
+                      <span className="operating-step-number">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="operating-step-title">{item}</span>
+                    </button>
                   </li>
-                );
-              })}
-            </ol>
+                ))}
+              </ol>
+
+              <article className="operating-detail-panel" key={activeOperatingStep}>
+                <span className="operating-detail-icon" aria-hidden="true">
+                  <ActiveIcon className="h-5 w-5" />
+                </span>
+                <span className="operating-step-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
+                <h3 className="operating-detail-title">{activeOperatingTitle}</h3>
+                <p className="operating-detail-description">{activeOperatingDescription}</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
