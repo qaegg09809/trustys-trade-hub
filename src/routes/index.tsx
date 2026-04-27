@@ -17,6 +17,7 @@ import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
+import operatingModelBackground from "@/assets/operating-model-bg-v2.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -253,7 +254,18 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="operating-model-shell border-b border-border/70 py-16 md:py-20">
+      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-16 md:py-20">
+        <img
+          src={operatingModelBackground}
+          alt=""
+          aria-hidden="true"
+          className="operating-model-bg"
+          loading="lazy"
+          width={1920}
+          height={1088}
+        />
+        <div className="operating-model-overlay" aria-hidden="true" />
+        <div className="operating-model-grain" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1120px]">
             <div className="mx-auto max-w-4xl text-center">
