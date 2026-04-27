@@ -49,6 +49,8 @@
   --muted-foreground: #3f5a88;
   --accent: #f3961b;
   --accent-foreground: #111827;
+  --brand-light-gray: #eaeaea;
+  --brand-surface: #f5f5f5;
   --destructive: oklch(0.6 0.22 30);
   --destructive-foreground: oklch(0.99 0 0);
   --border: #d9dee9;
