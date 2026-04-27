@@ -308,7 +308,7 @@
   }
 
   .operating-model-shell {
-    background: color-mix(in oklab, var(--brand-surface) 86%, var(--color-primary) 14%);
+    background: var(--brand-surface);
   }
 
   .operating-model-bg {
@@ -317,45 +317,33 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(86%) contrast(104%) brightness(88%);
-    transform: scale(1.02);
+    filter: saturate(72%) brightness(94%);
   }
 
   .operating-model-overlay {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(
-        110deg,
-        color-mix(in oklab, var(--color-background) 95%, var(--color-primary) 5%) 0%,
-        color-mix(in oklab, var(--color-background) 92%, var(--color-primary) 8%) 42%,
-        color-mix(in oklab, var(--color-background) 89%, var(--color-primary) 11%) 100%
-      );
+    background: color-mix(in oklab, var(--brand-surface) 84%, white 16%);
     opacity: 0.9;
   }
 
   .operating-model-grain {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(color-mix(in oklab, var(--color-primary) 14%, transparent) 0.6px, transparent 0.6px);
-    background-size: 3px 3px;
-    opacity: 0.09;
-    pointer-events: none;
+    display: none;
   }
 
   .operating-title-accent {
     display: block;
-    margin: 14px auto 0;
-    width: 58px;
+    margin-top: 14px;
+    width: 56px;
     height: 4px;
     border-radius: 999px;
     background: var(--color-accent);
   }
 
   .operating-model-support {
-    margin: 16px auto 0;
-    max-width: 760px;
-    color: color-mix(in oklab, var(--color-primary) 84%, white 16%);
+    margin-top: 16px;
+    max-width: 68ch;
+    color: color-mix(in oklab, var(--color-primary) 82%, white 18%);
     font-size: 16px;
     line-height: 1.5;
   }
@@ -367,52 +355,19 @@
   }
 
   .operating-timeline {
-    position: relative;
     list-style: none;
     margin: 0;
-    padding: 0 0 0 28px;
+    padding: 0;
     display: grid;
-    gap: 22px;
-  }
-
-  .operating-timeline::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: 11px;
-    top: 2px;
-    bottom: 2px;
-    width: 3px;
-    background:
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--color-primary) 58%, white 16%) 0%,
-        color-mix(in oklab, var(--color-primary) 42%, white 24%) 100%
-      );
-    box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--color-background) 78%, transparent),
-      0 12px 30px -24px color-mix(in oklab, var(--color-primary) 58%, transparent);
+    gap: 16px;
   }
 
   .operating-timeline-item {
     position: relative;
   }
 
-  .operating-timeline-item::after {
-    content: "";
-    position: absolute;
-    inset-inline-start: 11px;
-    top: 50%;
-    width: 0;
-    height: 2px;
-    background: color-mix(in oklab, var(--color-accent) 58%, var(--color-primary) 42%);
-    opacity: 0;
-    transform: translateY(-50%);
-    transition: width 320ms var(--ease-emphasis), opacity 320ms var(--ease-emphasis);
-    pointer-events: none;
-  }
-
-  .operating-timeline-item:has(.operating-step-button.is-active)::after {
-    opacity: 0.6;
+  .operating-timeline-item {
+    --operating-step-offset: 24px;
   }
 
   .operating-step-button {
@@ -420,76 +375,66 @@
     width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 12%, white 68%);
-    border-radius: 8px;
-    background: color-mix(in oklab, white 92%, var(--color-primary) 8%);
-    padding: 17px 18px 17px 20px;
+    gap: 14px;
+    border: 1px solid var(--brand-light-gray);
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 20px 24px;
     text-align: start;
     cursor: pointer;
     transition:
       border-color 260ms var(--ease-emphasis),
-      background-color 260ms var(--ease-emphasis),
       box-shadow 260ms var(--ease-emphasis),
-      transform 260ms var(--ease-emphasis),
-      padding-inline-start 260ms var(--ease-emphasis);
+      transform 260ms var(--ease-emphasis);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   }
 
   .operating-step-button::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -19px;
-    top: 20px;
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    border: 2px solid color-mix(in oklab, var(--color-primary) 42%, white 30%);
-    background: var(--color-background);
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-background) 95%, transparent);
-    transition: background-color 260ms var(--ease-emphasis), border-color 260ms var(--ease-emphasis);
+    content: none;
   }
 
   .operating-step-button::after {
-    content: "";
-    position: absolute;
-    inset-inline-end: 14px;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border-top: 1px solid color-mix(in oklab, var(--color-primary) 40%, white 42%);
-    border-inline-end: 1px solid color-mix(in oklab, var(--color-primary) 40%, white 42%);
-    transform: translateY(-50%) rotate(45deg);
-    opacity: 0.44;
-    transition: opacity 260ms var(--ease-emphasis), transform 260ms var(--ease-emphasis), border-color 260ms var(--ease-emphasis);
+    content: none;
   }
 
   .operating-step-button:hover,
   .operating-step-button.is-active {
-    border-color: color-mix(in oklab, var(--color-primary) 26%, white 28%);
-    background: color-mix(in oklab, white 84%, var(--color-primary) 16%);
-    box-shadow: 0 18px 34px -30px color-mix(in oklab, var(--color-primary) 62%, transparent);
+    border-color: color-mix(in oklab, var(--color-primary) 28%, var(--brand-light-gray) 72%);
+    box-shadow: 0 10px 20px -14px color-mix(in oklab, var(--color-primary) 42%, transparent);
     transform: translateY(-2px);
-    padding-inline-start: 24px;
   }
 
   .operating-step-button.is-active {
-    background: color-mix(in oklab, white 82%, var(--color-primary) 18%);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in oklab, var(--color-primary) 14%, white 64%),
-      0 20px 38px -30px color-mix(in oklab, var(--color-primary) 62%, transparent);
+    border-color: color-mix(in oklab, var(--color-primary) 38%, var(--brand-light-gray) 62%);
   }
 
-  .operating-step-button:hover::after,
-  .operating-step-button.is-active::after {
-    opacity: 0.78;
-    border-top-color: color-mix(in oklab, var(--color-accent) 66%, var(--color-primary) 34%);
-    border-inline-end-color: color-mix(in oklab, var(--color-accent) 66%, var(--color-primary) 34%);
-    transform: translateY(-50%) translateX(2px) rotate(45deg);
+  .operating-step-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    height: 42px;
+    width: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--brand-light-gray) 82%);
+    border-radius: 999px;
+    color: var(--color-primary);
+    background: color-mix(in oklab, white 96%, var(--color-primary) 4%);
   }
 
-  .operating-step-button:hover::before,
-  .operating-step-button.is-active::before {
-    border-color: var(--color-accent);
+  .operating-step-content {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .operating-step-accent {
+    margin-top: 2px;
+    display: inline-block;
+    height: 2px;
+    width: 42px;
     background: var(--color-accent);
   }
 
@@ -523,34 +468,30 @@
   }
 
   .operating-step-title {
-    margin-top: 1px;
     color: color-mix(in oklab, var(--color-primary) 88%, white 12%);
-    font-size: 17px;
+    font-size: 24px;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.35;
     text-wrap: pretty;
   }
 
   .operating-step-number {
     min-width: 2.6ch;
     color: var(--color-accent);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
   }
 
   .operating-detail-panel {
-    border: 1px solid color-mix(in oklab, var(--color-primary) 20%, white 40%);
-    border-radius: 10px;
-    background: color-mix(in oklab, white 95%, var(--color-primary) 5%);
+    border: 1px solid var(--brand-light-gray);
+    border-radius: 12px;
+    background: #ffffff;
     padding: 42px 44px 44px;
-    box-shadow:
-      0 26px 56px -36px color-mix(in oklab, var(--color-primary) 58%, transparent),
-      inset 0 1px 0 color-mix(in oklab, white 88%, transparent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     animation: operating-panel-enter 340ms var(--ease-emphasis) both;
     position: relative;
-    backdrop-filter: blur(2px);
   }
 
   .operating-detail-panel::before {
@@ -560,8 +501,8 @@
     top: calc(44px + (var(--operating-active-step, 0) * 88px));
     width: 18px;
     height: 2px;
-    background: color-mix(in oklab, var(--color-accent) 56%, var(--color-primary) 44%);
-    opacity: 0.58;
+    background: var(--color-accent);
+    opacity: 0.8;
     transition: top 320ms var(--ease-emphasis), opacity 260ms var(--ease-emphasis);
   }
 
@@ -609,22 +550,16 @@
     .operating-framework {
       grid-template-columns: minmax(340px, 35fr) minmax(0, 65fr);
       align-items: stretch;
-      gap: 60px;
+      gap: 56px;
     }
 
     .operating-timeline {
-      gap: 24px;
-      padding-inline-start: 30px;
-      padding-inline-end: 10px;
+      gap: 14px;
+      padding-inline-end: 8px;
     }
 
-    .operating-timeline-item::after {
-      inset-inline-start: 11px;
-      width: 0;
-    }
-
-    .operating-timeline-item:has(.operating-step-button.is-active)::after {
-      width: 96px;
+    .operating-timeline-item {
+      transform: translateY(calc(var(--operating-index, 0) * var(--operating-step-offset)));
     }
 
     .operating-detail-panel {
@@ -642,15 +577,19 @@
 
   @media (max-width: 1023px) {
     .operating-model-bg {
-      filter: saturate(80%) contrast(102%) brightness(82%);
+      filter: saturate(72%) brightness(92%);
     }
 
     .operating-model-overlay {
-      opacity: 0.93;
+      opacity: 0.92;
     }
 
     .operating-detail-panel::before {
       display: none;
+    }
+
+    .operating-step-title {
+      font-size: 20px;
     }
   }
 
