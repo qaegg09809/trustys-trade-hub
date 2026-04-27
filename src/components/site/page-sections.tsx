@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 export function ServiceCards({
   cards,
@@ -86,22 +87,27 @@ export function CtaActions({
 export function ProcessTimeline({
   items,
   isArabic = false,
+  highlightIndices = [],
 }: {
   items: Array<{ title: string; body: string }>;
   isArabic?: boolean;
+  highlightIndices?: number[];
 }) {
   return (
-    <ol className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <ol className="process-timeline-grid">
       {items.map((item, index) => (
         <li
           key={item.title}
-          className="liquid-glass-yansab premium-card flex min-h-[204px] flex-col rounded-lg p-5"
+          className={cn(
+            "process-timeline-step liquid-glass-yansab premium-card",
+            highlightIndices.includes(index) && "process-timeline-step--featured",
+          )}
         >
-          <p className="premium-chip inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold text-primary-foreground">
+          <p className="premium-chip process-timeline-chip inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold text-primary-foreground">
             {isArabic ? `الخطوة ${index + 1}` : `Step ${index + 1}`}
           </p>
-          <h3 className="mt-3 text-base font-semibold leading-snug text-primary">{item.title}</h3>
-          <p className="mt-2 text-sm leading-7 text-foreground/80">{item.body}</p>
+          <h3 className="process-timeline-title mt-3 text-base font-semibold leading-snug text-primary">{item.title}</h3>
+          <p className="process-timeline-body mt-2 text-sm leading-7 text-foreground/80">{item.body}</p>
         </li>
       ))}
     </ol>
