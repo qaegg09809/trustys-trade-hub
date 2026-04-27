@@ -31,10 +31,11 @@ function ContactPage() {
   const isArabic = language === "ar";
 
   const contactRows = [
-    `${isArabic ? "الهاتف" : "Phone"}: ${t.missingLabel}`,
-    `${isArabic ? "البريد الإلكتروني" : "Email"}: ${t.missingLabel}`,
-    `${isArabic ? "العنوان" : "Address"}: ${t.missingLabel}`,
-    `${isArabic ? "منصات التواصل" : "Social Platforms"}: ${t.missingLabel}`,
+    `${isArabic ? "الهاتف" : "Phone"}: ${t.contactDetails.phone}`,
+    `${isArabic ? "البريد الإلكتروني" : "Email"}: ${t.contactDetails.email}`,
+    `${isArabic ? "الموقع الإلكتروني" : "Website"}: ${t.contactDetails.website}`,
+    `${isArabic ? "العنوان" : "Address"}: ${t.contactDetails.address}`,
+    `${isArabic ? "منصات التواصل" : "Social Platforms"}: ${t.contactDetails.social}`,
   ];
 
   return (

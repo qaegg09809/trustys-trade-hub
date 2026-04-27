@@ -28,6 +28,14 @@ type JourneyStep = {
   body: string;
 };
 
+type ContactDetails = {
+  phone: string;
+  email: string;
+  website: string;
+  address: string;
+  social: string;
+};
+
 type LocaleContent = {
   dir: "ltr" | "rtl";
   langLabel: string;
@@ -40,6 +48,7 @@ type LocaleContent = {
   quickLinksLabel: string;
   contactLabel: string;
   missingLabel: string;
+  contactDetails: ContactDetails;
   home: {
     heroKicker: string;
     heroTitle: string;
@@ -100,9 +109,22 @@ type LocaleContent = {
   partnerships: {
     pageTitle: string;
     intro: string;
+    whyPartnerTitle: string;
     bullets: string[];
     journeyTitle: string;
     journeySteps: JourneyStep[];
+    partnerFormTitle: string;
+    partnerFormIntro: string;
+    partnerFormFields: {
+      name: string;
+      company: string;
+      country: string;
+      businessType: string;
+      phone: string;
+      email: string;
+      message: string;
+      submit: string;
+    };
   };
   brands: {
     pageTitle: string;
@@ -126,9 +148,11 @@ type LocaleContent = {
 };
 
 const sharedContact = {
-  phone: "Please contact us via the contact form",
-  email: "Please contact us via the contact form",
-  website: "Please contact us via the contact form",
+  phone: "+971 4 458 1655",
+  email: "Info@yansabtrading.com",
+  website: "www.yansabtrading.com",
+  address: "Missing / Not found in source files",
+  social: "Missing / Not found in source files",
 };
 
 const sharedServicesEn: ServiceCard[] = [
@@ -178,6 +202,7 @@ const englishContent: LocaleContent = {
   quickLinksLabel: "Quick Links",
   contactLabel: "Contact",
   missingLabel: "Please contact us via the contact form",
+  contactDetails: sharedContact,
   home: {
     heroKicker: "Dubai based • Established 2010 • Family owned",
     heroTitle: "A trading company built on trust, discipline, and long-term value.",
@@ -300,6 +325,7 @@ const englishContent: LocaleContent = {
     pageTitle: "Distribution & Partnerships",
     intro:
       "Yansab values partnerships that are built with care, managed professionally, and designed to grow over time.",
+    whyPartnerTitle: "Why partner with Yansab?",
     bullets: [
       "Selective and credible partner relationships",
       "Professional representation and protection of commercial trust",
@@ -315,6 +341,19 @@ const englishContent: LocaleContent = {
       { title: "Documentation and compliance", body: "Building a robust documentation and compliance framework with clear controls for risk-managed execution." },
       { title: "Execution and relationship management", body: "Coordinated delivery with continuity and performance follow-through." },
     ],
+    partnerFormTitle: "Become a Partner",
+    partnerFormIntro:
+      "Yansab works with suppliers, retailers, distributors, and commercial partners through an approach built on professionalism, structure, and mutual value creation.",
+    partnerFormFields: {
+      name: "Name",
+      company: "Company",
+      country: "Country",
+      businessType: "Business Type",
+      phone: "Phone",
+      email: "Email",
+      message: "Message",
+      submit: "Send Inquiry",
+    },
   },
   brands: {
     pageTitle: "Brands & Business Lines",
@@ -377,6 +416,13 @@ const arabicContent: LocaleContent = {
   quickLinksLabel: "روابط سريعة",
   contactLabel: "التواصل",
   missingLabel: "يرجى التواصل عبر نموذج الاتصال",
+  contactDetails: {
+    phone: "+971 4 458 1655",
+    email: "Info@yansabtrading.com",
+    website: "www.yansabtrading.com",
+    address: "Missing / Not found in source files",
+    social: "Missing / Not found in source files",
+  },
   home: {
     heroKicker: "مقرها دبي • تأسست 2010 • شركة عائلية",
     heroTitle: "شركة تجارة بُنيت على الثقة والانضباط والقيمة طويلة المدى.",
@@ -494,6 +540,7 @@ const arabicContent: LocaleContent = {
   partnerships: {
     pageTitle: "التوزيع والشراكات",
     intro: "تؤمن ينساب بالشراكات التي تُبنى بعناية، وتُدار باحترافية، وتُصمم للنمو المستمر.",
+    whyPartnerTitle: "لماذا الشراكة مع ينساب؟",
     bullets: [
       "اختيار الشركاء بعناية وعلى أساس الموثوقية",
       "التمثيل المهني وحماية الثقة التجارية",
@@ -509,6 +556,19 @@ const arabicContent: LocaleContent = {
       { title: "التوثيق والامتثال", body: "بناء إطار توثيق وامتثال محكم مع نقاط ضبط واضحة لتنفيذ منخفض المخاطر." },
       { title: "التنفيذ وإدارة العلاقة", body: "تنفيذ منسق مع متابعة أداء واستمرارية العلاقة." },
     ],
+    partnerFormTitle: "كن شريكاً",
+    partnerFormIntro:
+      "يعمل ينساب مع الموردين وبائعي التجزئة والموزعين والشركاء التجاريين عبر نهج قائم على المهنية والتنظيم وصناعة قيمة متبادلة.",
+    partnerFormFields: {
+      name: "الاسم",
+      company: "الشركة",
+      country: "الدولة",
+      businessType: "نوع النشاط",
+      phone: "رقم الهاتف",
+      email: "البريد الإلكتروني",
+      message: "الرسالة",
+      submit: "إرسال الاستفسار",
+    },
   },
   brands: {
     pageTitle: "العلامات وخطوط الأعمال",

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BulletList, ProcessTimeline } from "@/components/site/page-sections";
+import { BulletList, PartnerForm, ProcessTimeline } from "@/components/site/page-sections";
 import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
@@ -58,12 +58,25 @@ function PartnershipsPage() {
       <SectionShell className="section-shell-premium partnerships-journey-shell">
         <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
           <CardContent className="pt-6">
-            <h2 className="text-2xl font-semibold text-primary">{t.partnerships.journeyTitle}</h2>
+            <h2 className="text-2xl font-semibold text-primary">{t.partnerships.whyPartnerTitle}</h2>
+            <div className="mt-5 max-w-3xl">
+              <BulletList items={t.partnerships.bullets} />
+            </div>
+
+            <h2 className="mt-8 text-2xl font-semibold text-primary">{t.partnerships.journeyTitle}</h2>
             <div className="mt-6">
               <ProcessTimeline items={t.partnerships.journeySteps} isArabic={isArabic} highlightIndices={[0, 3, 5]} />
             </div>
           </CardContent>
         </Card>
+
+        <div className="mt-8">
+          <PartnerForm
+            title={t.partnerships.partnerFormTitle}
+            intro={t.partnerships.partnerFormIntro}
+            fields={t.partnerships.partnerFormFields}
+          />
+        </div>
 
         <div className="mt-10 flex flex-wrap gap-3">
           <Button asChild>
