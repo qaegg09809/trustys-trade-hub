@@ -205,36 +205,32 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden border-b border-border/70 bg-background py-14 md:py-20">
-        <img src={boardroomVisual} alt={isArabic ? "نموذج التشغيل" : "Operating model background"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
-        <div className="pointer-events-none absolute inset-0 bg-primary/90" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(124deg,color-mix(in_oklab,var(--color-primary)_82%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_56%,transparent)_52%,color-mix(in_oklab,var(--color-primary)_92%,transparent)_100%)]" aria-hidden="true" />
-
-        <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage mx-auto max-w-[1080px] rounded-[6px] p-6 md:p-9 lg:p-10">
-            <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_90%,var(--color-primary)_10%)] py-14 md:py-20">
+        <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1080px] rounded-[6px] border border-border bg-card p-6 shadow-[var(--shadow-soft)] md:p-9 lg:p-10">
+            <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground/92 md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 md:gap-3">
+            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card relative flex min-h-[146px] flex-col rounded-[6px] p-4 transition-all duration-250 hover:-translate-y-0.5"
+                    className="relative flex min-h-[150px] flex-col rounded-[6px] border border-border bg-[color-mix(in_oklab,var(--color-card)_92%,var(--color-primary)_8%)] p-4"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-muted text-primary">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-accent/70 bg-primary/52 text-[10px] font-bold text-accent">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/65 bg-[color-mix(in_oklab,var(--color-accent)_12%,var(--color-card)_88%)] text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary">{item}</p>
                   </li>
                 );
               })}
