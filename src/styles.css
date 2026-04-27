@@ -365,6 +365,18 @@
     transform: translateY(-2px);
   }
 
+  .service-showcase-card {
+    border: none;
+    border-radius: 6px;
+    background: color-mix(in oklab, var(--color-card) 94%, var(--color-muted) 6%);
+    box-shadow: none;
+  }
+
+  .service-showcase-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
   .premium-chip {
     border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 28%, transparent);
     background-color: color-mix(in oklab, var(--color-primary-foreground) 14%, var(--color-primary) 86%);
