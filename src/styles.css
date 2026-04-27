@@ -544,14 +544,21 @@
   .operating-detail-panel {
     border: 1px solid color-mix(in oklab, var(--color-primary) 22%, white 38%);
     border-radius: 10px;
-    background: color-mix(in oklab, white 96%, var(--color-primary) 4%);
+    background:
+      linear-gradient(
+        160deg,
+        color-mix(in oklab, white 78%, var(--color-primary) 22%) 0%,
+        color-mix(in oklab, white 90%, var(--color-primary) 10%) 52%,
+        color-mix(in oklab, white 82%, var(--color-secondary) 18%) 100%
+      );
     padding: 42px 44px 44px;
     box-shadow:
       0 26px 56px -36px color-mix(in oklab, var(--color-primary) 58%, transparent),
       inset 0 1px 0 color-mix(in oklab, white 90%, transparent);
     animation: operating-panel-enter 340ms var(--ease-emphasis) both;
     position: relative;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
   }
 
   .operating-detail-panel::before {
@@ -602,8 +609,217 @@
     margin-top: 14px;
     color: color-mix(in oklab, var(--color-primary) 82%, white 18%);
     font-size: 17px;
-    line-height: 1.7;
+    line-height: 1.65;
     max-width: 46ch;
+  }
+
+  .operating-detail-signals {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .operating-signal-chip {
+    border: 1px solid color-mix(in oklab, var(--color-primary) 22%, white 48%);
+    background: color-mix(in oklab, white 88%, var(--color-primary) 12%);
+    color: color-mix(in oklab, var(--color-primary) 88%, white 12%);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    padding: 9px 12px;
+    border-radius: 999px;
+  }
+
+  .operating-visual-board {
+    margin-top: 24px;
+    position: relative;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 16%, #c7c7c8 84%);
+    border-radius: 10px;
+    min-height: 220px;
+    background:
+      linear-gradient(
+        165deg,
+        color-mix(in oklab, var(--color-primary) 24%, white 76%) 0%,
+        color-mix(in oklab, var(--color-primary) 18%, white 82%) 62%,
+        color-mix(in oklab, var(--color-secondary) 18%, white 82%) 100%
+      );
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, #c7c7c8 58%, transparent),
+      0 12px 26px -20px color-mix(in oklab, var(--color-primary) 42%, transparent);
+    overflow: hidden;
+  }
+
+  .operating-visual-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--color-primary) 16%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 16%, transparent) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.24;
+  }
+
+  .operating-visual-reflection {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(138deg, color-mix(in oklab, #c7c7c8 32%, transparent) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .operating-visual-scene {
+    position: absolute;
+    inset: 16px;
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+    transition: opacity 220ms var(--ease-emphasis), transform 220ms var(--ease-emphasis);
+  }
+
+  .operating-visual-scene.is-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .scene-demand .wave {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: color-mix(in oklab, var(--color-accent) 64%, var(--color-primary) 36%);
+    border-radius: 999px;
+    transform-origin: left;
+    animation: operating-wave 2.2s var(--ease-emphasis) infinite;
+  }
+
+  .scene-demand .wave-1 { top: 32%; animation-delay: 0s; }
+  .scene-demand .wave-2 { top: 50%; animation-delay: 160ms; opacity: 0.84; }
+  .scene-demand .wave-3 { top: 68%; animation-delay: 300ms; opacity: 0.7; }
+
+  .scene-demand .pulse-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent) 56%, transparent);
+    animation: operating-pulse 2s var(--ease-emphasis) infinite;
+  }
+
+  .scene-demand .dot-1 { top: 26%; left: 18%; }
+  .scene-demand .dot-2 { top: 46%; left: 56%; animation-delay: 220ms; }
+  .scene-demand .dot-3 { top: 66%; left: 76%; animation-delay: 420ms; }
+
+  .scene-profit .bar {
+    position: absolute;
+    bottom: 12%;
+    width: 12%;
+    border-radius: 6px 6px 0 0;
+    background: color-mix(in oklab, var(--color-primary) 72%, white 28%);
+    animation: operating-bar 1.8s var(--ease-emphasis) infinite alternate;
+  }
+
+  .scene-profit .bar-1 { left: 14%; height: 28%; }
+  .scene-profit .bar-2 { left: 31%; height: 44%; animation-delay: 120ms; }
+  .scene-profit .bar-3 { left: 48%; height: 58%; animation-delay: 220ms; }
+  .scene-profit .bar-4 { left: 65%; height: 72%; background: color-mix(in oklab, var(--color-accent) 58%, var(--color-primary) 42%); animation-delay: 340ms; }
+
+  .scene-profit .delta-line {
+    position: absolute;
+    left: 14%;
+    right: 19%;
+    top: 26%;
+    height: 2px;
+    background: color-mix(in oklab, #c7c7c8 66%, var(--color-primary) 34%);
+    transform: skewX(-34deg);
+  }
+
+  .scene-supply .node,
+  .scene-growth .growth-dot,
+  .scene-compliance .check-point {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
+  .scene-supply .node { background: color-mix(in oklab, var(--color-primary) 72%, white 28%); }
+  .scene-supply .node-a { top: 20%; left: 16%; }
+  .scene-supply .node-b { top: 38%; left: 44%; }
+  .scene-supply .node-c { top: 58%; left: 28%; }
+  .scene-supply .node-d { top: 66%; left: 74%; }
+
+  .scene-supply .node-link {
+    position: absolute;
+    height: 2px;
+    background: color-mix(in oklab, var(--color-primary) 56%, #c7c7c8 44%);
+    transform-origin: left;
+    animation: operating-link 2.4s var(--ease-emphasis) infinite;
+  }
+
+  .scene-supply .link-ab { top: 26%; left: 20%; width: 28%; transform: rotate(17deg); }
+  .scene-supply .link-bc { top: 48%; left: 33%; width: 17%; transform: rotate(144deg); }
+  .scene-supply .link-cd { top: 63%; left: 31%; width: 44%; transform: rotate(10deg); animation-delay: 260ms; }
+
+  .scene-compliance .doc {
+    position: absolute;
+    left: 20%;
+    width: 44%;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 22%, white 44%);
+    border-radius: 8px;
+    background: color-mix(in oklab, white 90%, var(--color-primary) 10%);
+    height: 64px;
+  }
+
+  .scene-compliance .doc-1 { top: 20%; }
+  .scene-compliance .doc-2 { top: 35%; left: 24%; }
+  .scene-compliance .doc-3 { top: 50%; left: 28%; }
+  .scene-compliance .check-point { right: 16%; }
+  .scene-compliance .cp-1 { top: 28%; }
+  .scene-compliance .cp-2 { top: 46%; }
+  .scene-compliance .cp-3 { top: 64%; }
+
+  .scene-growth .growth-grid {
+    position: absolute;
+    inset: 14% 10%;
+    border-inline-start: 2px solid color-mix(in oklab, var(--color-primary) 44%, white 56%);
+    border-block-end: 2px solid color-mix(in oklab, var(--color-primary) 44%, white 56%);
+  }
+
+  .scene-growth .growth-path {
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    top: 58%;
+    height: 2px;
+    background: color-mix(in oklab, var(--color-accent) 68%, var(--color-primary) 32%);
+    transform: rotate(-21deg);
+    transform-origin: left;
+  }
+
+  .scene-growth .gd-1 { top: 60%; left: 18%; }
+  .scene-growth .gd-2 { top: 46%; left: 50%; }
+  .scene-growth .gd-3 { top: 32%; left: 78%; }
+
+  @keyframes operating-wave {
+    0% { transform: scaleX(0.82); opacity: 0.46; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes operating-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent) 56%, transparent); }
+    100% { box-shadow: 0 0 0 12px color-mix(in oklab, var(--color-accent) 8%, transparent); }
+  }
+
+  @keyframes operating-bar {
+    0% { transform: scaleY(0.86); }
+    100% { transform: scaleY(1); }
+  }
+
+  @keyframes operating-link {
+    0% { opacity: 0.46; }
+    100% { opacity: 0.96; }
   }
 
   @media (min-width: 1024px) {
@@ -667,6 +883,10 @@
       padding: 30px 24px 28px;
     }
 
+    .operating-visual-board {
+      min-height: 190px;
+    }
+
     .operating-detail-title {
       font-size: 24px;
       line-height: 1.28;
@@ -693,6 +913,15 @@
   @media (prefers-reduced-motion: reduce) {
     .operating-detail-panel,
     .operating-step-button {
+      transition: none;
+      animation: none;
+    }
+
+    .operating-visual-scene,
+    .scene-demand .wave,
+    .scene-demand .pulse-dot,
+    .scene-profit .bar,
+    .scene-supply .node-link {
       transition: none;
       animation: none;
     }
