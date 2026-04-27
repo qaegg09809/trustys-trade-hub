@@ -141,13 +141,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-primary py-5 text-primary-foreground">
+      <section className="border-b border-border/70 bg-primary py-4 text-primary-foreground md:py-5">
         <div className="mx-auto grid w-full max-w-[1240px] gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           {trustItems.map((item, idx) => {
             return (
               <div
                 key={item}
-                className={`flex min-h-12 items-center gap-3 px-1 text-sm font-semibold ${idx < trustItems.length - 1 ? "lg:border-r lg:border-primary-foreground/14" : ""}`}
+                className={`flex min-h-14 items-center gap-3 px-2 text-[13px] font-semibold tracking-[0.01em] text-primary-foreground/96 md:text-sm ${idx < trustItems.length - 1 ? "lg:border-r lg:border-primary-foreground/18" : ""}`}
               >
                 <span className="inline-block h-1.5 w-8 bg-accent" aria-hidden="true" />
                 <span>{item}</span>
