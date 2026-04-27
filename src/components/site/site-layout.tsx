@@ -37,11 +37,13 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
   const altLanguage: SiteLanguage = isArabic ? "en" : "ar";
   const activeLogo = isArabic ? logoAr : logoEn;
   const verificationLabel = isArabic ? "يرجى التواصل عبر نموذج الاتصال" : "Please contact us via the contact form";
+  const contactDetails = t.contactDetails;
   const contactLines = [
-    `${isArabic ? "الهاتف" : "Phone"}: ${verificationLabel}`,
-    `${isArabic ? "البريد الإلكتروني" : "Email"}: ${verificationLabel}`,
-    `${isArabic ? "العنوان" : "Address"}: ${verificationLabel}`,
-    `${isArabic ? "منصات التواصل" : "Social Platforms"}: ${verificationLabel}`,
+    `${isArabic ? "الهاتف" : "Phone"}: ${contactDetails.phone || verificationLabel}`,
+    `${isArabic ? "البريد الإلكتروني" : "Email"}: ${contactDetails.email || verificationLabel}`,
+    `${isArabic ? "الموقع الإلكتروني" : "Website"}: ${contactDetails.website || verificationLabel}`,
+    `${isArabic ? "العنوان" : "Address"}: ${contactDetails.address || verificationLabel}`,
+    `${isArabic ? "منصات التواصل" : "Social Platforms"}: ${contactDetails.social || verificationLabel}`,
   ];
 
   return (
