@@ -311,19 +311,20 @@
     position: relative;
     overflow: hidden;
     border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 36%, transparent);
+    border-radius: 8px;
     background:
       linear-gradient(
         165deg,
-        color-mix(in oklab, var(--color-primary) 52%, transparent) 0%,
-        color-mix(in oklab, var(--color-secondary) 30%, transparent) 52%,
-        color-mix(in oklab, var(--color-primary) 58%, transparent) 100%
+        color-mix(in oklab, var(--color-primary) 10%, transparent) 0%,
+        color-mix(in oklab, var(--color-secondary) 8%, transparent) 52%,
+        color-mix(in oklab, var(--color-primary) 12%, transparent) 100%
       );
     box-shadow:
       inset 0 1px 1px color-mix(in oklab, var(--color-primary-foreground) 30%, transparent),
       inset 0 -1px 0 color-mix(in oklab, var(--color-primary-foreground) 18%, transparent),
       0 28px 64px -34px color-mix(in oklab, var(--color-primary) 68%, transparent);
-    backdrop-filter: blur(10px) saturate(110%);
-    -webkit-backdrop-filter: blur(10px) saturate(110%);
+    backdrop-filter: blur(6px) saturate(105%);
+    -webkit-backdrop-filter: blur(6px) saturate(105%);
   }
 
   .operating-stage-panel::before {
@@ -341,13 +342,14 @@
   }
 
   .operating-criterion-card {
-    background: color-mix(in oklab, var(--color-primary) 48%, transparent);
-    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 34%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 12%, transparent);
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 42%, transparent);
+    border-radius: 8px;
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, var(--color-primary-foreground) 24%, transparent),
       0 18px 42px -24px color-mix(in oklab, var(--color-primary) 66%, transparent);
-    backdrop-filter: blur(10px) saturate(108%);
-    -webkit-backdrop-filter: blur(10px) saturate(108%);
+    backdrop-filter: blur(6px) saturate(104%);
+    -webkit-backdrop-filter: blur(6px) saturate(104%);
   }
 
   .premium-card {
