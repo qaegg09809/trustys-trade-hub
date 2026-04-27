@@ -46,7 +46,7 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
 
   return (
     <div dir={t.dir} lang={language} className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 border-b border-primary/16 bg-background/58 backdrop-blur-[20px]">
+      <header className="sticky top-0 z-50 border-b border-[var(--line-soft)] bg-background/72 backdrop-blur-[20px]">
         <div className="yansab-container flex h-[5.5rem] items-center justify-between gap-4">
           <Link to="/" search={{ lang: language }} className="inline-flex shrink-0 items-center">
             <img
@@ -57,13 +57,14 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg-strong)] px-2 py-1.5 shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] lg:flex">
+          <nav className="hidden flex-1 items-center justify-center lg:flex">
+            <div className="inline-flex min-h-12 items-center gap-1 rounded-full border border-[var(--line-soft)] bg-[var(--glass-bg-strong)] px-2 py-1.5 shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)]">
             {t.nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 search={{ lang: language }}
-                className="relative rounded-full px-4 py-2 text-sm font-semibold text-primary/92 transition-all duration-250 hover:bg-[var(--glass-highlight)] hover:text-primary"
+                  className="relative rounded-full px-4 py-2 text-sm font-semibold text-primary/92 transition-all duration-250 hover:bg-[var(--glass-highlight)] hover:text-primary"
                 activeProps={{
                   className:
                     "bg-[var(--glass-highlight)] text-primary shadow-[var(--shadow-soft)] before:absolute before:left-1/2 before:top-1 before:h-0.5 before:w-8 before:-translate-x-1/2 before:bg-accent before:content-['']",
@@ -72,21 +73,22 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
                 {item.label}
               </Link>
             ))}
+            </div>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-             <div className="hidden h-10 items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg-strong)] p-1 shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] sm:flex">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+             <div className="hidden h-10 items-center rounded-full border border-[var(--line-soft)] bg-[var(--glass-bg-strong)] p-1 shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] sm:flex">
               <Link
                 to={location.pathname}
                 search={{ lang: "en" }}
-                   className={`inline-flex h-8 items-center justify-center rounded-full px-3 text-xs font-semibold transition-all ${!isArabic ? "bg-[var(--glass-highlight)] text-primary shadow-[var(--shadow-soft)]" : "text-primary/78 hover:bg-[var(--glass-highlight)] hover:text-primary"}`}
+                   className={`inline-flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-xs font-semibold transition-all ${!isArabic ? "bg-[var(--glass-highlight)] text-primary shadow-[var(--shadow-soft)]" : "text-primary/78 hover:bg-[var(--glass-highlight)] hover:text-primary"}`}
               >
                 EN
               </Link>
               <Link
                 to={location.pathname}
                 search={{ lang: "ar" }}
-                   className={`inline-flex h-8 items-center justify-center rounded-full px-3 text-xs font-semibold transition-all ${isArabic ? "bg-[var(--glass-highlight)] text-primary shadow-[var(--shadow-soft)]" : "text-primary/78 hover:bg-[var(--glass-highlight)] hover:text-primary"}`}
+                   className={`inline-flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-xs font-semibold transition-all ${isArabic ? "bg-[var(--glass-highlight)] text-primary shadow-[var(--shadow-soft)]" : "text-primary/78 hover:bg-[var(--glass-highlight)] hover:text-primary"}`}
               >
                 AR
               </Link>
@@ -95,12 +97,12 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
             <Link
               to={location.pathname}
               search={{ lang: altLanguage }}
-              className="inline-flex h-10 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg-strong)] px-3 text-sm font-semibold text-primary shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] transition-all duration-250 hover:bg-[var(--glass-highlight)] sm:hidden"
+              className="inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-[var(--line-soft)] bg-[var(--glass-bg-strong)] px-3 text-sm font-semibold text-primary shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] transition-all duration-250 hover:bg-[var(--glass-highlight)] sm:hidden"
             >
               {altLanguage.toUpperCase()}
             </Link>
 
-            <Button asChild className="hidden min-w-32 sm:inline-flex" size="default">
+            <Button asChild className="hidden min-w-36 sm:inline-flex" size="default">
               <Link to="/contact" search={{ lang: language }}>
                 {t.ctaPrimary}
               </Link>
@@ -111,7 +113,7 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
                 <Button
                   variant="outline"
                   size="icon"
-                   className="border-[var(--glass-border)] bg-[var(--glass-bg-strong)] text-primary shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] lg:hidden"
+                    className="border-[var(--line-soft)] bg-[var(--glass-bg-strong)] text-primary shadow-[var(--shadow-glass)] backdrop-blur-[calc(var(--glass-blur)+2px)] lg:hidden"
                 >
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">{isArabic ? "فتح القائمة" : "Open menu"}</span>
@@ -119,7 +121,7 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
               </SheetTrigger>
               <SheetContent
                 side={isArabic ? "left" : "right"}
-                className="w-[90%] border-[var(--glass-border)] bg-background/82 backdrop-blur-[22px] sm:max-w-sm"
+                  className="w-[90%] border-[var(--line-soft)] bg-background/82 backdrop-blur-[22px] sm:max-w-sm"
               >
                 <SheetHeader className="border-b border-border/70 pb-4">
                   <SheetTitle>
