@@ -16,6 +16,7 @@ import serviceProcurement from "@/assets/yansab-service-procurement.jpg";
 import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination.jpg";
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
+import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -206,15 +207,15 @@ function HomePage() {
 
       <section className="relative isolate overflow-hidden border-b border-border/70 bg-background py-14 md:py-20">
         <img src={boardroomVisual} alt={isArabic ? "نموذج التشغيل" : "Operating model background"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
-        <div className="pointer-events-none absolute inset-0 bg-primary/80" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-primary/84" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(124deg,color-mix(in_oklab,var(--color-primary)_74%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_40%,transparent)_52%,color-mix(in_oklab,var(--color-primary)_86%,transparent)_100%)]" aria-hidden="true" />
 
         <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1080px] rounded-[6px] p-6 md:p-9 lg:p-10">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 md:gap-3">
@@ -242,18 +243,21 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-background py-14 md:py-18">
+      <section className="section-bridge section-band-brand relative isolate overflow-hidden border-b border-border/70 py-14 md:py-18 text-primary-foreground">
+        <img src={logisticsVisual} alt={isArabic ? "مشهد لوجستي" : "Logistics network visual"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
+        <div className="absolute inset-0 bg-primary/80" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(160deg,color-mix(in_oklab,var(--color-primary)_74%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_52%,transparent)_45%,color-mix(in_oklab,var(--color-primary)_88%,transparent)_100%)]" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-primary md:text-5xl">{t.home.whyTitle}</h2>
+          <div className="relative text-center">
+            <h2 className="text-4xl font-bold text-primary-foreground md:text-5xl">{t.home.whyTitle}</h2>
             <span className="mx-auto mt-3 block h-1 w-12 bg-accent" aria-hidden="true" />
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="relative mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {t.home.whyBullets.map((item) => (
-              <div key={item} className="premium-card px-5 py-6 text-center">
+              <div key={item} className="premium-card border-primary-foreground/24 bg-[color-mix(in_oklab,var(--color-card)_86%,var(--color-primary)_14%)] px-5 py-6 text-center">
                 <span className="mx-auto block h-1 w-10 bg-accent" aria-hidden="true" />
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{item}</p>
+                <p className="mt-4 text-sm leading-7 text-primary">{item}</p>
               </div>
             ))}
           </div>

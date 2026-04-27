@@ -35,17 +35,17 @@
 
 :root {
   --radius: 0.5rem;
-  --background: #f5f7fb;
+  --background: #ebf1fa;
   --foreground: #111827;
-  --card: #ffffff;
+  --card: #f7f9fd;
   --card-foreground: #111827;
-  --popover: #ffffff;
+  --popover: #f7f9fd;
   --popover-foreground: #111827;
   --primary: #264086;
   --primary-foreground: #ffffff;
   --secondary: #1d71b8;
   --secondary-foreground: #ffffff;
-  --muted: #f1f3f7;
+  --muted: #e2e9f6;
   --muted-foreground: #51627d;
   --accent: #f3961b;
   --accent-foreground: #111827;
@@ -54,9 +54,9 @@
   --border: #d9dee9;
   --input: #d9dee9;
   --ring: #1d71b8;
-  --surface-1: #ffffff;
-  --surface-2: #f3f5f9;
-  --panel-soft: #edf2fb;
+  --surface-1: #f7f9fd;
+  --surface-2: #e9eff9;
+  --panel-soft: #dde7f7;
   --text-strong: #111827;
   --text-body: #344154;
   --text-muted: #718096;
@@ -65,8 +65,8 @@
   --font-arabic-fallback: "Tahoma", "Arial", sans-serif;
   --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
-  --glass-bg: color-mix(in oklab, white 78%, transparent);
-  --glass-bg-strong: color-mix(in oklab, white 88%, transparent);
+  --glass-bg: color-mix(in oklab, white 66%, var(--color-primary) 34%);
+  --glass-bg-strong: color-mix(in oklab, white 78%, var(--color-primary) 22%);
   --glass-border: color-mix(in oklab, var(--color-primary) 28%, white 30%);
   --glass-highlight: color-mix(in oklab, white 84%, transparent);
   --glass-blur: 18px;
@@ -79,13 +79,13 @@
   --shadow-strong: 0 34px 70px -34px color-mix(in oklab, var(--primary) 48%, transparent);
   --shadow-floating: 0 28px 56px -30px color-mix(in oklab, var(--primary) 52%, transparent);
   --shadow-elevated: 0 48px 92px -44px color-mix(in oklab, var(--primary) 58%, transparent);
-  --shadow-card-premium: 0 16px 38px -24px color-mix(in oklab, var(--primary) 42%, transparent);
+  --shadow-card-premium: 0 18px 40px -24px color-mix(in oklab, var(--primary) 44%, transparent);
   --shadow-card-premium-hover: 0 28px 58px -30px color-mix(in oklab, var(--primary) 54%, transparent);
   --shadow-focus: 0 0 0 3px color-mix(in oklab, var(--accent) 38%, transparent);
   --line-soft: color-mix(in oklab, var(--primary) 15%, white 50%);
   --line-strong: color-mix(in oklab, var(--primary) 26%, white 30%);
-  --panel-premium: color-mix(in oklab, white 93%, var(--primary) 7%);
-  --panel-premium-strong: color-mix(in oklab, white 89%, var(--primary) 11%);
+  --panel-premium: color-mix(in oklab, white 84%, var(--primary) 16%);
+  --panel-premium-strong: color-mix(in oklab, white 76%, var(--primary) 24%);
   --operating-stage-bg: color-mix(in oklab, white 86%, var(--color-primary) 14%);
   --operating-card-bg: color-mix(in oklab, white 95%, var(--color-primary) 5%);
   --operating-card-border: color-mix(in oklab, var(--color-secondary) 22%, white 44%);
@@ -169,9 +169,32 @@
   .section-shell-premium {
     background: linear-gradient(
       180deg,
-      color-mix(in oklab, var(--panel-premium) 92%, transparent) 0%,
-      color-mix(in oklab, var(--panel-premium-strong) 74%, transparent) 100%
+      color-mix(in oklab, var(--panel-premium) 96%, transparent) 0%,
+      color-mix(in oklab, var(--panel-premium-strong) 82%, transparent) 100%
     );
+  }
+
+  .section-band-brand {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--primary) 94%, white 6%) 0%,
+        color-mix(in oklab, var(--secondary) 88%, var(--primary) 12%) 100%
+      );
+  }
+
+  .section-bridge {
+    position: relative;
+  }
+
+  .section-bridge::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -18px;
+    height: 36px;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 28%, transparent) 0%, transparent 100%);
+    pointer-events: none;
   }
 
   .section-hero {
@@ -238,7 +261,7 @@
 
   .premium-card {
     border: 1px solid var(--line-soft);
-    background-color: var(--color-card);
+    background-color: color-mix(in oklab, var(--color-card) 92%, var(--primary) 8%);
     box-shadow: var(--shadow-card-premium);
     transition: transform 250ms var(--ease-emphasis), box-shadow 250ms var(--ease-emphasis), border-color 250ms var(--ease-emphasis);
   }
