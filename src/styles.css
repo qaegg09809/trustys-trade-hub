@@ -46,7 +46,7 @@
   --secondary: #1d71b8;
   --secondary-foreground: #ffffff;
   --muted: #e2e9f6;
-  --muted-foreground: #51627d;
+  --muted-foreground: #3f5a88;
   --accent: #f3961b;
   --accent-foreground: #111827;
   --destructive: oklch(0.6 0.22 30);
@@ -82,8 +82,8 @@
   --shadow-card-premium: 0 18px 40px -24px color-mix(in oklab, var(--primary) 44%, transparent);
   --shadow-card-premium-hover: 0 28px 58px -30px color-mix(in oklab, var(--primary) 54%, transparent);
   --shadow-focus: 0 0 0 3px color-mix(in oklab, var(--accent) 38%, transparent);
-  --line-soft: color-mix(in oklab, var(--primary) 15%, white 50%);
-  --line-strong: color-mix(in oklab, var(--primary) 26%, white 30%);
+  --line-soft: color-mix(in oklab, var(--primary) 18%, white 52%);
+  --line-strong: color-mix(in oklab, var(--primary) 30%, white 30%);
   --panel-premium: color-mix(in oklab, white 84%, var(--primary) 16%);
   --panel-premium-strong: color-mix(in oklab, white 76%, var(--primary) 24%);
   --operating-stage-bg: color-mix(in oklab, white 86%, var(--color-primary) 14%);
@@ -304,12 +304,12 @@
   }
 
   .operating-model-shell {
-    background: color-mix(in oklab, var(--color-muted) 74%, var(--color-background) 26%);
+    background: color-mix(in oklab, var(--color-background) 90%, var(--color-primary) 10%);
   }
 
   .operating-criterion-card {
-    background: color-mix(in oklab, var(--color-card) 97%, var(--color-muted) 3%);
-    border: 1px solid color-mix(in oklab, var(--color-primary) 12%, var(--color-background) 88%);
+    background: color-mix(in oklab, var(--color-card) 95%, var(--color-primary) 5%);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-background) 82%);
     border-radius: 8px;
     box-shadow: none;
   }
@@ -328,9 +328,9 @@
   }
 
   .service-showcase-card {
-    border: 1px solid color-mix(in oklab, var(--color-primary) 10%, var(--color-background) 90%);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-background) 82%);
     border-radius: 6px;
-    background: color-mix(in oklab, var(--color-card) 95%, var(--color-muted) 5%);
+    background: color-mix(in oklab, var(--color-card) 96%, var(--color-primary) 4%);
     box-shadow: none;
   }
 
