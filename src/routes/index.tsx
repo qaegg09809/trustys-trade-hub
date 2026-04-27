@@ -207,15 +207,15 @@ function HomePage() {
 
       <section className="relative isolate overflow-hidden border-b border-border/70 bg-background py-14 md:py-20">
         <img src={boardroomVisual} alt={isArabic ? "نموذج التشغيل" : "Operating model background"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
-        <div className="pointer-events-none absolute inset-0 bg-primary/84" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(124deg,color-mix(in_oklab,var(--color-primary)_74%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_40%,transparent)_52%,color-mix(in_oklab,var(--color-primary)_86%,transparent)_100%)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-primary/90" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(124deg,color-mix(in_oklab,var(--color-primary)_82%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_56%,transparent)_52%,color-mix(in_oklab,var(--color-primary)_92%,transparent)_100%)]" aria-hidden="true" />
 
         <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage mx-auto max-w-[1080px] rounded-[6px] p-6 md:p-9 lg:p-10">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground/92 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 md:gap-3">
@@ -230,11 +230,11 @@ function HomePage() {
                       <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-accent/70 bg-primary/72 text-[10px] font-bold text-accent">
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-accent/70 bg-primary/52 text-[10px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
                   </li>
                 );
               })}

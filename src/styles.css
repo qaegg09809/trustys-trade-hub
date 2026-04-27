@@ -230,8 +230,8 @@
   }
 
   .operating-stage {
-    background-color: var(--operating-stage-bg);
-    border: 1px solid var(--line-strong);
+    background-color: color-mix(in oklab, var(--color-primary) 78%, var(--color-secondary) 22%);
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 20%, transparent);
     box-shadow: var(--shadow-strong);
     backdrop-filter: blur(calc(var(--glass-blur) + 2px));
     margin-top: 0;
@@ -253,8 +253,8 @@
   }
 
   .operating-criterion-card {
-    background-color: var(--operating-card-bg);
-    border: 1px solid var(--operating-card-border);
+    background-color: color-mix(in oklab, var(--color-primary-foreground) 10%, var(--color-primary) 90%);
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 18%, transparent);
     box-shadow: var(--shadow-card-premium);
     backdrop-filter: blur(calc(var(--glass-blur) - 3px));
   }
@@ -273,9 +273,9 @@
   }
 
   .premium-chip {
-    border: 1px solid var(--line-soft);
-    background-color: color-mix(in oklab, white 88%, var(--primary) 12%);
-    color: var(--primary);
+    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 28%, transparent);
+    background-color: color-mix(in oklab, var(--color-primary-foreground) 16%, var(--color-primary) 84%);
+    color: var(--color-primary-foreground);
   }
 
   .section-eyebrow {
