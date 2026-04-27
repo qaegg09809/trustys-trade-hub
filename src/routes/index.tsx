@@ -194,16 +194,16 @@ function HomePage() {
               return (
                 <Card
                   key={service.title ?? idx}
-                  className="premium-card group flex h-full flex-col overflow-hidden bg-card"
+                  className="service-showcase-card flex h-full flex-col overflow-hidden"
                 >
-                  <div className="relative h-40 border-b border-border/80">
+                  <div className="relative h-40">
                     <img src={service.img} alt={service.title ?? "service image"} className="h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
                     <div className="absolute inset-x-0 bottom-0 h-1 bg-accent" aria-hidden="true" />
                   </div>
                   <CardContent className="flex flex-1 flex-col p-5">
-                    <h3 className="text-xl font-semibold leading-snug text-primary">{service.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-foreground/84">{service.body}</p>
-                    <span className="mt-4 inline-flex items-center text-sm font-semibold text-accent">{isArabic ? "اعرف المزيد" : "Learn more"}</span>
+                    <h3 className="text-[33px] font-semibold leading-[1.22] text-primary md:text-[35px]">{service.title}</h3>
+                    <p className="mt-3 text-[19px] leading-8 text-muted-foreground">{service.body}</p>
+                    <span className="mt-4 inline-flex items-center text-[19px] font-semibold text-accent">{isArabic ? "اعرف المزيد" : "Learn more"}</span>
                   </CardContent>
                 </Card>
               );
