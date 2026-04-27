@@ -209,11 +209,11 @@ function HomePage() {
 
       <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_92%,var(--color-primary)_8%)] py-14 md:py-20">
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage liquid-glass-yansab-strong mx-auto max-w-[1080px] rounded-[8px] p-6 md:p-9 lg:p-10">
+          <div className="operating-stage liquid-glass-yansab-strong mx-auto max-w-[1080px] rounded-[8px] border border-primary-foreground/24 p-6 md:p-9 lg:p-10">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground/90 md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.28)] md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -222,7 +222,7 @@ function HomePage() {
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card liquid-glass-yansab relative flex min-h-[150px] flex-col rounded-[8px] p-4"
+                    className="operating-criterion-card relative flex min-h-[150px] flex-col rounded-[8px] p-4"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full text-primary-foreground">
@@ -232,7 +232,7 @@ function HomePage() {
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground/98">{item}</p>
                   </li>
                 );
               })}
