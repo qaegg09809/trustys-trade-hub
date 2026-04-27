@@ -185,3 +185,70 @@ export function ContactForm({
     </Card>
   );
 }
+
+export function PartnerForm({
+  title,
+  intro,
+  fields,
+}: {
+  title: string;
+  intro: string;
+  fields: {
+    name: string;
+    company: string;
+    country: string;
+    businessType: string;
+    phone: string;
+    email: string;
+    message: string;
+    submit: string;
+  };
+}) {
+  return (
+    <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
+      <CardContent className="pt-6">
+        <h3 className="text-xl font-semibold text-primary">{title}</h3>
+        <p className="mt-3 text-sm leading-7 text-muted-foreground">{intro}</p>
+        <form className="mt-6 grid gap-5 md:grid-cols-2" onSubmit={(event) => event.preventDefault()}>
+          <div className="space-y-2">
+            <Label htmlFor="partner-name">{fields.name}</Label>
+            <Input id="partner-name" placeholder={fields.name} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="partner-company">{fields.company}</Label>
+            <Input id="partner-company" placeholder={fields.company} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="partner-country">{fields.country}</Label>
+            <Input id="partner-country" placeholder={fields.country} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="partner-business-type">{fields.businessType}</Label>
+            <Input id="partner-business-type" placeholder={fields.businessType} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="partner-phone">{fields.phone}</Label>
+            <Input id="partner-phone" placeholder={fields.phone} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="partner-email">{fields.email}</Label>
+            <Input id="partner-email" type="email" placeholder={fields.email} required />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <Label htmlFor="partner-message">{fields.message}</Label>
+            <textarea
+              id="partner-message"
+              rows={5}
+              required
+              className="w-full rounded-sm border border-input bg-background p-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus-visible:border-primary/52 focus-visible:ring-0 focus-visible:shadow-[var(--shadow-focus)]"
+              placeholder={fields.message}
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Button type="submit">{fields.submit}</Button>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
