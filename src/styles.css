@@ -314,6 +314,18 @@
     box-shadow: none;
   }
 
+  .brand-subtext {
+    color: color-mix(in oklab, var(--color-primary) 72%, var(--color-secondary) 28%);
+  }
+
+  .operating-criterion-line {
+    display: block;
+    width: 56px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
   .premium-card {
     border: 1px solid var(--line-soft);
     background-color: color-mix(in oklab, var(--color-card) 92%, var(--primary) 8%);
