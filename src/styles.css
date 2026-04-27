@@ -344,6 +344,18 @@
     background: #ffffff;
     padding: 24px;
     box-shadow: 0 4px 12px -8px color-mix(in oklab, var(--color-primary) 28%, transparent);
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      transform 420ms var(--ease-emphasis),
+      opacity 420ms var(--ease-emphasis),
+      box-shadow 280ms var(--ease-emphasis);
+    transition-delay: calc(var(--step) * 90ms);
+  }
+
+  .operating-criterion-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .operating-card-top {
@@ -390,6 +402,10 @@
     background: var(--color-accent);
   }
 
+  .operating-criterion-card:hover {
+    box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--color-primary) 34%, transparent);
+  }
+
   @media (min-width: 640px) {
     .operating-criteria-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -425,6 +441,15 @@
 
     .operating-criterion-card {
       margin-top: calc(var(--step) * 14px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .operating-criterion-card,
+    .operating-criterion-card.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 
