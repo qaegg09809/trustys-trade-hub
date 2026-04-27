@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -226,15 +227,14 @@ function HomePage() {
                 return (
                   <li
                     key={item}
-                    className={`operating-criterion-card operating-step-${index}`}
+                    className="operating-criterion-card"
+                    style={{ "--step": index } as CSSProperties}
                   >
                     <div className="operating-card-top">
                       <span className="operating-card-icon">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="operating-card-order">
-                        {index + 1}
-                      </span>
+                      <span className="operating-card-order">{String(index + 1).padStart(2, "0")}. </span>
                     </div>
                     <p className="operating-card-title">{item}</p>
                     <span className="operating-criterion-line" aria-hidden="true" />
