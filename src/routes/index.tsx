@@ -207,13 +207,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="operating-model-section border-b border-border/70 py-14 md:py-20">
+      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_92%,var(--color-primary)_8%)] py-14 md:py-20">
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage liquid-glass-yansab-strong mx-auto max-w-[1080px] rounded-[8px] p-6 md:p-9 lg:p-10">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="operating-model-title mt-5 text-4xl font-bold leading-[1.08] md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="operating-model-body mt-5 text-sm leading-7 md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground/90 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -228,11 +228,11 @@ function HomePage() {
                       <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full text-primary-foreground">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--operating-highlight)_74%,transparent)] bg-[color-mix(in_oklab,var(--operating-highlight)_14%,var(--color-primary)_86%)] text-[11px] font-bold text-[var(--operating-highlight)]">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-[color-mix(in_oklab,var(--color-accent)_18%,var(--color-primary)_82%)] text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="operating-model-item-text mt-4 text-center text-sm font-semibold leading-6">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
                   </li>
                 );
               })}
