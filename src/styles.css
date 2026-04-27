@@ -310,8 +310,8 @@
   .operating-stage-panel {
     position: relative;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 44%, transparent);
-    border-radius: 8px;
+    border: none;
+    border-radius: 0;
     background:
       linear-gradient(
         165deg,
@@ -335,9 +335,9 @@
     border-radius: inherit;
     background: linear-gradient(
       180deg,
-      color-mix(in oklab, var(--color-primary-foreground) 34%, transparent) 0%,
+      color-mix(in oklab, var(--color-primary-foreground) 12%, transparent) 0%,
       transparent 42%,
-      color-mix(in oklab, var(--color-primary-foreground) 20%, transparent) 100%
+      color-mix(in oklab, var(--color-primary-foreground) 10%, transparent) 100%
     );
   }
 
