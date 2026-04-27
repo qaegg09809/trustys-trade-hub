@@ -12,6 +12,7 @@ type ServiceCard = {
 
 type BrandCard = {
   name: string;
+  website?: string;
   tagline: string;
   category: string;
   positioning: string;
@@ -361,6 +362,7 @@ const englishContent: LocaleContent = {
     cards: [
       {
         name: "Somitta",
+        website: "https://www.somitta.com/",
         tagline: "Feel The Sudanese Sense",
         category: "Perfumes, incense, and beauty products",
         positioning: "Built around authenticity, sensory richness, and culturally rooted product identity.",
@@ -576,6 +578,7 @@ const arabicContent: LocaleContent = {
     cards: [
       {
         name: "Somitta",
+        website: "https://www.somitta.com/",
         tagline: "Feel The Sudanese Sense",
         category: "العطور والبخور ومنتجات الجمال",
         positioning: "مبنية على الأصالة وثراء التجربة الحسية وهوية مستلهمة من الجذور الثقافية.",

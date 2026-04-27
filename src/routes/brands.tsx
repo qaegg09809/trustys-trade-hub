@@ -59,7 +59,20 @@ function BrandsPage() {
                 {brand.status !== "missing" ? (
                   <img src={somittaLogo} alt="Somitta logo" className="h-24 w-auto object-contain" loading="lazy" />
                 ) : null}
-                <h2 className="mt-4 text-2xl font-semibold text-primary">{brand.name}</h2>
+                {brand.website ? (
+                  <h2 className="mt-4 text-2xl font-semibold text-primary">
+                    <a
+                      href={brand.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+                    >
+                      {brand.name}
+                    </a>
+                  </h2>
+                ) : (
+                  <h2 className="mt-4 text-2xl font-semibold text-primary">{brand.name}</h2>
+                )}
                 <p className="mt-2 text-sm font-semibold text-accent">{brand.tagline}</p>
                 <p className="mt-3 text-sm text-foreground">{brand.category}</p>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{brand.positioning}</p>
