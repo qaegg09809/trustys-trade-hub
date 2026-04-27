@@ -91,13 +91,17 @@ function HomePage() {
         />
         <div className="absolute inset-0 bg-primary/58" aria-hidden="true" />
         <div
-          className="absolute inset-0 bg-[linear-gradient(112deg,color-mix(in_oklab,var(--color-primary)_82%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_60%,transparent)_44%,color-mix(in_oklab,var(--color-secondary)_52%,transparent)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(110deg,color-mix(in_oklab,var(--color-primary)_88%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_72%,transparent)_42%,color-mix(in_oklab,var(--color-secondary)_58%,transparent)_100%)]"
           aria-hidden="true"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--color-primary)_12%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_54%,transparent)_100%)]" aria-hidden="true" />
 
         <div className="yansab-container section-hero relative">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
+              <p className="hero-eyebrow inline-flex w-fit items-center rounded-sm px-3 py-1.5 text-[11px] font-semibold uppercase">
+                {t.home.heroKicker}
+              </p>
               <h1 className="max-w-[13ch] text-[44px] font-bold leading-[1.02] text-primary-foreground drop-shadow-[0_18px_42px_rgba(0,0,0,0.56)] md:text-[72px]">
                 {t.home.heroTitle}
               </h1>
@@ -119,7 +123,7 @@ function HomePage() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="h-12 min-w-40 border-primary-foreground/45 bg-primary-foreground/92 px-8 text-[15px] font-semibold text-primary hover:bg-primary-foreground"
+                  className="h-12 min-w-40 border-primary-foreground/55 bg-primary-foreground/96 px-8 text-[15px] font-semibold text-primary hover:bg-primary-foreground"
                 >
                   <Link to="/about" search={{ lang: language }}>
                     {t.home.introCta}
@@ -129,7 +133,7 @@ function HomePage() {
             </div>
 
             <div className="lg:col-span-4">
-              <div className="rounded-sm border border-primary-foreground/36 bg-primary/44 p-5 text-primary-foreground shadow-[var(--shadow-floating)] backdrop-blur-2xl md:p-6">
+              <div className="hero-foundation-panel rounded-sm p-5 text-primary-foreground md:p-6">
                 <h2 className="text-sm font-bold uppercase tracking-normal text-primary-foreground">{isArabic ? "أساس العمل" : "Operating foundation"}</h2>
                 <ul className="mt-4 space-y-3">
                   {t.home.heroHighlights.map((item) => (
@@ -177,7 +181,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-muted py-14 md:py-20">
+      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_80%,var(--color-muted)_20%)] py-14 md:py-20">
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-primary md:text-5xl">{t.home.scopeTitle}</h2>
@@ -197,7 +201,7 @@ function HomePage() {
                   </div>
                   <CardContent className="flex flex-1 flex-col p-5">
                     <h3 className="text-xl font-semibold leading-snug text-primary">{service.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{service.body}</p>
+                    <p className="mt-3 text-sm leading-7 text-foreground/84">{service.body}</p>
                     <span className="mt-4 inline-flex items-center text-sm font-semibold text-accent">{isArabic ? "اعرف المزيد" : "Learn more"}</span>
                   </CardContent>
                 </Card>
@@ -207,13 +211,16 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-[color-mix(in_oklab,var(--color-background)_92%,var(--color-primary)_8%)] py-14 md:py-20">
+      <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-14 md:py-20">
+        <img src={boardroomVisual} alt={isArabic ? "لقطة قاعة اجتماعات احترافية" : "Professional boardroom environment"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
+        <div className="absolute inset-0 bg-primary/86" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(164deg,color-mix(in_oklab,var(--color-primary)_88%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_42%,transparent)_50%,color-mix(in_oklab,var(--color-primary)_92%,transparent)_100%)]" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage liquid-glass-yansab-strong mx-auto max-w-[1080px] rounded-[8px] border border-primary-foreground/24 p-6 md:p-9 lg:p-10">
+          <div className="operating-stage operating-stage-panel mx-auto max-w-[1080px] rounded-[8px] p-6 md:p-9 lg:p-10">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
-              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.28)] md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground md:text-base">{t.home.operatingModelBody}</p>
+              <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] md:text-6xl">{t.home.operatingModelTitle}</h2>
+              <p className="mt-5 text-sm leading-7 text-primary-foreground/96 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -222,17 +229,17 @@ function HomePage() {
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card relative flex min-h-[150px] flex-col rounded-[8px] p-4"
+                    className="operating-criterion-card relative flex min-h-[164px] flex-col rounded-[8px] p-4"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="premium-chip inline-flex h-8 w-8 items-center justify-center rounded-full text-primary-foreground">
+                      <span className="premium-chip inline-flex h-9 w-9 items-center justify-center rounded-full text-primary-foreground">
                         <Icon className="h-4 w-4" />
                       </span>
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-[color-mix(in_oklab,var(--color-accent)_18%,var(--color-primary)_82%)] text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground/98">{item}</p>
+                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
                   </li>
                 );
               })}
@@ -253,9 +260,9 @@ function HomePage() {
 
           <div className="relative mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {t.home.whyBullets.map((item) => (
-              <div key={item} className="premium-card border-primary-foreground/24 bg-[color-mix(in_oklab,var(--color-card)_86%,var(--color-primary)_14%)] px-5 py-6 text-center">
+              <div key={item} className="premium-card border-primary-foreground/24 bg-[color-mix(in_oklab,var(--color-card)_90%,var(--color-primary)_10%)] px-5 py-6 text-center">
                 <span className="mx-auto block h-1 w-10 bg-accent" aria-hidden="true" />
-                <p className="mt-4 text-sm leading-7 text-primary">{item}</p>
+                <p className="mt-4 text-sm leading-7 text-foreground">{item}</p>
               </div>
             ))}
           </div>
