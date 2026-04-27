@@ -147,7 +147,6 @@ export function ContactForm({
             <Label htmlFor="inquiryType">{fields.inquiryType}</Label>
             <select
               id="inquiryType"
-              className="flex h-10 w-full border border-input bg-background px-3 text-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring"
               className="flex h-10 w-full rounded-sm border border-input bg-background px-3 text-sm text-foreground outline-none transition-all focus-visible:border-primary/52 focus-visible:ring-0 focus-visible:shadow-[var(--shadow-focus)]"
               defaultValue=""
               required
