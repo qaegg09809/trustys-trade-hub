@@ -100,6 +100,11 @@ function HomePage() {
   const activeOperatingTitle = t.home.operatingCriteria[activeOperatingStep] ?? "";
   const activeOperatingDescription = operatingDescriptions[activeOperatingStep] ?? "";
   const totalOperatingSteps = t.home.operatingCriteria.length;
+  const operatingVisualModes = ["demand", "profit", "supply", "compliance", "growth"] as const;
+  const activeOperatingMode = operatingVisualModes[activeOperatingStep] ?? "demand";
+  const activeOperatingSignals = isArabic
+    ? ["إشارة الطلب", "كثافة السوق", "جاهزية التنفيذ"]
+    : ["Demand signal", "Market intensity", "Execution readiness"];
 
   const handleOperatingStepNavigation = (index: number, key: string) => {
     if (key === "ArrowDown" || key === "ArrowRight") {
@@ -302,13 +307,70 @@ function HomePage() {
                 ))}
               </ol>
 
-              <article className="operating-detail-panel" id="operating-detail-panel" key={activeOperatingStep}>
+              <article className={`operating-detail-panel mode-${activeOperatingMode}`} id="operating-detail-panel" key={activeOperatingStep}>
                 <span className="operating-detail-icon" aria-hidden="true">
                   <ActiveIcon className="h-5 w-5" />
                 </span>
                 <span className="operating-detail-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
                 <h3 className="operating-detail-title">{activeOperatingTitle}</h3>
                 <p className="operating-detail-description">{activeOperatingDescription}</p>
+
+                <div className="operating-detail-signals" aria-label={isArabic ? "مؤشرات تشغيلية" : "Operational signals"}>
+                  {activeOperatingSignals.map((signal) => (
+                    <span key={signal} className="operating-signal-chip">
+                      {signal}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="operating-visual-board" aria-hidden="true">
+                  <div className="operating-visual-grid" />
+                  <div className="operating-visual-reflection" />
+
+                  <div className={`operating-visual-scene scene-demand ${activeOperatingMode === "demand" ? "is-active" : ""}`}>
+                    <span className="wave wave-1" />
+                    <span className="wave wave-2" />
+                    <span className="wave wave-3" />
+                    <span className="pulse-dot dot-1" />
+                    <span className="pulse-dot dot-2" />
+                    <span className="pulse-dot dot-3" />
+                  </div>
+
+                  <div className={`operating-visual-scene scene-profit ${activeOperatingMode === "profit" ? "is-active" : ""}`}>
+                    <span className="bar bar-1" />
+                    <span className="bar bar-2" />
+                    <span className="bar bar-3" />
+                    <span className="bar bar-4" />
+                    <span className="delta-line" />
+                  </div>
+
+                  <div className={`operating-visual-scene scene-supply ${activeOperatingMode === "supply" ? "is-active" : ""}`}>
+                    <span className="node node-a" />
+                    <span className="node node-b" />
+                    <span className="node node-c" />
+                    <span className="node node-d" />
+                    <span className="node-link link-ab" />
+                    <span className="node-link link-bc" />
+                    <span className="node-link link-cd" />
+                  </div>
+
+                  <div className={`operating-visual-scene scene-compliance ${activeOperatingMode === "compliance" ? "is-active" : ""}`}>
+                    <span className="doc doc-1" />
+                    <span className="doc doc-2" />
+                    <span className="doc doc-3" />
+                    <span className="check-point cp-1" />
+                    <span className="check-point cp-2" />
+                    <span className="check-point cp-3" />
+                  </div>
+
+                  <div className={`operating-visual-scene scene-growth ${activeOperatingMode === "growth" ? "is-active" : ""}`}>
+                    <span className="growth-grid" />
+                    <span className="growth-path" />
+                    <span className="growth-dot gd-1" />
+                    <span className="growth-dot gd-2" />
+                    <span className="growth-dot gd-3" />
+                  </div>
+                </div>
               </article>
             </div>
           </div>
