@@ -216,14 +216,14 @@ function HomePage() {
         <div className="absolute inset-0 bg-primary/86" aria-hidden="true" />
         <div className="absolute inset-0 bg-[linear-gradient(164deg,color-mix(in_oklab,var(--color-primary)_88%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_42%,transparent)_50%,color-mix(in_oklab,var(--color-primary)_92%,transparent)_100%)]" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
-          <div className="operating-stage operating-stage-panel mx-auto max-w-[1080px] rounded-[8px] p-6 md:p-9 lg:p-10">
+          <div className="operating-stage operating-stage-panel mx-auto max-w-[1120px] rounded-[8px] p-6 md:p-9 lg:p-10">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
               <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] md:text-6xl">{t.home.operatingModelTitle}</h2>
               <p className="mt-5 text-sm leading-7 text-primary-foreground/96 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
@@ -239,7 +239,7 @@ function HomePage() {
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-center text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
+                    <p className="mt-4 text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
                   </li>
                 );
               })}
