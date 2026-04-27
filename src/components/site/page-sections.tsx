@@ -21,7 +21,7 @@ export function ServiceCards({
         return (
           <Card
             key={card.title}
-            className="group relative h-full overflow-hidden border-primary/14 bg-card shadow-[var(--shadow-soft)] transition-all duration-300 hover:border-primary/34 hover:shadow-[var(--shadow-strong)]"
+            className="premium-card group relative h-full overflow-hidden bg-card"
           >
             {image ? (
               <div className="relative h-40 overflow-hidden border-b border-primary/12">
@@ -95,7 +95,7 @@ export function ProcessTimeline({
       {items.map((item, index) => (
         <li
           key={item.title}
-          className="border border-border bg-card p-5 shadow-[var(--shadow-soft)]"
+          className="premium-card p-5"
         >
           <p className="text-xs font-semibold uppercase text-accent">
             {isArabic ? `الخطوة ${index + 1}` : `Step ${index + 1}`}
@@ -148,6 +148,7 @@ export function ContactForm({
             <select
               id="inquiryType"
               className="flex h-10 w-full border border-input bg-background px-3 text-sm text-foreground outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+              className="flex h-10 w-full rounded-sm border border-input bg-background px-3 text-sm text-foreground outline-none transition-all focus-visible:border-primary/52 focus-visible:ring-0 focus-visible:shadow-[var(--shadow-focus)]"
               defaultValue=""
               required
             >
@@ -167,7 +168,7 @@ export function ContactForm({
               id="message"
               rows={5}
               required
-              className="w-full border border-input bg-background p-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full rounded-sm border border-input bg-background p-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus-visible:border-primary/52 focus-visible:ring-0 focus-visible:shadow-[var(--shadow-focus)]"
               placeholder={fields.message}
             />
           </div>
