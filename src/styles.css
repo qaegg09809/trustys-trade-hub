@@ -79,6 +79,16 @@
   --shadow-strong: 0 34px 70px -34px color-mix(in oklab, var(--primary) 48%, transparent);
   --shadow-floating: 0 28px 56px -30px color-mix(in oklab, var(--primary) 52%, transparent);
   --shadow-elevated: 0 48px 92px -44px color-mix(in oklab, var(--primary) 58%, transparent);
+  --shadow-card-premium: 0 16px 38px -24px color-mix(in oklab, var(--primary) 42%, transparent);
+  --shadow-card-premium-hover: 0 28px 58px -30px color-mix(in oklab, var(--primary) 54%, transparent);
+  --shadow-focus: 0 0 0 3px color-mix(in oklab, var(--accent) 38%, transparent);
+  --line-soft: color-mix(in oklab, var(--primary) 15%, white 50%);
+  --line-strong: color-mix(in oklab, var(--primary) 26%, white 30%);
+  --panel-premium: color-mix(in oklab, white 93%, var(--primary) 7%);
+  --panel-premium-strong: color-mix(in oklab, white 89%, var(--primary) 11%);
+  --operating-stage-bg: color-mix(in oklab, white 86%, var(--color-primary) 14%);
+  --operating-card-bg: color-mix(in oklab, white 95%, var(--color-primary) 5%);
+  --operating-card-border: color-mix(in oklab, var(--color-secondary) 22%, white 44%);
 }
 
 .dark {
@@ -156,6 +166,14 @@
     @apply border-b border-border/70 py-14 md:py-20 lg:py-24;
   }
 
+  .section-shell-premium {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--panel-premium) 92%, transparent) 0%,
+      color-mix(in oklab, var(--panel-premium-strong) 74%, transparent) 100%
+    );
+  }
+
   .section-hero {
     @apply py-16 md:py-24 lg:py-30;
   }
@@ -190,17 +208,51 @@
 
   .operating-stage {
     background-color: var(--operating-stage-bg);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--line-strong);
     box-shadow: var(--shadow-strong);
     backdrop-filter: blur(calc(var(--glass-blur) + 2px));
     margin-top: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .operating-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, white 52%, transparent) 0%,
+      transparent 40%,
+      color-mix(in oklab, var(--color-secondary) 8%, transparent) 100%
+    );
   }
 
   .operating-criterion-card {
     background-color: var(--operating-card-bg);
     border: 1px solid var(--operating-card-border);
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-card-premium);
     backdrop-filter: blur(calc(var(--glass-blur) - 3px));
+  }
+
+  .premium-card {
+    border: 1px solid var(--line-soft);
+    background-color: var(--color-card);
+    box-shadow: var(--shadow-card-premium);
+    transition: transform 250ms var(--ease-emphasis), box-shadow 250ms var(--ease-emphasis), border-color 250ms var(--ease-emphasis);
+  }
+
+  .premium-card:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-card-premium-hover);
+    transform: translateY(-2px);
+  }
+
+  .premium-chip {
+    border: 1px solid var(--line-soft);
+    background-color: color-mix(in oklab, white 88%, var(--primary) 12%);
+    color: var(--primary);
   }
 
   .section-eyebrow {
