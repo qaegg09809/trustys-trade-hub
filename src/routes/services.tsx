@@ -71,10 +71,7 @@ function ServicesPage() {
         <div className="absolute inset-0 bg-primary/82" aria-hidden="true" />
 
         <div className="yansab-container relative py-16 md:py-20">
-          <span className="section-eyebrow hero-eyebrow px-4 py-2">
-            {isArabic ? "الخدمات" : "Services"}
-          </span>
-          <h1 className="mt-6 max-w-[18ch] text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.services.pageTitle}</h1>
+          <h1 className="max-w-[18ch] text-4xl font-bold leading-[1.08] text-primary-foreground md:text-6xl">{t.services.pageTitle}</h1>
           <p className="mt-5 max-w-[62ch] text-base leading-8 text-primary-foreground md:text-lg">{t.services.intro}</p>
         </div>
       </section>
