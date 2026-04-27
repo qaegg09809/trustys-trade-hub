@@ -31,7 +31,7 @@ function CapabilitiesPage() {
 
   return (
     <SiteLayout language={language}>
-      <SectionShell>
+      <SectionShell className="section-shell-premium">
         <SectionTitle title={t.capabilities.pageTitle} subtitle={t.capabilities.intro} />
         <div className="mt-8 max-w-3xl">
           <BulletList items={t.capabilities.bullets} />

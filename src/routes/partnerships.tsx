@@ -40,8 +40,8 @@ function PartnershipsPage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="bg-muted/40">
-        <Card className="border-primary/14 shadow-[var(--shadow-strong)]">
+      <SectionShell className="section-shell-premium">
+        <Card className="premium-card border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
           <CardContent className="pt-6">
             <h2 className="text-2xl font-semibold text-primary">{t.partnerships.journeyTitle}</h2>
             <div className="mt-6">

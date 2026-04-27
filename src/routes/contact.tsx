@@ -44,7 +44,7 @@ function ContactPage() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-4">
-            <Card className="border-primary/14 shadow-[var(--shadow-soft)]">
+            <Card className="premium-card">
               <CardContent className="space-y-3 pt-6 text-sm">
                 {contactRows.map((row, index) => (
                   <p key={row} className={index === 0 ? "font-semibold text-primary" : "text-foreground"}>
