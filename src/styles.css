@@ -304,52 +304,14 @@
   }
 
   .operating-model-shell {
-    background-color: color-mix(in oklab, var(--color-primary) 92%, black 8%);
-  }
-
-  .operating-stage-panel {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    border-radius: 0;
-    background:
-      linear-gradient(
-        165deg,
-        color-mix(in oklab, var(--color-primary) 8%, transparent) 0%,
-        color-mix(in oklab, var(--color-secondary) 6%, transparent) 52%,
-        color-mix(in oklab, var(--color-primary) 10%, transparent) 100%
-      );
-    box-shadow:
-      inset 0 1px 1px color-mix(in oklab, var(--color-primary-foreground) 36%, transparent),
-      inset 0 -1px 0 color-mix(in oklab, var(--color-primary-foreground) 22%, transparent),
-      0 28px 64px -34px color-mix(in oklab, var(--color-primary) 68%, transparent);
-    backdrop-filter: blur(10px) saturate(110%);
-    -webkit-backdrop-filter: blur(10px) saturate(110%);
-  }
-
-  .operating-stage-panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    background: linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--color-primary-foreground) 12%, transparent) 0%,
-      transparent 42%,
-      color-mix(in oklab, var(--color-primary-foreground) 10%, transparent) 100%
-    );
+    background: color-mix(in oklab, var(--color-muted) 72%, var(--color-background) 28%);
   }
 
   .operating-criterion-card {
-    background: color-mix(in oklab, var(--color-primary) 10%, transparent);
-    border: 1px solid color-mix(in oklab, var(--color-primary-foreground) 48%, transparent);
+    background: color-mix(in oklab, var(--color-card) 96%, var(--color-muted) 4%);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 14%, var(--color-background) 86%);
     border-radius: 8px;
-    box-shadow:
-      inset 0 1px 0 color-mix(in oklab, var(--color-primary-foreground) 30%, transparent),
-      0 18px 42px -24px color-mix(in oklab, var(--color-primary) 66%, transparent);
-    backdrop-filter: blur(10px) saturate(108%);
-    -webkit-backdrop-filter: blur(10px) saturate(108%);
+    box-shadow: none;
   }
 
   .premium-card {
