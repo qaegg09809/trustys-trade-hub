@@ -224,26 +224,26 @@ function HomePage() {
             <div className="mx-auto max-w-4xl text-center">
               <p className="section-eyebrow justify-center text-secondary">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
               <h2 className="mt-3 text-4xl font-bold leading-[1.08] text-primary md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="brand-subtext mx-auto mt-4 max-w-3xl text-sm leading-7 md:text-base">{t.home.operatingModelBody}</p>
+              <p className="brand-subtext mx-auto mt-4 max-w-[760px] text-sm leading-7 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
                   <li
                     key={item}
-                    className="operating-criterion-card relative flex min-h-[164px] flex-col rounded-[8px] p-4"
+                    className="operating-criterion-card relative flex min-h-[178px] flex-col p-5"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary/18 bg-background text-primary">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 bg-background text-primary">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-accent/12 text-[11px] font-bold text-accent">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-accent/16 text-[11px] font-bold text-accent">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-sm font-semibold leading-6 text-primary">{item}</p>
+                    <p className="mt-4 text-[24px] font-semibold leading-[1.35] text-primary">{item}</p>
                     <span className="operating-criterion-line mt-auto" aria-hidden="true" />
                   </li>
                 );
