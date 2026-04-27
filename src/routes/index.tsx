@@ -263,7 +263,7 @@ function HomePage() {
                 <span className="operating-detail-icon" aria-hidden="true">
                   <ActiveIcon className="h-5 w-5" />
                 </span>
-                <span className="operating-step-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
+                <span className="operating-detail-number">{String(activeOperatingStep + 1).padStart(2, "0")}</span>
                 <h3 className="operating-detail-title">{activeOperatingTitle}</h3>
                 <p className="operating-detail-description">{activeOperatingDescription}</p>
               </article>
