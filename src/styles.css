@@ -912,21 +912,28 @@
     }
 
     .operating-detail-panel {
-      padding: 30px 24px 28px;
+      padding: 24px 18px 22px;
     }
 
     .operating-visual-board {
-      min-height: 190px;
+      min-height: 148px;
+      margin-top: 14px;
     }
 
     .operating-detail-title {
-      font-size: 24px;
-      line-height: 1.28;
+      font-size: 21px;
+      line-height: 1.32;
     }
 
     .operating-detail-description {
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 14px;
+      line-height: 1.55;
+      margin-top: 10px;
+    }
+
+    .operating-kpi-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
     }
   }
 
