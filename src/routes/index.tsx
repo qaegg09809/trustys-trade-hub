@@ -16,6 +16,7 @@ import serviceTradeCoordination from "@/assets/yansab-service-trade-coordination
 import partnershipHandshake from "@/assets/yansab-partnership-handshake-v2.jpg";
 import contactOffice from "@/assets/yansab-contact-office.jpg";
 import logisticsVisual from "@/assets/yansab-logistics-visual.jpg";
+import operatingModelVisual from "@/assets/yansab-operating-model-ai-bg-v1.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -212,18 +213,18 @@ function HomePage() {
       </section>
 
       <section className="operating-model-shell relative isolate overflow-hidden border-b border-border/70 py-14 md:py-20">
-        <img src={boardroomVisual} alt={isArabic ? "لقطة قاعة اجتماعات احترافية" : "Professional boardroom environment"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1600} height={1024} />
-        <div className="absolute inset-0 bg-primary/86" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[linear-gradient(164deg,color-mix(in_oklab,var(--color-primary)_88%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_42%,transparent)_50%,color-mix(in_oklab,var(--color-primary)_92%,transparent)_100%)]" aria-hidden="true" />
+        <img src={operatingModelVisual} alt={isArabic ? "غرفة عمليات تجارية احترافية" : "Professional trade operations command center"} className="absolute inset-0 h-full w-full object-cover" loading="lazy" width={1376} height={768} />
+        <div className="absolute inset-0 bg-primary/76" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(165deg,color-mix(in_oklab,var(--color-primary)_84%,transparent)_0%,color-mix(in_oklab,var(--color-secondary)_38%,transparent)_54%,color-mix(in_oklab,var(--color-primary)_86%,transparent)_100%)]" aria-hidden="true" />
         <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <div className="operating-stage operating-stage-panel mx-auto max-w-[1120px] rounded-[8px] p-6 md:p-9 lg:p-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-block h-1 w-12 bg-accent" aria-hidden="true" />
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="section-eyebrow mx-auto w-fit rounded-sm border border-primary-foreground/36 bg-primary/22 px-3 py-1 text-primary-foreground">{isArabic ? "منهجية التقييم" : "Evaluation framework"}</p>
               <h2 className="mt-5 text-4xl font-bold leading-[1.08] text-primary-foreground drop-shadow-[0_10px_24px_rgba(0,0,0,0.3)] md:text-6xl">{t.home.operatingModelTitle}</h2>
-              <p className="mt-5 text-sm leading-7 text-primary-foreground/96 md:text-base">{t.home.operatingModelBody}</p>
+              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-primary-foreground/96 md:text-base">{t.home.operatingModelBody}</p>
             </div>
 
-            <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {t.home.operatingCriteria.map((item, index) => {
                 const Icon = operatingIcons[index] ?? ShieldCheck;
                 return (
@@ -239,7 +240,7 @@ function HomePage() {
                         {index + 1}
                       </span>
                     </div>
-                    <p className="mt-4 text-sm font-semibold leading-6 text-primary-foreground">{item}</p>
+                    <p className="mt-4 text-sm font-semibold leading-6 text-primary-foreground/98">{item}</p>
                   </li>
                 );
               })}
