@@ -707,6 +707,102 @@
     -webkit-backdrop-filter: blur(6px);
   }
 
+
+
+  .partnerships-journey-shell {
+    position: relative;
+  }
+
+  .partnerships-hero-visual-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    box-shadow: var(--shadow-strong);
+  }
+
+  .partnerships-hero-visual {
+    width: 100%;
+    height: clamp(220px, 32vw, 360px);
+    object-fit: cover;
+    filter: saturate(90%) contrast(102%);
+  }
+
+  .partnerships-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        140deg,
+        color-mix(in oklab, var(--color-primary) 34%, transparent) 0%,
+        color-mix(in oklab, var(--color-primary) 12%, transparent) 48%,
+        color-mix(in oklab, var(--color-background) 20%, transparent) 100%
+      );
+    pointer-events: none;
+  }
+
+  .process-timeline-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .process-timeline-step {
+    position: relative;
+    display: flex;
+    min-height: 220px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-background) 82%);
+    background: color-mix(in oklab, var(--color-card) 95%, var(--color-primary) 5%);
+    box-shadow: 0 14px 34px -28px color-mix(in oklab, var(--color-primary) 50%, transparent);
+    transition: transform 240ms var(--ease-emphasis), border-color 240ms var(--ease-emphasis), box-shadow 240ms var(--ease-emphasis);
+  }
+
+  .process-timeline-step:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-background) 70%);
+    box-shadow: 0 22px 42px -30px color-mix(in oklab, var(--color-primary) 62%, transparent);
+  }
+
+  .process-timeline-step--featured {
+    border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-background) 70%);
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--color-card) 94%, var(--color-primary) 6%) 0%,
+      color-mix(in oklab, var(--color-card) 88%, var(--color-primary) 12%) 100%
+    );
+    box-shadow:
+      inset 0 0 0 1px color-mix(in oklab, var(--color-primary) 14%, white 86%),
+      0 26px 46px -32px color-mix(in oklab, var(--color-primary) 64%, transparent);
+  }
+
+  .process-timeline-step--featured .process-timeline-chip {
+    border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-primary-foreground) 60%);
+    background-color: color-mix(in oklab, var(--color-accent) 22%, var(--color-primary) 78%);
+  }
+
+  .process-timeline-title {
+    max-width: 26ch;
+  }
+
+  .process-timeline-body {
+    color: color-mix(in oklab, var(--color-primary) 82%, white 18%);
+  }
+
+  @media (min-width: 768px) {
+    .process-timeline-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .process-timeline-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   .section-eyebrow {
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-normal text-secondary;
   }
