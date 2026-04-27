@@ -687,6 +687,189 @@
     transform: translateY(-2px);
   }
 
+  .services-premium-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .services-premium-grid--rtl .services-premium-card {
+    direction: rtl;
+  }
+
+  .services-premium-card {
+    grid-column: span 12;
+    border: 1px solid var(--brand-light-gray);
+    border-radius: 12px;
+    background: color-mix(in oklab, white 96%, var(--color-primary) 4%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition:
+      transform 280ms var(--ease-emphasis),
+      box-shadow 280ms var(--ease-emphasis),
+      border-color 280ms var(--ease-emphasis);
+    animation-duration: 0.55s;
+  }
+
+  .services-premium-card:hover {
+    border-color: color-mix(in oklab, var(--color-primary) 24%, var(--brand-light-gray) 76%);
+    box-shadow: 0 10px 20px -14px color-mix(in oklab, var(--color-primary) 42%, transparent);
+    transform: translateY(-4px);
+  }
+
+  .services-premium-card--1,
+  .services-premium-card--2,
+  .services-premium-card--3,
+  .services-premium-card--4,
+  .services-premium-card--5,
+  .services-premium-card--6 {
+    animation-delay: calc(var(--service-order, 1) * 40ms);
+  }
+
+  .services-premium-card--1 {
+    --service-order: 1;
+  }
+
+  .services-premium-card--2 {
+    --service-order: 2;
+  }
+
+  .services-premium-card--3 {
+    --service-order: 3;
+  }
+
+  .services-premium-card--4 {
+    --service-order: 4;
+  }
+
+  .services-premium-card--5 {
+    --service-order: 5;
+  }
+
+  .services-premium-card--6 {
+    --service-order: 6;
+  }
+
+  .services-premium-media {
+    height: 190px;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-primary) 12%, white 88%);
+  }
+
+  .services-premium-media-image {
+    transition: transform 420ms var(--ease-emphasis);
+  }
+
+  .services-premium-card:hover .services-premium-media-image {
+    transform: scale(1.04);
+  }
+
+  .services-premium-media-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--color-primary) 10%, transparent) 0%,
+        color-mix(in oklab, var(--color-primary) 24%, transparent) 100%
+      );
+    pointer-events: none;
+  }
+
+  .services-premium-header {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .services-premium-index {
+    border: 1px solid color-mix(in oklab, var(--color-primary) 14%, white 86%);
+    background: color-mix(in oklab, white 96%, var(--color-primary) 4%);
+  }
+
+  .services-premium-rule {
+    background: var(--color-accent);
+  }
+
+  .services-premium-title {
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+
+  .services-premium-content {
+    padding-top: 0;
+  }
+
+  .services-premium-body {
+    font-size: 15px;
+    line-height: 1.5;
+    color: color-mix(in oklab, var(--color-primary) 76%, white 24%);
+  }
+
+  .services-premium-foot-line {
+    background: var(--color-accent);
+  }
+
+  .services-premium-corner {
+    position: absolute;
+    inset-inline-end: 14px;
+    top: 14px;
+    height: 14px;
+    width: 14px;
+    border-top: 1px solid color-mix(in oklab, var(--color-primary) 24%, white 76%);
+    border-inline-end: 1px solid color-mix(in oklab, var(--color-primary) 24%, white 76%);
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .services-premium-card {
+      grid-column: span 6;
+    }
+
+    .services-premium-card--2,
+    .services-premium-card--4,
+    .services-premium-card--6 {
+      transform: translateY(18px);
+    }
+
+    .services-premium-card--2:hover,
+    .services-premium-card--4:hover,
+    .services-premium-card--6:hover {
+      transform: translateY(14px);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .services-premium-grid {
+      gap: 18px;
+    }
+
+    .services-premium-card {
+      grid-column: span 4;
+    }
+
+    .services-premium-card--4,
+    .services-premium-card--5,
+    .services-premium-card--6 {
+      transform: translateY(30px);
+    }
+
+    .services-premium-card--4:hover,
+    .services-premium-card--5:hover,
+    .services-premium-card--6:hover {
+      transform: translateY(26px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-premium-card,
+    .services-premium-media-image {
+      animation: none;
+      transition: none;
+      transform: none !important;
+    }
+  }
+
   .service-showcase-card {
     border: 1px solid color-mix(in oklab, var(--color-primary) 18%, var(--color-background) 82%);
     border-radius: 6px;
