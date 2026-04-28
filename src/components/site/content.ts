@@ -206,7 +206,7 @@ const englishContent: LocaleContent = {
   contactDetails: sharedContact,
   home: {
     heroKicker: "Dubai based • Established 2010 • Family owned",
-    heroTitle: "A Trading Company Built on Trust, Discipline, and Long-Term Value.",
+    heroTitle: "A trading company built on trust, discipline, and long-term value.",
     heroBody:
       "Yansab is a Dubai-based trading company with family roots and institutional standards, structured to source, distribute, and execute with disciplined professionalism across evolving commercial needs.",
     heroHighlights: [
