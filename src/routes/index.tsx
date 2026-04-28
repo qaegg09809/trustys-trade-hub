@@ -359,7 +359,7 @@ function HomePage() {
                 </li>
               ))}
             </ul>
-            <Button asChild className="mt-7 h-12 min-w-40 px-7 font-semibold">
+            <Button asChild className="mt-7 h-12 min-w-40 px-7 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground">
               <Link to="/partnerships" search={{ lang: language }}>
                 {t.ctaSecondary}
               </Link>
@@ -378,7 +378,7 @@ function HomePage() {
           </div>
           <div>
             <p className="max-w-[62ch] text-base leading-8 text-primary-foreground/92 md:text-lg">{t.home.finalCtaBody}</p>
-            <Button asChild size="lg" className="mt-6 h-12 min-w-44 px-8 font-semibold">
+            <Button asChild size="lg" className="mt-6 h-12 min-w-44 px-8 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground">
               <Link to="/contact" search={{ lang: language }}>
                 {t.home.finalCtaButton}
               </Link>

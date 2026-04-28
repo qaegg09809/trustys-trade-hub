@@ -1,57 +1,40 @@
 ## Goal
-Apply Title Case to all main English section headings across the site (as shown in the reference: "Our Operating Model" instead of "Our operating model"). Arabic content stays unchanged.
+Make the two prominent CTA buttons on the home page use the brand **orange (#F3961B / `accent`)** background instead of their current blue/dark style — keeping all other styling, spacing, sizing, and text unchanged.
 
-## Scope
-Only edit English headings in `src/components/site/content.ts`. Arabic remains as-is. No layout/style changes.
+## Affected buttons
+Both live in `src/routes/index.tsx` on the dark-blue hero strips visible in your screenshots:
 
-## Title Case Rule
-Capitalize the first letter of every word except short connectors (a, an, the, and, or, but, of, in, on, at, to, for, with, by). Always capitalize first and last word.
+1. **"Become a Partner"** — partnerships strip on the home page (line ~362), text comes from `t.ctaSecondary`.
+2. **"Start the Conversation"** — final CTA section on the home page (line ~381), text comes from `t.home.finalCtaButton`.
 
-## Changes (English only — `src/components/site/content.ts`)
+No other "Become a Partner" / "Start the Conversation" buttons elsewhere will be touched in this change (the partnerships page CTA and the contact page heading remain as-is, since the screenshots and request refer to these home hero buttons).
 
-**Home section:**
-- `heroTitle`: "A trading company built on trust, discipline, and long-term value." → "A Trading Company Built on Trust, Discipline, and Long-Term Value."
-- `introTitle`: "Built to move with the market." → "Built to Move with the Market."
-- `scopeTitle`: "What we do" → "What We Do"
-- `scopeCta`: "View all services" → "View All Services"
-- `operatingModelTitle`: "Our operating model" → "Our Operating Model"
-- `whyTitle`: "Why Yansab" → keep (already correct)
-- `partnershipTitle`: "Partnerships built with care, transparency, and continuity." → "Partnerships Built with Care, Transparency, and Continuity."
-- `governanceTitle`: "Clear foundations that reduce execution risk." → "Clear Foundations That Reduce Execution Risk."
-- `brandsTitle`: "Brands & business lines" → "Brands & Business Lines"
-- `finalCtaTitle`: "Let's build the next commercial move with clarity." → "Let's Build the Next Commercial Move with Clarity."
+## Visual design
+- Background: `bg-accent` (#F3961B — brand orange)
+- Text color: `text-accent-foreground` (white) — for strong contrast on orange
+- Border: `border-accent` (matches background, clean edge)
+- Hover: slight darken via `hover:bg-accent/90` and `hover:border-accent/90`
+- Keep existing height (`h-12`), min-width, padding, font weight, rounded-full shape, and shadow tokens already used by `<Button>`.
+- No gradients, no glow — strictly flat brand orange per brand rules.
 
-**About section:**
-- `pageTitle`: "About Yansab" → keep
-- `founderTitle`: "Founder's Message" → keep
-- `visionTitle`/`missionTitle`/`valuesTitle`: keep (single words)
+## Implementation
+In `src/routes/index.tsx`, append the orange override classes to the two buttons' `className`:
 
-**Services:**
-- `pageTitle`: "Services" → keep
+- Line 362 button:
+  `className="mt-7 h-12 min-w-40 px-7 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"`
 
-**Capabilities:**
-- `pageTitle`: "Sectors & Commercial Capabilities" → keep (already Title Case)
+- Line 381 button:
+  `className="mt-6 h-12 min-w-44 px-8 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"`
 
-**Governance:**
-- `pageTitle`: "Governance & Compliance" → keep
+That's it — pure styling change, no markup, no copy, no layout changes.
 
-**Partnerships:**
-- `pageTitle`: "Distribution & Partnerships" → keep
-- `whyPartnerTitle`: "Why partner with Yansab?" → "Why Partner with Yansab?"
-- `journeyTitle`: "Partner journey" → "Partner Journey"
-- `partnerFormTitle`: "Become a Partner" → keep
-
-**Brands:**
-- `pageTitle`: "Brands & Business Lines" → keep
-
-**Contact:**
-- `pageTitle`: "Start the conversation" → "Start the Conversation"
-
-## Out of Scope
-- Body text, paragraphs, bullet items, list content (only headings/titles)
-- Arabic strings (Arabic doesn't have letter case)
-- Form field labels and small UI text
-- Visual styling, layout, components
+## Out of scope
+- Header/nav "Contact Us" button (stays primary blue — primary nav action).
+- Partnerships page "Become a Partner" button at the bottom (separate context).
+- Any Arabic text or button labels.
 
 ## Verification
-After edits, scan English `home`, `about`, `services`, `partnerships`, `contact` for any title-like field still in sentence case and confirm headings render in Title Case across the live preview.
+After the change, on `/?lang=en` and `/?lang=ar`:
+- The "Become a Partner" button on the partnership strip renders solid orange with white text.
+- The "Start the Conversation" button on the final CTA renders solid orange with white text.
+- Hover slightly darkens the orange; focus ring still visible.
