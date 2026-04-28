@@ -206,7 +206,7 @@ const englishContent: LocaleContent = {
   contactDetails: sharedContact,
   home: {
     heroKicker: "Dubai based • Established 2010 • Family owned",
-    heroTitle: "A trading company built on trust, discipline, and long-term value.",
+    heroTitle: "A Trading Company Built on Trust, Discipline, and Long-Term Value.",
     heroBody:
       "Yansab is a Dubai-based trading company with family roots and institutional standards, structured to source, distribute, and execute with disciplined professionalism across evolving commercial needs.",
     heroHighlights: [
@@ -215,14 +215,14 @@ const englishContent: LocaleContent = {
       "Long-term approach to trusted partnerships",
     ],
     trustItems: ["Dubai HQ", "Since 2010", "Family-Owned", "Multi-Sector Execution"],
-    introTitle: "Built to move with the market.",
+    introTitle: "Built to Move with the Market.",
     introBody:
       "Yansab operates with the strength of a family business and the discipline of an institution. The company is structured to support sourcing, supply, distribution, and execution across commercial opportunities with clarity, responsiveness, and credibility.",
     introCta: "Explore Yansab",
-    scopeTitle: "What we do",
+    scopeTitle: "What We Do",
     scopeCards: sharedServicesEn,
-    scopeCta: "View all services",
-    operatingModelTitle: "Our operating model",
+    scopeCta: "View All Services",
+    operatingModelTitle: "Our Operating Model",
     operatingModelBody:
       "Each opportunity is assessed against practical commercial standards to support sound decisions, controlled risk, and repeatable growth.",
     operatingCriteria: [
@@ -240,7 +240,7 @@ const englishContent: LocaleContent = {
       "Disciplined operating approach that supports sustainable growth",
       "Long-term mindset focused on continuity, trust, and scalable partnerships",
     ],
-    partnershipTitle: "Partnerships built with care, transparency, and continuity.",
+    partnershipTitle: "Partnerships Built with Care, Transparency, and Continuity.",
     partnershipBody:
       "Yansab approaches partnerships as structured commercial alliances rather than isolated transactions, with clear communication and realistic commitments.",
     partnershipBullets: [
@@ -249,7 +249,7 @@ const englishContent: LocaleContent = {
       "Clear communication and realistic expectations",
       "Continuity, repeat business, and shared long-term value",
     ],
-    governanceTitle: "Clear foundations that reduce execution risk.",
+    governanceTitle: "Clear Foundations That Reduce Execution Risk.",
     governanceBody:
       "Yansab operates on clear commercial and administrative foundations designed to strengthen trust and reduce execution risk.",
     governanceBullets: [
@@ -259,10 +259,10 @@ const englishContent: LocaleContent = {
       "Compliance with licensing, customs, and applicable regulatory requirements",
       "A disciplined operating framework that supports growth and partner confidence",
     ],
-    brandsTitle: "Brands & business lines",
+    brandsTitle: "Brands & Business Lines",
     brandsBody:
       "Yansab supports owned and partner brands under a disciplined commercial framework.",
-    finalCtaTitle: "Let’s build the next commercial move with clarity.",
+    finalCtaTitle: "Let’s Build the Next Commercial Move with Clarity.",
     finalCtaBody:
       "Whether you are a supplier, partner, retailer, or brand owner, Yansab is positioned to support disciplined commercial execution with trust at the center.",
     finalCtaButton: "Start the Conversation",
@@ -326,14 +326,14 @@ const englishContent: LocaleContent = {
     pageTitle: "Distribution & Partnerships",
     intro:
       "Yansab values partnerships that are built with care, managed professionally, and designed to grow over time.",
-    whyPartnerTitle: "Why partner with Yansab?",
+    whyPartnerTitle: "Why Partner with Yansab?",
     bullets: [
       "Selective and credible partner relationships",
       "Professional representation and protection of commercial trust",
       "Clear communication and realistic expectations",
       "Continuity, repeat business, and shared long-term value",
     ],
-    journeyTitle: "Partner journey",
+    journeyTitle: "Partner Journey",
     journeySteps: [
       { title: "Initial strategic alignment", body: "Executive-level alignment on market potential, partner fit, and measurable commercial objectives." },
       { title: "Requirement understanding", body: "Clarifying commercial and operational requirements." },
@@ -378,7 +378,7 @@ const englishContent: LocaleContent = {
     ],
   },
   contact: {
-    pageTitle: "Start the conversation",
+    pageTitle: "Start the Conversation",
     intro:
       "For partnerships, supply opportunities, distribution discussions, or general inquiries, contact Yansab and the team will respond with professionalism and clarity.",
     fields: {

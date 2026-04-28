@@ -1,68 +1,57 @@
-## تحديث شريط الثقة (Trust Strip) في الصفحة الرئيسية
+## Goal
+Apply Title Case to all main English section headings across the site (as shown in the reference: "Our Operating Model" instead of "Our operating model"). Arabic content stays unchanged.
 
-### الموقع
-القسم الكحلي الموجود تحت الـ Hero مباشرةً في `src/routes/index.tsx` (سطر 193–207) الذي يعرض:
-`Dubai HQ` · `Since 2010` · `Family-Owned` · `Multi-Sector Execution`
+## Scope
+Only edit English headings in `src/components/site/content.ts`. Arabic remains as-is. No layout/style changes.
 
-### المشكلة الحالية
-- على الموبايل تظهر العناصر بعمودين بدون أيقونات (فقط شرطة برتقالية صغيرة).
-- المستخدم يريد:
-  1. تأكيد العرض في **عمودين** على الموبايل (sm:grid-cols-2 موجود فعلاً ولكن عند العرض الضيق < 640px تظهر بعمود واحد). سنجعلها عمودين ابتداءً من الموبايل (`grid-cols-2`).
-  2. إضافة **أيقونة احترافية برتقالية (#F3961B)** بجانب كل عنصر تمثل المعنى.
+## Title Case Rule
+Capitalize the first letter of every word except short connectors (a, an, the, and, or, but, of, in, on, at, to, for, with, by). Always capitalize first and last word.
 
-### تعيين الأيقونات (Lucide outline — متناسقة مع البراند)
-| العنصر | الأيقونة |
-|---|---|
-| Dubai HQ / المقر دبي | `Building2` |
-| Since 2010 / منذ 2010 | `CalendarCheck` |
-| Family-Owned / ملكية عائلية | `Users` |
-| Multi-Sector Execution / تنفيذ متعدد القطاعات | `LayoutGrid` |
+## Changes (English only — `src/components/site/content.ts`)
 
-كل الأيقونات: outline فقط، stroke موحّد (1.75)، حجم 20px على الموبايل و22px على الديسكتوب، اللون `text-accent` (البرتقالي البراند).
+**Home section:**
+- `heroTitle`: "A trading company built on trust, discipline, and long-term value." → "A Trading Company Built on Trust, Discipline, and Long-Term Value."
+- `introTitle`: "Built to move with the market." → "Built to Move with the Market."
+- `scopeTitle`: "What we do" → "What We Do"
+- `scopeCta`: "View all services" → "View All Services"
+- `operatingModelTitle`: "Our operating model" → "Our Operating Model"
+- `whyTitle`: "Why Yansab" → keep (already correct)
+- `partnershipTitle`: "Partnerships built with care, transparency, and continuity." → "Partnerships Built with Care, Transparency, and Continuity."
+- `governanceTitle`: "Clear foundations that reduce execution risk." → "Clear Foundations That Reduce Execution Risk."
+- `brandsTitle`: "Brands & business lines" → "Brands & Business Lines"
+- `finalCtaTitle`: "Let's build the next commercial move with clarity." → "Let's Build the Next Commercial Move with Clarity."
 
-### تصميم البطاقة الواحدة (موبايل)
-- خلفية شفافة فوق الكحلي + حدّ خفيف `border border-primary-foreground/15`.
-- padding متساوٍ `px-3 py-3`.
-- صف أفقي: [أيقونة برتقالية في مربع 36×36 بحدّ برتقالي خفيف] + [نص أبيض bold].
-- مسافة موحّدة (gap-3) ومحاذاة عمودية مثالية.
+**About section:**
+- `pageTitle`: "About Yansab" → keep
+- `founderTitle`: "Founder's Message" → keep
+- `visionTitle`/`missionTitle`/`valuesTitle`: keep (single words)
 
-### التغييرات التقنية
+**Services:**
+- `pageTitle`: "Services" → keep
 
-**ملف واحد فقط: `src/routes/index.tsx`**
+**Capabilities:**
+- `pageTitle`: "Sectors & Commercial Capabilities" → keep (already Title Case)
 
-1. استيراد الأيقونات من `lucide-react`:
-   ```ts
-   import { Building2, CalendarCheck, Users, LayoutGrid } from "lucide-react";
-   ```
+**Governance:**
+- `pageTitle`: "Governance & Compliance" → keep
 
-2. تعريف مصفوفة أيقونات مرتبطة بالترتيب نفسه لـ `trustItems` (الترتيب ثابت في `content.ts` لكلا اللغتين):
-   ```ts
-   const trustIcons = [Building2, CalendarCheck, Users, LayoutGrid];
-   ```
+**Partnerships:**
+- `pageTitle`: "Distribution & Partnerships" → keep
+- `whyPartnerTitle`: "Why partner with Yansab?" → "Why Partner with Yansab?"
+- `journeyTitle`: "Partner journey" → "Partner Journey"
+- `partnerFormTitle`: "Become a Partner" → keep
 
-3. استبدال markup الحالي للسطر 194–206 بـ:
-   - الـ grid: `grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4` (عمودان من الموبايل، 4 على الديسكتوب).
-   - إزالة الشرطة البرتقالية القديمة `h-1.5 w-8` واستبدالها بـ chip أيقونة:
-     ```
-     <span class="inline-flex h-9 w-9 items-center justify-center
-                  border border-accent/40 bg-accent/10 text-accent">
-       <Icon className="h-5 w-5" strokeWidth={1.75} />
-     </span>
-     ```
-   - النص يبقى `text-primary-foreground` بحجم `text-[13px] md:text-sm`.
-   - إزالة الفواصل العمودية `lg:border-r` من العنصر الأخير فقط — نحتفظ بها على الديسكتوب.
+**Brands:**
+- `pageTitle`: "Brands & Business Lines" → keep
 
-### التزامات البراند (صارمة)
-- لا ألوان جديدة: فقط `#F3961B` (accent) و`#264086` (primary) و`#FFFFFF`.
-- لا تدرّجات، لا توهّج، لا ظلال ثقيلة.
-- Outline icons فقط بنفس الوزن — لا أيقونات مملوءة.
-- 8pt grid: gap-3/gap-4، أبعاد الأيقونة 36/20.
-- محاذاة بكسل-بكسل بين الأيقونة والنص.
+**Contact:**
+- `pageTitle`: "Start the conversation" → "Start the Conversation"
 
-### الملفات المعدَّلة
-- `src/routes/index.tsx` (تعديل قسم trust strip فقط، ~15 سطر).
+## Out of Scope
+- Body text, paragraphs, bullet items, list content (only headings/titles)
+- Arabic strings (Arabic doesn't have letter case)
+- Form field labels and small UI text
+- Visual styling, layout, components
 
-### النتيجة المتوقعة
-- موبايل: عمودان متساويان، كل خلية تحتوي على أيقونة برتقالية احترافية + نص واضح.
-- ديسكتوب: 4 أعمدة كما هو الآن، لكن مع الأيقونة بدل الشرطة.
-- مظهر تنفيذي نظيف، يطابق هوية ينساب 100%.
+## Verification
+After edits, scan English `home`, `about`, `services`, `partnerships`, `contact` for any title-like field still in sentence case and confirm headings render in Title Case across the live preview.
