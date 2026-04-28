@@ -1,40 +1,32 @@
 ## Goal
-Make the two prominent CTA buttons on the home page use the brand **orange (#F3961B / `accent`)** background instead of their current blue/dark style — keeping all other styling, spacing, sizing, and text unchanged.
+Make sure **every colored (filled) button on the site shows white text**, per the new rule: any button with a brand color background → white inner text.
 
-## Affected buttons
-Both live in `src/routes/index.tsx` on the dark-blue hero strips visible in your screenshots:
+## Root cause found
+In `src/styles.css`, the design token `--accent-foreground` (text color used on orange `bg-accent` buttons) is set to dark navy `#111827` instead of white. That's why the two orange CTAs ("Become a Partner", "Start the Conversation") rendered with dark text earlier even though we passed `text-accent-foreground`.
 
-1. **"Become a Partner"** — partnerships strip on the home page (line ~362), text comes from `t.ctaSecondary`.
-2. **"Start the Conversation"** — final CTA section on the home page (line ~381), text comes from `t.home.finalCtaButton`.
+`--primary-foreground` and `--secondary-foreground` are already `#ffffff`, so blue/secondary buttons are already correct.
 
-No other "Become a Partner" / "Start the Conversation" buttons elsewhere will be touched in this change (the partnerships page CTA and the contact page heading remain as-is, since the screenshots and request refer to these home hero buttons).
+## Change (single token fix — global effect)
+Update both light and dark theme definitions in `src/styles.css`:
 
-## Visual design
-- Background: `bg-accent` (#F3961B — brand orange)
-- Text color: `text-accent-foreground` (white) — for strong contrast on orange
-- Border: `border-accent` (matches background, clean edge)
-- Hover: slight darken via `hover:bg-accent/90` and `hover:border-accent/90`
-- Keep existing height (`h-12`), min-width, padding, font weight, rounded-full shape, and shadow tokens already used by `<Button>`.
-- No gradients, no glow — strictly flat brand orange per brand rules.
+- Line 51 (`:root`):
+  `--accent-foreground: #111827;` → `--accent-foreground: #ffffff;`
+- Line 110 (`.dark`):
+  `--accent-foreground: oklch(0.24 0.03 258);` → `--accent-foreground: #ffffff;`
 
-## Implementation
-In `src/routes/index.tsx`, append the orange override classes to the two buttons' `className`:
+Because every "orange" button (and any future `bg-accent` element) reads its text color from this token, this single change automatically makes ALL colored brand-orange buttons display white text — including the two we styled in the previous turn, plus any future ones.
 
-- Line 362 button:
-  `className="mt-7 h-12 min-w-40 px-7 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"`
-
-- Line 381 button:
-  `className="mt-6 h-12 min-w-44 px-8 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"`
-
-That's it — pure styling change, no markup, no copy, no layout changes.
-
-## Out of scope
-- Header/nav "Contact Us" button (stays primary blue — primary nav action).
-- Partnerships page "Become a Partner" button at the bottom (separate context).
-- Any Arabic text or button labels.
+## Why this is the right approach
+- One semantic token change instead of editing button-by-button.
+- Keeps the design system consistent (the rule "colored buttons = white text" lives in tokens, not scattered across components).
+- No layout, sizing, copy, or component-API change.
 
 ## Verification
 After the change, on `/?lang=en` and `/?lang=ar`:
-- The "Become a Partner" button on the partnership strip renders solid orange with white text.
-- The "Start the Conversation" button on the final CTA renders solid orange with white text.
-- Hover slightly darkens the orange; focus ring still visible.
+- "Become a Partner" (home partnership strip) → orange background, **white text**.
+- "Start the Conversation" (home final CTA) → orange background, **white text**.
+- Existing blue primary buttons (header "Contact Us", etc.) remain unchanged (already white text).
+- No accessibility regression: white on `#F3961B` orange has sufficient contrast for button-sized bold text.
+
+## Memory
+Save a project rule: "All filled/colored brand buttons (primary, secondary, accent/orange) must use white text inside. Enforced via `--*-foreground` tokens in `src/styles.css`."
