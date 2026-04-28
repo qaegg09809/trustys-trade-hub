@@ -232,7 +232,7 @@ const englishContent: LocaleContent = {
       "Compliance and documentation requirements",
       "Long-term repeatability and growth potential",
     ],
-    whyTitle: "Why Yansab",
+    whyTitle: "Why Yansab?",
     whyBullets: [
       "Family-rooted commitment with a reputation-driven business culture",
       "Institutional professionalism in engagement, documentation, and execution",
@@ -453,7 +453,7 @@ const arabicContent: LocaleContent = {
       "متطلبات الامتثال والتوثيق",
       "قابلية الاستمرارية والتوسع وتكرار الأعمال",
     ],
-    whyTitle: "لماذا ينساب",
+    whyTitle: "لماذا ينساب؟",
     whyBullets: [
       "التزام نابع من القيم العائلية وثقافة عمل قائمة على السمعة",
       "احترافية مؤسسية في التعامل والتوثيق والتنفيذ",
