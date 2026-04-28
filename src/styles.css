@@ -48,7 +48,7 @@
   --muted: #e2e9f6;
   --muted-foreground: #3f5a88;
   --accent: #f3961b;
-  --accent-foreground: #111827;
+  --accent-foreground: #ffffff;
   --brand-light-gray: #eaeaea;
   --brand-surface: #f5f5f5;
   --destructive: oklch(0.6 0.22 30);
@@ -107,7 +107,7 @@
   --muted: #1b2a4d;
   --muted-foreground: oklch(0.83 0.01 258);
   --accent: #f3961b;
-  --accent-foreground: oklch(0.24 0.03 258);
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.68 0.19 25);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(1 0 0 / 12%);
