@@ -190,19 +190,22 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-border/70 bg-primary py-4 text-primary-foreground md:py-5">
-        <div className="mx-auto grid w-full max-w-[1240px] grid-cols-2 gap-3 px-4 sm:gap-4 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <section className="border-b border-primary-foreground/10 bg-primary py-5 text-primary-foreground md:py-6">
+        <div className="mx-auto grid w-full max-w-[1240px] grid-cols-2 gap-x-3 gap-y-3 px-4 sm:gap-4 sm:px-6 lg:grid-cols-4 lg:gap-5 lg:px-8">
           {trustItems.map((item, idx) => {
             const Icon = [Building2, CalendarCheck, Users, LayoutGrid][idx] ?? Building2;
             return (
               <div
                 key={item}
-                className={`flex min-h-14 items-center gap-3 border border-primary-foreground/15 px-3 py-2.5 text-[13px] font-semibold tracking-[0.01em] text-primary-foreground md:text-sm ${idx < trustItems.length - 1 ? "lg:border-r lg:border-primary-foreground/18" : ""}`}
+                className="group relative flex min-h-[68px] items-center gap-3 overflow-hidden bg-primary-foreground/[0.04] px-3.5 py-3 ring-1 ring-inset ring-primary-foreground/10 transition-colors duration-300 hover:bg-primary-foreground/[0.07] hover:ring-primary-foreground/20 md:min-h-[76px] md:px-4 md:py-3.5"
               >
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
-                  <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+                <span className="absolute left-0 top-0 h-full w-[2px] bg-accent" aria-hidden="true" />
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-accent/10 text-accent ring-1 ring-inset ring-accent/30 md:h-11 md:w-11">
+                  <Icon className="h-[18px] w-[18px] md:h-5 md:w-5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
-                <span>{item}</span>
+                <span className="text-[13px] font-semibold leading-snug tracking-[0.005em] text-primary-foreground md:text-[15px]">
+                  {item}
+                </span>
               </div>
             );
           })}
