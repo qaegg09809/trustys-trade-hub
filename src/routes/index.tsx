@@ -197,10 +197,12 @@ function HomePage() {
             return (
               <div
                 key={item}
-                className="group relative flex min-h-[68px] items-center gap-3 overflow-hidden bg-primary-foreground/[0.04] px-3.5 py-3 ring-1 ring-inset ring-primary-foreground/10 transition-colors duration-300 hover:bg-primary-foreground/[0.07] hover:ring-primary-foreground/20 md:min-h-[76px] md:px-4 md:py-3.5"
+                className="group relative flex min-h-[68px] items-center gap-3 overflow-hidden rounded-[2px] bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015))] px-3.5 py-3 backdrop-blur-md transition-all duration-300 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03))] md:min-h-[76px] md:px-4 md:py-3.5"
               >
                 <span className="absolute left-0 top-0 h-full w-[2px] bg-accent" aria-hidden="true" />
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-accent/10 text-accent ring-1 ring-inset ring-accent/30 md:h-11 md:w-11">
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/25 to-transparent" aria-hidden="true" />
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent" aria-hidden="true" />
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[1px] bg-accent/15 text-accent backdrop-blur-sm md:h-11 md:w-11">
                   <Icon className="h-[18px] w-[18px] md:h-5 md:w-5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <span className="text-[13px] font-semibold leading-snug tracking-[0.005em] text-primary-foreground md:text-[15px]">
