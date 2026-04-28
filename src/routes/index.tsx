@@ -191,14 +191,17 @@ function HomePage() {
       </section>
 
       <section className="border-b border-border/70 bg-primary py-4 text-primary-foreground md:py-5">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-3 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid w-full max-w-[1240px] grid-cols-2 gap-3 px-4 sm:gap-4 sm:px-6 lg:grid-cols-4 lg:px-8">
           {trustItems.map((item, idx) => {
+            const Icon = [Building2, CalendarCheck, Users, LayoutGrid][idx] ?? Building2;
             return (
               <div
                 key={item}
-                className={`flex min-h-14 items-center gap-3 px-2 text-[13px] font-semibold tracking-[0.01em] text-primary-foreground/96 md:text-sm ${idx < trustItems.length - 1 ? "lg:border-r lg:border-primary-foreground/18" : ""}`}
+                className={`flex min-h-14 items-center gap-3 border border-primary-foreground/15 px-3 py-2.5 text-[13px] font-semibold tracking-[0.01em] text-primary-foreground md:text-sm ${idx < trustItems.length - 1 ? "lg:border-r lg:border-primary-foreground/18" : ""}`}
               >
-                <span className="inline-block h-1.5 w-8 bg-accent" aria-hidden="true" />
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-accent/40 bg-accent/10 text-accent">
+                  <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+                </span>
                 <span>{item}</span>
               </div>
             );
