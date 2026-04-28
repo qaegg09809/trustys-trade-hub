@@ -5,7 +5,13 @@ import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
 import somittaLogo from "@/assets/somitta-logo.jpg";
+import suqaOudLogo from "@/assets/suqa-oud-logo.png";
 import heroFacade from "@/assets/yansab-building-facade.jpg";
+
+const brandLogos = {
+  somitta: somittaLogo,
+  suqaOud: suqaOudLogo,
+} as const;
 
 export const Route = createFileRoute("/brands")({
   head: () => ({
@@ -53,8 +59,8 @@ function BrandsPage() {
               className={`premium-card ${brand.status === "missing" ? "border-dashed bg-card/86 shadow-none" : ""}`}
             >
               <CardContent className="pt-6">
-                {brand.status !== "missing" ? (
-                  <img src={somittaLogo} alt="Somitta logo" className="h-24 w-auto object-contain" loading="lazy" />
+                {brand.status !== "missing" && brand.logo ? (
+                  <img src={brandLogos[brand.logo]} alt={`${brand.name} logo`} className="h-24 w-auto object-contain" loading="lazy" />
                 ) : null}
                 {brand.website ? (
                   <h2 className="mt-4 text-2xl font-semibold text-primary">

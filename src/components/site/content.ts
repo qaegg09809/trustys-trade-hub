@@ -18,6 +18,7 @@ type BrandCard = {
   positioning: string;
   status?: "verified" | "missing";
   cta?: string;
+  logo?: "somitta" | "suqaOud";
 };
 
 type ContactOption = {
@@ -369,13 +370,15 @@ const englishContent: LocaleContent = {
         positioning: "Built around authenticity, sensory richness, and culturally rooted product identity.",
         status: "verified",
         cta: "Explore",
+        logo: "somitta",
       },
       {
-        name: "Additional brand line",
-        tagline: "Details available upon request",
-        category: "Please contact us for category details",
-        positioning: "Commercial positioning details are available upon request",
-        status: "missing",
+        name: "SUQA OUD",
+        tagline: "From the Heritage of Ancestors — Breathe the Essence of the Kingdom",
+        category: "Luxury perfumes and oud",
+        positioning: "Refined fragrances blending authenticity with royal grandeur, crafted to grant you a timeless, unforgettable presence.",
+        status: "verified",
+        logo: "suqaOud",
       },
     ],
   },
@@ -586,13 +589,15 @@ const arabicContent: LocaleContent = {
         positioning: "مبنية على الأصالة وثراء التجربة الحسية وهوية مستلهمة من الجذور الثقافية.",
         status: "verified",
         cta: "استكشف",
+        logo: "somitta",
       },
       {
-        name: "خط علامة إضافي",
-        tagline: "التفاصيل متاحة عند الطلب",
-        category: "يرجى التواصل معنا لتفاصيل الفئة",
-        positioning: "تفاصيل التموضع التجاري متاحة عند الطلب",
-        status: "missing",
+        name: "سُقى العود",
+        tagline: "مِنْ وِرث الجُدُود — تنفس عبق المملكة",
+        category: "عطور فاخرة وعود",
+        positioning: "عطور فاخرة تدمج بين الأصالة والفخامة الملكية؛ مصممة بعناية لتمنحك حضوراً خالداً لا يُنسى.",
+        status: "verified",
+        logo: "suqaOud",
       },
     ],
   },
