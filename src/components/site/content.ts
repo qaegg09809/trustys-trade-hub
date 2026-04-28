@@ -17,6 +17,7 @@ type BrandCard = {
   category: string;
   positioning: string;
   status?: "verified" | "missing";
+  cta?: string;
 };
 
 type ContactOption = {
@@ -361,12 +362,13 @@ const englishContent: LocaleContent = {
     intro: "Yansab supports owned and partner brands through disciplined market execution and long-term commercial positioning.",
     cards: [
       {
-        name: "Somitta",
+        name: "SOMITTA",
         website: "https://www.somitta.com/",
         tagline: "Feel The Sudanese Sense",
         category: "Perfumes, incense, and beauty products",
         positioning: "Built around authenticity, sensory richness, and culturally rooted product identity.",
         status: "verified",
+        cta: "Explore",
       },
       {
         name: "Additional brand line",
@@ -577,12 +579,13 @@ const arabicContent: LocaleContent = {
     intro: "تدعم ينساب العلامات المملوكة وعلامات الشركاء ضمن إطار تنفيذي منضبط وتموضع تجاري طويل الأمد.",
     cards: [
       {
-        name: "Somitta",
+        name: "سـوميتـا",
         website: "https://www.somitta.com/",
-        tagline: "Feel The Sudanese Sense",
+        tagline: "أستشعر الحس السوداني",
         category: "العطور والبخور ومنتجات الجمال",
         positioning: "مبنية على الأصالة وثراء التجربة الحسية وهوية مستلهمة من الجذور الثقافية.",
         status: "verified",
+        cta: "استكشف",
       },
       {
         name: "خط علامة إضافي",

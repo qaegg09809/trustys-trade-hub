@@ -1,32 +1,58 @@
 ## Goal
-Make sure **every colored (filled) button on the site shows white text**, per the new rule: any button with a brand color background → white inner text.
+Polish the Somitta brand card on the Brands page (and matching home brands grid) with three changes:
 
-## Root cause found
-In `src/styles.css`, the design token `--accent-foreground` (text color used on orange `bg-accent` buttons) is set to dark navy `#111827` instead of white. That's why the two orange CTAs ("Become a Partner", "Start the Conversation") rendered with dark text earlier even though we passed `text-accent-foreground`.
+1. Display the brand name in **ALL CAPS** ("SOMITTA") to match the logo lockup.
+2. Add an **"Explore" CTA button** at the bottom of the Somitta card, styled in **brand orange** with white text (matches our colored-button rule). Links out to https://www.somitta.com/.
+3. Add proper **Arabic** name and tagline:
+   - Name: `سـوميتـا`
+   - Tagline: `أستشعر الحس السوداني`
 
-`--primary-foreground` and `--secondary-foreground` are already `#ffffff`, so blue/secondary buttons are already correct.
+The "Additional brand line" card stays unchanged (no Explore button — no website yet).
 
-## Change (single token fix — global effect)
-Update both light and dark theme definitions in `src/styles.css`:
+## Changes
 
-- Line 51 (`:root`):
-  `--accent-foreground: #111827;` → `--accent-foreground: #ffffff;`
-- Line 110 (`.dark`):
-  `--accent-foreground: oklch(0.24 0.03 258);` → `--accent-foreground: #ffffff;`
+### 1. `src/components/site/content.ts`
 
-Because every "orange" button (and any future `bg-accent` element) reads its text color from this token, this single change automatically makes ALL colored brand-orange buttons display white text — including the two we styled in the previous turn, plus any future ones.
+**English Somitta card (line ~363):**
+- `name: "Somitta"` → `name: "SOMITTA"`
+- Add `cta: "Explore"` field
 
-## Why this is the right approach
-- One semantic token change instead of editing button-by-button.
-- Keeps the design system consistent (the rule "colored buttons = white text" lives in tokens, not scattered across components).
-- No layout, sizing, copy, or component-API change.
+**Arabic Somitta card (line ~579):**
+- `name: "Somitta"` → `name: "سـوميتـا"`
+- `tagline: "Feel The Sudanese Sense"` → `tagline: "أستشعر الحس السوداني"`
+- Add `cta: "استكشف"` field
+
+**Type update (line ~76 area, brands type):**
+- Add optional `cta?: string` to the brand card type.
+
+### 2. `src/routes/brands.tsx`
+
+In the brand card render (currently ends after the `positioning` paragraph), add — only when both `brand.cta` and `brand.website` exist — an orange CTA button below the description:
+
+```tsx
+{brand.cta && brand.website ? (
+  <div className="mt-6">
+    <Button
+      asChild
+      className="h-11 min-w-32 px-6 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"
+    >
+      <a href={brand.website} target="_blank" rel="noopener noreferrer">
+        {brand.cta}
+      </a>
+    </Button>
+  </div>
+) : null}
+```
+
+This automatically shows the orange "Explore" button on the Somitta card and skips it on the "Additional brand line" placeholder.
+
+## Why this is right
+- Matches the user's circled requests in both screenshots (capitalized name + orange Explore button).
+- Reuses the same orange-button style we standardized in the previous turn (white text via `--accent-foreground` token).
+- Arabic content correctly localized; the brand name "سـوميتـا" uses the spaced/stretched form the user requested.
+- No layout, no logo, no other style changes.
 
 ## Verification
-After the change, on `/?lang=en` and `/?lang=ar`:
-- "Become a Partner" (home partnership strip) → orange background, **white text**.
-- "Start the Conversation" (home final CTA) → orange background, **white text**.
-- Existing blue primary buttons (header "Contact Us", etc.) remain unchanged (already white text).
-- No accessibility regression: white on `#F3961B` orange has sufficient contrast for button-sized bold text.
-
-## Memory
-Save a project rule: "All filled/colored brand buttons (primary, secondary, accent/orange) must use white text inside. Enforced via `--*-foreground` tokens in `src/styles.css`."
+- `/brands?lang=en` → Somitta card shows: logo, name in ALL CAPS as "SOMITTA", orange tagline, category, description, then orange "Explore" button bottom-left (RTL: bottom-right). Clicking opens somitta.com in a new tab.
+- `/brands?lang=ar` → same structure, name reads "سـوميتـا", tagline "أستشعر الحس السوداني", button label "استكشف".
+- "Additional brand line" card unchanged (no button).

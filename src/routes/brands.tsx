@@ -73,6 +73,18 @@ function BrandsPage() {
                 <p className="mt-2 text-sm font-semibold text-accent">{brand.tagline}</p>
                 <p className="mt-3 text-sm text-foreground">{brand.category}</p>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{brand.positioning}</p>
+                {brand.cta && brand.website ? (
+                  <div className="mt-6">
+                    <Button
+                      asChild
+                      className="h-11 min-w-32 px-6 font-semibold bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:border-accent/90 hover:text-accent-foreground"
+                    >
+                      <a href={brand.website} target="_blank" rel="noopener noreferrer">
+                        {brand.cta}
+                      </a>
+                    </Button>
+                  </div>
+                ) : null}
               </CardContent>
             </Card>
           ))}
