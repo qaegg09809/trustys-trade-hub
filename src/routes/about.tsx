@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
-import boardroomVisual from "@/assets/yansab-boardroom.jpg";
+import boardroomVisual from "@/assets/yansab-founder-message.jpg";
 import heroFacade from "@/assets/yansab-building-facade.jpg";
 
 export const Route = createFileRoute("/about")({
