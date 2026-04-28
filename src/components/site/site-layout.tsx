@@ -15,6 +15,8 @@ import type { SiteLanguage } from "./language";
 import logoEn from "@/assets/yansab-logo-en-transparent.png";
 import logoAr from "@/assets/yansab-logo-ar.jpg";
 import logoFull from "@/assets/yansab-logo-full-transparent.png";
+import logoEnWhite from "@/assets/yansab-logo-en-white.png";
+import logoArWhite from "@/assets/yansab-logo-ar-white.png";
 
 export function SectionShell({
   children,
@@ -180,7 +182,7 @@ export function SiteLayout({ language, children }: { language: SiteLanguage; chi
       <footer className="border-t border-primary-foreground/10 bg-primary text-primary-foreground">
         <div className="yansab-container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
           <div className="space-y-4">
-            <img src={activeLogo} alt={isArabic ? "شعار ينساب" : "Yansab logo"} className="h-12 w-auto" />
+            <img src={isArabic ? logoArWhite : logoEnWhite} alt={isArabic ? "شعار ينساب" : "Yansab logo"} className="h-12 w-auto" />
             <p className="text-sm leading-7 text-primary-foreground/90">{t.footerIntro}</p>
           </div>
 
