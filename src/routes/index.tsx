@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BadgeCheck, ClipboardCheck, Gauge, Handshake, ShieldCheck } from "lucide-react";
+import { BadgeCheck, Building2, CalendarCheck, ClipboardCheck, Gauge, Handshake, LayoutGrid, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SiteLayout } from "@/components/site/site-layout";
