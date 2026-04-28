@@ -68,16 +68,16 @@ function AboutPage() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <Card className="premium-card overflow-hidden border-[var(--line-strong)] shadow-[var(--shadow-strong)]">
+            <div className="relative p-[6px] bg-accent shadow-[var(--shadow-strong)] rounded-[2px]">
               <img
                 src={boardroomVisual}
-                alt={language === "ar" ? "غرفة اجتماعات احترافية" : "Executive boardroom"}
+                alt={language === "ar" ? "مصافحة تنفيذية في مكتب دبي" : "Executive handshake in Dubai office"}
                 width={1600}
                 height={1024}
-                className="h-80 w-full object-cover"
+                className="block h-80 w-full object-cover"
                 loading="lazy"
               />
-            </Card>
+            </div>
           </div>
         </div>
       </SectionShell>
