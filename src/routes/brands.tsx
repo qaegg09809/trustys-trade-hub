@@ -5,12 +5,10 @@ import { getContent } from "@/components/site/content";
 import { SiteLayout, SectionShell, SectionTitle } from "@/components/site/site-layout";
 import { useSiteLanguage } from "@/components/site/use-site-language";
 import somittaLogo from "@/assets/somitta-logo.jpg";
-import suqaOudLogo from "@/assets/suqa-oud-logo.png";
 import heroFacade from "@/assets/yansab-building-facade.jpg";
 
 const brandLogos = {
   somitta: somittaLogo,
-  suqaOud: suqaOudLogo,
 } as const;
 
 export const Route = createFileRoute("/brands")({
